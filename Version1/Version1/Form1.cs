@@ -66,7 +66,7 @@ namespace Version1
             if (dt.Rows.Count > 0)
             {
                 int totalTime = 0;
-                var mp = new Dictionary<int, KeyValuePair<string, int>>();
+                var mp = new SortedDictionary<int, KeyValuePair<string, int>>();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int time = Convert.ToInt32(dt.Rows[i].Field<string>(2));
@@ -74,17 +74,42 @@ namespace Version1
                     int arrivalTime = Convert.ToInt32(dt.Rows[i].Field<string>(1));
                     var p = new KeyValuePair<string, int>(processName, arrivalTime);
                     mp[time] = p;
+                    totalTime += time;
                 }
                 consol.Text = "";
+                
                 foreach (KeyValuePair<int, KeyValuePair<string, int>> element in mp)
                 {
                     consol.Text += element.Value.Key + "   " + element.Value.Value + "   " + element.Key +'\n';
                 }
 
+                int numberOfProcess = mp.Count();
+                var map = new SortedDictionary<string, KeyValuePair<int, int>>();
 
-
-
-
+                for (int i = 0; i < totalTime; i++)
+                {
+                    // Check for arrical time
+                        int burst = mp.First().Key;
+                        foreach (KeyValuePair<int, KeyValuePair<string, int>> element in mp)
+                        {
+                            burst = element.Key;
+                            int arrTime = element.Value.Value;
+                            string processName = element.Value.Key;
+                            if(arrTime <= i)
+                            {
+                                var p = new KeyValuePair<int, int>(arrTime, burst);
+                                map[processName] = p;
+                                break;
+                            }
+                        }
+                        mp.Remove(burst);
+                    
+                }
+                label12.Text = "";
+                foreach (KeyValuePair<string, KeyValuePair<int, int>> element in map)
+                {
+                    label12.Text += element.Value.Key + "   " + element.Value.Value + "   " + element.Key + '\n';
+                }
 
                 ganttChart.Visible = true;
                 DataTable gc = new DataTable();
@@ -175,6 +200,9 @@ namespace Version1
 
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

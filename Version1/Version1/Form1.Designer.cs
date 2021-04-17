@@ -50,6 +50,7 @@ namespace Version1
             this.flowLayoutPanel3_fcfs_nums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.SJFTabPage = new System.Windows.Forms.TabPage();
+            this.consol = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ganttChart = new System.Windows.Forms.DataGridView();
             this.drawButton = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.consol = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -222,6 +223,7 @@ namespace Version1
             this.nofprocesses.Name = "nofprocesses";
             this.nofprocesses.Size = new System.Drawing.Size(148, 26);
             this.nofprocesses.TabIndex = 0;
+            this.nofprocesses.TextChanged += new System.EventHandler(this.nofprocesses_TextChanged);
             // 
             // button2
             // 
@@ -288,6 +290,7 @@ namespace Version1
             // 
             // SJFTabPage
             // 
+            this.SJFTabPage.Controls.Add(this.label12);
             this.SJFTabPage.Controls.Add(this.consol);
             this.SJFTabPage.Controls.Add(this.label11);
             this.SJFTabPage.Controls.Add(this.ganttChart);
@@ -312,6 +315,15 @@ namespace Version1
             this.SJFTabPage.Text = "tabPage3";
             this.SJFTabPage.UseVisualStyleBackColor = true;
             this.SJFTabPage.Click += new System.EventHandler(this.SJFTabPage_Click);
+            // 
+            // consol
+            // 
+            this.consol.AutoSize = true;
+            this.consol.Location = new System.Drawing.Point(40, 100);
+            this.consol.Name = "consol";
+            this.consol.Size = new System.Drawing.Size(60, 20);
+            this.consol.TabIndex = 28;
+            this.consol.Text = "label12";
             // 
             // label11
             // 
@@ -467,14 +479,15 @@ namespace Version1
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // consol
+            // label12
             // 
-            this.consol.AutoSize = true;
-            this.consol.Location = new System.Drawing.Point(62, 100);
-            this.consol.Name = "consol";
-            this.consol.Size = new System.Drawing.Size(60, 20);
-            this.consol.TabIndex = 28;
-            this.consol.Text = "label12";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(40, 235);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 20);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "label12";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Form1
             // 
@@ -499,6 +512,11 @@ namespace Version1
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void nofprocesses_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void SJFTabPage_Click(object sender, EventArgs e)
@@ -544,5 +562,6 @@ namespace Version1
         private System.Windows.Forms.DataGridView processGrid;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label consol;
+        private System.Windows.Forms.Label label12;
     }
 }
