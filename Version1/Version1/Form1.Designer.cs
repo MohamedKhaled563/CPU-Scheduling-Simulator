@@ -79,6 +79,7 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -124,11 +125,11 @@ namespace Version1
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 41);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(7, 5, 7, 5);
-            this.tabPage1.Size = new System.Drawing.Size(864, 550);
+            this.tabPage1.Size = new System.Drawing.Size(864, 557);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FCFS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -140,7 +141,7 @@ namespace Version1
             this.label7.Location = new System.Drawing.Point(199, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 16);
+            this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "Enter burst time:";
             // 
@@ -151,7 +152,7 @@ namespace Version1
             this.label6.Location = new System.Drawing.Point(38, 302);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(622, 56);
+            this.label6.Size = new System.Drawing.Size(499, 42);
             this.label6.TabIndex = 15;
             this.label6.Text = "NOTE: first process arrival time must be 0 and other processes must be\r\n greater " +
     "than 0.Or all arrival times equal 0.";
@@ -163,7 +164,7 @@ namespace Version1
             this.label5.Location = new System.Drawing.Point(199, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 16);
+            this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Enter arrival time:";
             // 
@@ -172,7 +173,7 @@ namespace Version1
             this.arrivalText_fcfs.Location = new System.Drawing.Point(388, 249);
             this.arrivalText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.arrivalText_fcfs.Name = "arrivalText_fcfs";
-            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 34);
+            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 29);
             this.arrivalText_fcfs.TabIndex = 13;
             this.arrivalText_fcfs.Text = "0";
             // 
@@ -183,7 +184,7 @@ namespace Version1
             this.label4.Location = new System.Drawing.Point(62, 362);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 16);
+            this.label4.Size = new System.Drawing.Size(131, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "average waiting time=";
             // 
@@ -192,7 +193,7 @@ namespace Version1
             this.waitingText_fcfs.Location = new System.Drawing.Point(388, 358);
             this.waitingText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waitingText_fcfs.Name = "waitingText_fcfs";
-            this.waitingText_fcfs.Size = new System.Drawing.Size(140, 34);
+            this.waitingText_fcfs.Size = new System.Drawing.Size(140, 29);
             this.waitingText_fcfs.TabIndex = 11;
             // 
             // label3
@@ -202,7 +203,7 @@ namespace Version1
             this.label3.Location = new System.Drawing.Point(34, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(485, 16);
+            this.label3.Size = new System.Drawing.Size(407, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Enter burst time and arrival time of the process and click insert button:";
             // 
@@ -211,7 +212,7 @@ namespace Version1
             this.burstText_fcfs.Location = new System.Drawing.Point(388, 200);
             this.burstText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.burstText_fcfs.Name = "burstText_fcfs";
-            this.burstText_fcfs.Size = new System.Drawing.Size(148, 34);
+            this.burstText_fcfs.Size = new System.Drawing.Size(148, 29);
             this.burstText_fcfs.TabIndex = 5;
             // 
             // label2
@@ -228,7 +229,7 @@ namespace Version1
             this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(290, 16);
+            this.label1.Size = new System.Drawing.Size(244, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter number of processes ,then click ok:";
             // 
@@ -237,7 +238,7 @@ namespace Version1
             this.nofprocesses.Location = new System.Drawing.Point(410, 51);
             this.nofprocesses.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.nofprocesses.Name = "nofprocesses";
-            this.nofprocesses.Size = new System.Drawing.Size(148, 34);
+            this.nofprocesses.Size = new System.Drawing.Size(148, 29);
             this.nofprocesses.TabIndex = 0;
             this.nofprocesses.TextChanged += new System.EventHandler(this.nofprocesses_TextChanged);
             // 
@@ -307,11 +308,11 @@ namespace Version1
             this.tabPage2.Controls.Add(this.textBox3);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 41);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(864, 550);
+            this.tabPage2.Size = new System.Drawing.Size(864, 557);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Roundrobin";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -320,7 +321,7 @@ namespace Version1
             // 
             this.textBox4.Location = new System.Drawing.Point(169, 213);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(140, 34);
+            this.textBox4.Size = new System.Drawing.Size(140, 29);
             this.textBox4.TabIndex = 44;
             // 
             // label14
@@ -329,7 +330,7 @@ namespace Version1
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(25, 86);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(77, 28);
+            this.label14.Size = new System.Drawing.Size(63, 21);
             this.label14.TabIndex = 42;
             this.label14.Text = "Process";
             this.label14.Click += new System.EventHandler(this.label14_Click);
@@ -341,7 +342,7 @@ namespace Version1
             this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label15.Location = new System.Drawing.Point(266, 11);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(274, 62);
+            this.label15.Size = new System.Drawing.Size(220, 51);
             this.label15.TabIndex = 41;
             this.label15.Text = "Roundrobin";
             // 
@@ -362,7 +363,7 @@ namespace Version1
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label16.Location = new System.Drawing.Point(25, 215);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(138, 28);
+            this.label16.Size = new System.Drawing.Size(111, 21);
             this.label16.TabIndex = 37;
             this.label16.Text = "Quantum time";
             // 
@@ -372,7 +373,7 @@ namespace Version1
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.Location = new System.Drawing.Point(25, 171);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(100, 28);
+            this.label17.Size = new System.Drawing.Size(81, 21);
             this.label17.TabIndex = 36;
             this.label17.Text = "Burst time";
             this.label17.Click += new System.EventHandler(this.label17_Click);
@@ -383,7 +384,7 @@ namespace Version1
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(25, 129);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(113, 28);
+            this.label18.Size = new System.Drawing.Size(91, 21);
             this.label18.TabIndex = 35;
             this.label18.Text = "Arrival time";
             this.label18.Click += new System.EventHandler(this.label18_Click);
@@ -392,21 +393,21 @@ namespace Version1
             // 
             this.textBox1.Location = new System.Drawing.Point(169, 171);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 34);
+            this.textBox1.Size = new System.Drawing.Size(140, 29);
             this.textBox1.TabIndex = 34;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(169, 129);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(140, 34);
+            this.textBox2.Size = new System.Drawing.Size(140, 29);
             this.textBox2.TabIndex = 33;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(169, 86);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(140, 34);
+            this.textBox3.Size = new System.Drawing.Size(140, 29);
             this.textBox3.TabIndex = 32;
             // 
             // button4
@@ -438,6 +439,7 @@ namespace Version1
             // 
             // SJFTabPage
             // 
+            this.SJFTabPage.Controls.Add(this.label13);
             this.SJFTabPage.Controls.Add(this.label12);
             this.SJFTabPage.Controls.Add(this.consol);
             this.SJFTabPage.Controls.Add(this.label11);
@@ -454,11 +456,11 @@ namespace Version1
             this.SJFTabPage.Controls.Add(this.processTF);
             this.SJFTabPage.Controls.Add(this.insert);
             this.SJFTabPage.Controls.Add(this.processGrid);
-            this.SJFTabPage.Location = new System.Drawing.Point(4, 41);
+            this.SJFTabPage.Location = new System.Drawing.Point(4, 34);
             this.SJFTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SJFTabPage.Name = "SJFTabPage";
             this.SJFTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SJFTabPage.Size = new System.Drawing.Size(864, 550);
+            this.SJFTabPage.Size = new System.Drawing.Size(864, 557);
             this.SJFTabPage.TabIndex = 2;
             this.SJFTabPage.Text = "tabPage3";
             this.SJFTabPage.UseVisualStyleBackColor = true;
@@ -467,9 +469,9 @@ namespace Version1
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(40, 235);
+            this.label12.Location = new System.Drawing.Point(28, 136);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 28);
+            this.label12.Size = new System.Drawing.Size(61, 21);
             this.label12.TabIndex = 29;
             this.label12.Text = "label12";
             this.label12.Click += new System.EventHandler(this.label12_Click);
@@ -477,9 +479,9 @@ namespace Version1
             // consol
             // 
             this.consol.AutoSize = true;
-            this.consol.Location = new System.Drawing.Point(40, 100);
+            this.consol.Location = new System.Drawing.Point(28, 32);
             this.consol.Name = "consol";
-            this.consol.Size = new System.Drawing.Size(76, 28);
+            this.consol.Size = new System.Drawing.Size(61, 21);
             this.consol.TabIndex = 28;
             this.consol.Text = "label12";
             // 
@@ -490,9 +492,10 @@ namespace Version1
             this.label11.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(290, 32);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(375, 61);
+            this.label11.Size = new System.Drawing.Size(299, 47);
             this.label11.TabIndex = 27;
             this.label11.Text = "Shortest Job First";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // ganttChart
             // 
@@ -526,7 +529,7 @@ namespace Version1
             this.nonPremptiveRB.AutoSize = true;
             this.nonPremptiveRB.Location = new System.Drawing.Point(732, 84);
             this.nonPremptiveRB.Name = "nonPremptiveRB";
-            this.nonPremptiveRB.Size = new System.Drawing.Size(168, 32);
+            this.nonPremptiveRB.Size = new System.Drawing.Size(135, 25);
             this.nonPremptiveRB.TabIndex = 23;
             this.nonPremptiveRB.TabStop = true;
             this.nonPremptiveRB.Text = "Non-Premptive";
@@ -537,7 +540,7 @@ namespace Version1
             this.premptiveRB.AutoSize = true;
             this.premptiveRB.Location = new System.Drawing.Point(617, 84);
             this.premptiveRB.Name = "premptiveRB";
-            this.premptiveRB.Size = new System.Drawing.Size(122, 32);
+            this.premptiveRB.Size = new System.Drawing.Size(100, 25);
             this.premptiveRB.TabIndex = 22;
             this.premptiveRB.TabStop = true;
             this.premptiveRB.Text = "Premprive";
@@ -556,7 +559,7 @@ namespace Version1
             this.lable3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lable3.Location = new System.Drawing.Point(560, 136);
             this.lable3.Name = "lable3";
-            this.lable3.Size = new System.Drawing.Size(95, 25);
+            this.lable3.Size = new System.Drawing.Size(77, 20);
             this.lable3.TabIndex = 20;
             this.lable3.Text = "Burst time";
             // 
@@ -566,7 +569,7 @@ namespace Version1
             this.label9.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(399, 136);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(105, 25);
+            this.label9.Size = new System.Drawing.Size(84, 20);
             this.label9.TabIndex = 19;
             this.label9.Text = "Arrival time";
             // 
@@ -576,7 +579,7 @@ namespace Version1
             this.label10.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(251, 136);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 25);
+            this.label10.Size = new System.Drawing.Size(63, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "Process";
             // 
@@ -584,21 +587,21 @@ namespace Version1
             // 
             this.burstTimeTF.Location = new System.Drawing.Point(527, 159);
             this.burstTimeTF.Name = "burstTimeTF";
-            this.burstTimeTF.Size = new System.Drawing.Size(140, 34);
+            this.burstTimeTF.Size = new System.Drawing.Size(140, 29);
             this.burstTimeTF.TabIndex = 17;
             // 
             // arrivalTimeTF
             // 
             this.arrivalTimeTF.Location = new System.Drawing.Point(371, 159);
             this.arrivalTimeTF.Name = "arrivalTimeTF";
-            this.arrivalTimeTF.Size = new System.Drawing.Size(140, 34);
+            this.arrivalTimeTF.Size = new System.Drawing.Size(140, 29);
             this.arrivalTimeTF.TabIndex = 16;
             // 
             // processTF
             // 
             this.processTF.Location = new System.Drawing.Point(214, 159);
             this.processTF.Name = "processTF";
-            this.processTF.Size = new System.Drawing.Size(140, 34);
+            this.processTF.Size = new System.Drawing.Size(140, 29);
             this.processTF.TabIndex = 15;
             // 
             // insert
@@ -630,18 +633,28 @@ namespace Version1
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 41);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(864, 550);
+            this.tabPage4.Size = new System.Drawing.Size(864, 557);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(28, 226);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 21);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "label13";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 593);
             this.Controls.Add(this.tabControl1);
@@ -728,5 +741,6 @@ namespace Version1
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
     }
 }

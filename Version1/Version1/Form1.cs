@@ -70,7 +70,7 @@ namespace Version1
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int time = Convert.ToInt32(dt.Rows[i].Field<string>(2));
-                    string processName = dt.Rows[0].Field<string>(0);
+                    string processName = dt.Rows[i].Field<string>(0);
                     int arrivalTime = Convert.ToInt32(dt.Rows[i].Field<string>(1));
                     var p = new KeyValuePair<string, int>(processName, arrivalTime);
                     mp[time] = p;
@@ -102,14 +102,41 @@ namespace Version1
                                 break;
                             }
                         }
-                        mp.Remove(burst);
+                        if (burst != mp.Last().Key)
+                            mp.Remove(burst);
                     
                 }
                 label12.Text = "";
                 foreach (KeyValuePair<string, KeyValuePair<int, int>> element in map)
                 {
-                    label12.Text += element.Value.Key + "   " + element.Value.Value + "   " + element.Key + '\n';
+                    label12.Text += element.Key + "   " + element.Value.Key + "   " + element.Value.Value + '\n';
                 }
+                label13.Text = "";
+                int counter = map.First().Value.Key + 1;
+                for (int i = 0; i < totalTime; i++)
+                {
+                    string processName = map.First().Key;
+                    foreach(KeyValuePair<string, KeyValuePair<int, int>> element in map)
+                    {
+                        int arrTime = map[processName].Key;
+                        int burstTime = map[processName].Value;
+                        if (arrTime <= i)
+                        {
+                            if(element.Value.Value < map[processName].Value && element.Value.Value > 0)
+                                processName = element.Key;
+                        }
+                    }
+                    int arrivalTime = map[processName].Key;
+                    int remainTime = map[processName].Value;
+                    map[processName] = new KeyValuePair<int, int>(arrivalTime, remainTime - 1);
+                    label13.Text += processName + "   Remaining   " + map[processName].Value + "   " + counter + '\n' ;
+                    counter++;
+                    if (map[processName].Value == 0)
+                        map.Remove(processName);
+                }
+
+
+
 
                 ganttChart.Visible = true;
                 DataTable gc = new DataTable();
@@ -216,6 +243,16 @@ namespace Version1
         }
 
         private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
         {
 
         }

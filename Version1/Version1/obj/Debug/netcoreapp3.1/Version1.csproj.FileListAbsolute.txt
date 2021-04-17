@@ -28,3 +28,18 @@ F:\CPU_OS\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.CoreCompileI
 F:\CPU_OS\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
 F:\CPU_OS\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
 F:\CPU_OS\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.exe
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.deps.json
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.json
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.dev.json
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.dll
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.pdb
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csprojAssemblyReference.cache
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.Form1.resources
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.GenerateResource.cache
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfoInputs.cache
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfo.cs
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.CoreCompileInputs.cache
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
+E:\New folder (2)\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
