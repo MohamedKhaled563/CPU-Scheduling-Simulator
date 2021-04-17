@@ -19,25 +19,34 @@ namespace Version1
             InitializeComponent();
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            BackColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
-            ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#698474");
-            insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
-            drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
             dt.Columns.Add("Process");
             dt.Columns.Add("Arrival Time");
             dt.Columns.Add("Burst Time");
             processGrid.DataSource = dt;
-            processGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
-            processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
-            arrivalTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
-            burstTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
         }
-        private void insert_Click(object sender, EventArgs e)
-        {
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
+            {
+      
+                SJFTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
+                ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#698474");
+                insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
+                drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
+                
+                processGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
+                processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
+                arrivalTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
+                burstTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
+            }
+        }
+
+        private void insert_Click_1(object sender, EventArgs e)
+        {
             string processName, arrivalTime, burstTime;
             processName = processTF.Text;
             arrivalTime = arrivalTimeTF.Text;
@@ -50,13 +59,10 @@ namespace Version1
                 arrivalTimeTF.Text = "";
                 burstTimeTF.Text = "";
             }
-
         }
 
-       
-        private void drawButton_Click(object sender, EventArgs e)
+        private void drawButton_Click_1(object sender, EventArgs e)
         {
-
             if (dt.Rows.Count > 0)
             {
                 int totalTime = 0;
@@ -69,9 +75,10 @@ namespace Version1
                     var p = new KeyValuePair<string, int>(processName, arrivalTime);
                     mp[time] = p;
                 }
+                consol.Text = "";
                 foreach (KeyValuePair<int, KeyValuePair<string, int>> element in mp)
                 {
-                    Console.WriteLine("Process name = {0}, arrival time = {1}, burst time = {2}", element.Value.Key, element.Value.Value, element.Key);
+                    consol.Text += element.Value.Key + "   " + element.Value.Value + "   " + element.Key +'\n';
                 }
 
 
@@ -168,13 +175,6 @@ namespace Version1
 
         }
 
-     
 
-        private void insert_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-       
     }
 }

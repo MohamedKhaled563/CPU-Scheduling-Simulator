@@ -1,4 +1,6 @@
-﻿namespace Version1
+﻿using System;
+
+namespace Version1
 {
     partial class Form1
     {
@@ -47,7 +49,8 @@
             this.flowLayoutPanel2_fcfs = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel3_fcfs_nums = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.SJFTabPage = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.ganttChart = new System.Windows.Forms.DataGridView();
             this.drawButton = new System.Windows.Forms.Button();
             this.nonPremptiveRB = new System.Windows.Forms.RadioButton();
@@ -62,10 +65,11 @@
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.consol = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.SJFTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +78,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.SJFTabPage);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -85,6 +89,7 @@
             this.tabControl1.Size = new System.Drawing.Size(872, 595);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -281,30 +286,43 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // SJFTabPage
             // 
-            this.tabPage3.Controls.Add(this.ganttChart);
-            this.tabPage3.Controls.Add(this.drawButton);
-            this.tabPage3.Controls.Add(this.nonPremptiveRB);
-            this.tabPage3.Controls.Add(this.premptiveRB);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.lable3);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.burstTimeTF);
-            this.tabPage3.Controls.Add(this.arrivalTimeTF);
-            this.tabPage3.Controls.Add(this.processTF);
-            this.tabPage3.Controls.Add(this.insert);
-            this.tabPage3.Controls.Add(this.processGrid);
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(864, 558);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            this.SJFTabPage.Controls.Add(this.consol);
+            this.SJFTabPage.Controls.Add(this.label11);
+            this.SJFTabPage.Controls.Add(this.ganttChart);
+            this.SJFTabPage.Controls.Add(this.drawButton);
+            this.SJFTabPage.Controls.Add(this.nonPremptiveRB);
+            this.SJFTabPage.Controls.Add(this.premptiveRB);
+            this.SJFTabPage.Controls.Add(this.label8);
+            this.SJFTabPage.Controls.Add(this.lable3);
+            this.SJFTabPage.Controls.Add(this.label9);
+            this.SJFTabPage.Controls.Add(this.label10);
+            this.SJFTabPage.Controls.Add(this.burstTimeTF);
+            this.SJFTabPage.Controls.Add(this.arrivalTimeTF);
+            this.SJFTabPage.Controls.Add(this.processTF);
+            this.SJFTabPage.Controls.Add(this.insert);
+            this.SJFTabPage.Controls.Add(this.processGrid);
+            this.SJFTabPage.Location = new System.Drawing.Point(4, 33);
+            this.SJFTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SJFTabPage.Name = "SJFTabPage";
+            this.SJFTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SJFTabPage.Size = new System.Drawing.Size(864, 558);
+            this.SJFTabPage.TabIndex = 2;
+            this.SJFTabPage.Text = "tabPage3";
+            this.SJFTabPage.UseVisualStyleBackColor = true;
+            this.SJFTabPage.Click += new System.EventHandler(this.SJFTabPage_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(290, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(299, 47);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Shortest Job First";
             // 
             // ganttChart
             // 
@@ -330,6 +348,7 @@
             this.drawButton.TabIndex = 24;
             this.drawButton.Text = "Draw Gantt Chart";
             this.drawButton.UseVisualStyleBackColor = true;
+            this.drawButton.Click += new System.EventHandler(this.drawButton_Click_1);
             // 
             // nonPremptiveRB
             // 
@@ -448,6 +467,15 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // consol
+            // 
+            this.consol.AutoSize = true;
+            this.consol.Location = new System.Drawing.Point(62, 100);
+            this.consol.Name = "consol";
+            this.consol.Size = new System.Drawing.Size(60, 20);
+            this.consol.TabIndex = 28;
+            this.consol.Text = "label12";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -459,16 +487,22 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "CPU_Scheduler";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.SJFTabPage.ResumeLayout(false);
+            this.SJFTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
             this.ResumeLayout(false);
+
+        }
+
+        private void SJFTabPage_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -477,7 +511,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage SJFTabPage;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2_fcfs;
@@ -508,5 +542,7 @@
         private System.Windows.Forms.TextBox processTF;
         private System.Windows.Forms.Button insert;
         private System.Windows.Forms.DataGridView processGrid;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label consol;
     }
 }
