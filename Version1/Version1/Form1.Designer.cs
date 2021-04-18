@@ -32,8 +32,9 @@ namespace Version1
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.arrivalText_fcfs = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@ namespace Version1
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -110,8 +110,9 @@ namespace Version1
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.arrivalText_fcfs);
             this.tabPage1.Controls.Add(this.label4);
@@ -133,63 +134,72 @@ namespace Version1
             this.tabPage1.Text = "FCFS";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(199, 202);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 16);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Enter burst time:";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label6.Location = new System.Drawing.Point(38, 302);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.Blue;
+            this.label6.Location = new System.Drawing.Point(43, 384);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(622, 56);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "NOTE: first process arrival time must be 0 and other processes must be\r\n greater " +
-    "than 0.Or all arrival times equal 0.";
+            this.label6.Size = new System.Drawing.Size(123, 25);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Gantt Chart";
+            // 
+            // button5
+            // 
+            this.button5.ForeColor = System.Drawing.Color.Red;
+            this.button5.Location = new System.Drawing.Point(37, 92);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(253, 35);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Remove all processes";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(199, 202);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 18);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Enter burst time:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(199, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 16);
+            this.label5.Size = new System.Drawing.Size(141, 18);
             this.label5.TabIndex = 14;
             this.label5.Text = "Enter arrival time:";
             // 
             // arrivalText_fcfs
             // 
-            this.arrivalText_fcfs.Location = new System.Drawing.Point(388, 249);
+            this.arrivalText_fcfs.Location = new System.Drawing.Point(410, 238);
             this.arrivalText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.arrivalText_fcfs.Name = "arrivalText_fcfs";
             this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 34);
             this.arrivalText_fcfs.TabIndex = 13;
-            this.arrivalText_fcfs.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(62, 362);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(199, 358);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 16);
+            this.label4.Size = new System.Drawing.Size(176, 18);
             this.label4.TabIndex = 12;
-            this.label4.Text = "average waiting time=";
+            this.label4.Text = "average waiting time =";
             // 
             // waitingText_fcfs
             // 
-            this.waitingText_fcfs.Location = new System.Drawing.Point(388, 358);
+            this.waitingText_fcfs.Location = new System.Drawing.Point(410, 342);
             this.waitingText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waitingText_fcfs.Name = "waitingText_fcfs";
             this.waitingText_fcfs.Size = new System.Drawing.Size(140, 34);
@@ -198,17 +208,17 @@ namespace Version1
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(34, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(485, 16);
+            this.label3.Size = new System.Drawing.Size(538, 18);
             this.label3.TabIndex = 10;
             this.label3.Text = "Enter burst time and arrival time of the process and click insert button:";
             // 
             // burstText_fcfs
             // 
-            this.burstText_fcfs.Location = new System.Drawing.Point(388, 200);
+            this.burstText_fcfs.Location = new System.Drawing.Point(410, 191);
             this.burstText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.burstText_fcfs.Name = "burstText_fcfs";
             this.burstText_fcfs.Size = new System.Drawing.Size(148, 34);
@@ -224,25 +234,25 @@ namespace Version1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(290, 16);
+            this.label1.Size = new System.Drawing.Size(324, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter number of processes ,then click ok:";
             // 
             // nofprocesses
             // 
-            this.nofprocesses.Location = new System.Drawing.Point(410, 51);
+            this.nofprocesses.Location = new System.Drawing.Point(388, 51);
             this.nofprocesses.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.nofprocesses.Name = "nofprocesses";
-            this.nofprocesses.Size = new System.Drawing.Size(148, 34);
+            this.nofprocesses.Size = new System.Drawing.Size(148, 30);
             this.nofprocesses.TabIndex = 0;
-            this.nofprocesses.TextChanged += new System.EventHandler(this.nofprocesses_TextChanged);
             // 
             // button2
             // 
+            this.button2.ForeColor = System.Drawing.Color.Blue;
             this.button2.Location = new System.Drawing.Point(628, 207);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button2.Name = "button2";
@@ -250,16 +260,19 @@ namespace Version1
             this.button2.TabIndex = 9;
             this.button2.Text = "insert";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(603, 49);
+            this.button1.ForeColor = System.Drawing.Color.Blue;
+            this.button1.Location = new System.Drawing.Point(628, 49);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 29);
+            this.button1.Size = new System.Drawing.Size(112, 36);
             this.button1.TabIndex = 2;
             this.button1.Text = "ok";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -276,7 +289,7 @@ namespace Version1
             // flowLayoutPanel2_fcfs
             // 
             this.flowLayoutPanel2_fcfs.AutoSize = true;
-            this.flowLayoutPanel2_fcfs.BackColor = System.Drawing.Color.DarkRed;
+            this.flowLayoutPanel2_fcfs.BackColor = System.Drawing.Color.Blue;
             this.flowLayoutPanel2_fcfs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.flowLayoutPanel2_fcfs.Location = new System.Drawing.Point(4, 2);
             this.flowLayoutPanel2_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -298,7 +311,6 @@ namespace Version1
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label18);
@@ -332,7 +344,6 @@ namespace Version1
             this.label14.Size = new System.Drawing.Size(77, 28);
             this.label14.TabIndex = 42;
             this.label14.Text = "Process";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label15
             // 
@@ -344,17 +355,6 @@ namespace Version1
             this.label15.Size = new System.Drawing.Size(274, 62);
             this.label15.TabIndex = 41;
             this.label15.Text = "Roundrobin";
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button3.Location = new System.Drawing.Point(439, 278);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(273, 52);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Simulation";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -375,7 +375,6 @@ namespace Version1
             this.label17.Size = new System.Drawing.Size(100, 28);
             this.label17.TabIndex = 36;
             this.label17.Text = "Burst time";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label18
             // 
@@ -386,7 +385,6 @@ namespace Version1
             this.label18.Size = new System.Drawing.Size(113, 28);
             this.label18.TabIndex = 35;
             this.label18.Text = "Arrival time";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // textBox1
             // 
@@ -462,7 +460,7 @@ namespace Version1
             this.SJFTabPage.TabIndex = 2;
             this.SJFTabPage.Text = "tabPage3";
             this.SJFTabPage.UseVisualStyleBackColor = true;
-            this.SJFTabPage.Click += new System.EventHandler(this.SJFTabPage_Click);
+            //this.SJFTabPage.Click += new System.EventHandler(this.SJFTabPage_Click);
             // 
             // label12
             // 
@@ -472,7 +470,6 @@ namespace Version1
             this.label12.Size = new System.Drawing.Size(76, 28);
             this.label12.TabIndex = 29;
             this.label12.Text = "label12";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // consol
             // 
@@ -667,15 +664,7 @@ namespace Version1
 
         }
 
-        private void nofprocesses_TextChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SJFTabPage_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         #endregion
 
@@ -697,7 +686,6 @@ namespace Version1
         private System.Windows.Forms.TextBox waitingText_fcfs;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox arrivalText_fcfs;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView ganttChart;
@@ -718,7 +706,6 @@ namespace Version1
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -728,5 +715,7 @@ namespace Version1
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label6;
     }
 }
