@@ -30,6 +30,10 @@ namespace Version1
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
@@ -62,24 +66,21 @@ namespace Version1
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SJFTabPage = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
-            this.consol = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.title = new System.Windows.Forms.Label();
             this.ganttChart = new System.Windows.Forms.DataGridView();
             this.drawButton = new System.Windows.Forms.Button();
             this.nonPremptiveRB = new System.Windows.Forms.RadioButton();
             this.premptiveRB = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
-            this.lable3 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.subtitle3 = new System.Windows.Forms.Label();
+            this.subtitle2 = new System.Windows.Forms.Label();
+            this.subtitle1 = new System.Windows.Forms.Label();
             this.burstTimeTF = new System.Windows.Forms.TextBox();
             this.arrivalTimeTF = new System.Windows.Forms.TextBox();
             this.processTF = new System.Windows.Forms.TextBox();
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -439,18 +440,15 @@ namespace Version1
             // 
             // SJFTabPage
             // 
-            this.SJFTabPage.Controls.Add(this.label13);
-            this.SJFTabPage.Controls.Add(this.label12);
-            this.SJFTabPage.Controls.Add(this.consol);
-            this.SJFTabPage.Controls.Add(this.label11);
+            this.SJFTabPage.Controls.Add(this.title);
             this.SJFTabPage.Controls.Add(this.ganttChart);
             this.SJFTabPage.Controls.Add(this.drawButton);
             this.SJFTabPage.Controls.Add(this.nonPremptiveRB);
             this.SJFTabPage.Controls.Add(this.premptiveRB);
             this.SJFTabPage.Controls.Add(this.label8);
-            this.SJFTabPage.Controls.Add(this.lable3);
-            this.SJFTabPage.Controls.Add(this.label9);
-            this.SJFTabPage.Controls.Add(this.label10);
+            this.SJFTabPage.Controls.Add(this.subtitle3);
+            this.SJFTabPage.Controls.Add(this.subtitle2);
+            this.SJFTabPage.Controls.Add(this.subtitle1);
             this.SJFTabPage.Controls.Add(this.burstTimeTF);
             this.SJFTabPage.Controls.Add(this.arrivalTimeTF);
             this.SJFTabPage.Controls.Add(this.processTF);
@@ -466,36 +464,17 @@ namespace Version1
             this.SJFTabPage.UseVisualStyleBackColor = true;
             this.SJFTabPage.Click += new System.EventHandler(this.SJFTabPage_Click);
             // 
-            // label12
+            // title
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(28, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 21);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "label12";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // consol
-            // 
-            this.consol.AutoSize = true;
-            this.consol.Location = new System.Drawing.Point(28, 32);
-            this.consol.Name = "consol";
-            this.consol.Size = new System.Drawing.Size(61, 21);
-            this.consol.TabIndex = 28;
-            this.consol.Text = "label12";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(290, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(299, 47);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Shortest Job First";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.title.AutoSize = true;
+            this.title.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.title.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.title.Location = new System.Drawing.Point(290, 32);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(299, 47);
+            this.title.TabIndex = 27;
+            this.title.Text = "Shortest Job First";
+            this.title.Click += new System.EventHandler(this.label11_Click);
             // 
             // ganttChart
             // 
@@ -503,12 +482,33 @@ namespace Version1
             this.ganttChart.AllowUserToDeleteRows = false;
             this.ganttChart.AllowUserToResizeColumns = false;
             this.ganttChart.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.ganttChart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ganttChart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ganttChart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ganttChart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ganttChart.Location = new System.Drawing.Point(1, 382);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ganttChart.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ganttChart.Location = new System.Drawing.Point(1, 427);
             this.ganttChart.Name = "ganttChart";
+            this.ganttChart.RowHeadersVisible = false;
             this.ganttChart.RowHeadersWidth = 51;
             this.ganttChart.RowTemplate.Height = 25;
-            this.ganttChart.Size = new System.Drawing.Size(860, 106);
+            this.ganttChart.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ganttChart.Size = new System.Drawing.Size(860, 59);
             this.ganttChart.TabIndex = 25;
             this.ganttChart.Visible = false;
             // 
@@ -516,7 +516,7 @@ namespace Version1
             // 
             this.drawButton.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.drawButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.drawButton.Location = new System.Drawing.Point(351, 321);
+            this.drawButton.Location = new System.Drawing.Point(351, 337);
             this.drawButton.Name = "drawButton";
             this.drawButton.Size = new System.Drawing.Size(170, 33);
             this.drawButton.TabIndex = 24;
@@ -553,35 +553,35 @@ namespace Version1
             this.label8.Size = new System.Drawing.Size(100, 23);
             this.label8.TabIndex = 26;
             // 
-            // lable3
+            // subtitle3
             // 
-            this.lable3.AutoSize = true;
-            this.lable3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lable3.Location = new System.Drawing.Point(560, 136);
-            this.lable3.Name = "lable3";
-            this.lable3.Size = new System.Drawing.Size(77, 20);
-            this.lable3.TabIndex = 20;
-            this.lable3.Text = "Burst time";
+            this.subtitle3.AutoSize = true;
+            this.subtitle3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subtitle3.Location = new System.Drawing.Point(560, 136);
+            this.subtitle3.Name = "subtitle3";
+            this.subtitle3.Size = new System.Drawing.Size(77, 20);
+            this.subtitle3.TabIndex = 20;
+            this.subtitle3.Text = "Burst time";
             // 
-            // label9
+            // subtitle2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(399, 136);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 20);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Arrival time";
+            this.subtitle2.AutoSize = true;
+            this.subtitle2.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subtitle2.Location = new System.Drawing.Point(399, 136);
+            this.subtitle2.Name = "subtitle2";
+            this.subtitle2.Size = new System.Drawing.Size(84, 20);
+            this.subtitle2.TabIndex = 19;
+            this.subtitle2.Text = "Arrival time";
             // 
-            // label10
+            // subtitle1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(251, 136);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 20);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Process";
+            this.subtitle1.AutoSize = true;
+            this.subtitle1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.subtitle1.Location = new System.Drawing.Point(251, 136);
+            this.subtitle1.Name = "subtitle1";
+            this.subtitle1.Size = new System.Drawing.Size(63, 20);
+            this.subtitle1.TabIndex = 18;
+            this.subtitle1.Text = "Process";
             // 
             // burstTimeTF
             // 
@@ -621,15 +621,32 @@ namespace Version1
             this.processGrid.AllowUserToDeleteRows = false;
             this.processGrid.AllowUserToResizeColumns = false;
             this.processGrid.AllowUserToResizeRows = false;
+            this.processGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.processGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.processGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.processGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.processGrid.Location = new System.Drawing.Point(214, 189);
+            this.processGrid.MultiSelect = false;
             this.processGrid.Name = "processGrid";
+            this.processGrid.ReadOnly = true;
+            this.processGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.processGrid.RowHeadersWidth = 51;
             this.processGrid.RowTemplate.Height = 25;
             this.processGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.processGrid.ShowCellErrors = false;
+            this.processGrid.ShowCellToolTips = false;
+            this.processGrid.ShowEditingIcon = false;
+            this.processGrid.ShowRowErrors = false;
             this.processGrid.Size = new System.Drawing.Size(454, 126);
             this.processGrid.TabIndex = 13;
+            this.processGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.processGrid_CellContentClick);
             // 
             // tabPage4
             // 
@@ -641,16 +658,6 @@ namespace Version1
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 226);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 21);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "label13";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // Form1
             // 
@@ -718,17 +725,15 @@ namespace Version1
         private System.Windows.Forms.RadioButton nonPremptiveRB;
         private System.Windows.Forms.RadioButton premptiveRB;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lable3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label subtitle3;
+        private System.Windows.Forms.Label subtitle2;
+        private System.Windows.Forms.Label subtitle1;
         private System.Windows.Forms.TextBox burstTimeTF;
         private System.Windows.Forms.TextBox arrivalTimeTF;
         private System.Windows.Forms.TextBox processTF;
         private System.Windows.Forms.Button insert;
         private System.Windows.Forms.DataGridView processGrid;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label consol;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button3;
@@ -741,6 +746,5 @@ namespace Version1
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label13;
     }
 }

@@ -13,6 +13,8 @@ namespace Version1
     public partial class Form1 : Form
     {
         DataTable dt = new DataTable();
+        Dictionary<string, KeyValuePair<int, int>> processes = new Dictionary<string, KeyValuePair<int, int>>();
+        int totalTime = 0;
 
         public Form1()
         {
@@ -32,16 +34,21 @@ namespace Version1
             if (tabControl1.SelectedIndex == 2)
             {
       
-                SJFTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
-                ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#698474");
-                insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
-                drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#698474");
+                SJFTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
+                ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
+                insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
+                drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
                 
                 processGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#bac7a7");
-                processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
-                arrivalTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
-                burstTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e5e4cc");
+                processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
+                processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e4e3e3");
+                arrivalTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e4e3e3");
+                burstTimeTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e4e3e3");
+                title.ForeColor = System.Drawing.ColorTranslator.FromHtml("#1E1F26");
+                subtitle1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#1E1F26");
+                subtitle2.ForeColor = System.Drawing.ColorTranslator.FromHtml("#1E1F26");
+                subtitle3.ForeColor = System.Drawing.ColorTranslator.FromHtml("#1E1F26");
+
             }
         }
 
@@ -51,6 +58,9 @@ namespace Version1
             processName = processTF.Text;
             arrivalTime = arrivalTimeTF.Text;
             burstTime = burstTimeTF.Text;
+            var process = new KeyValuePair<int, int>(Int32.Parse(arrivalTime), Int32.Parse(burstTime));
+            processes[processName] = process;
+            totalTime += Int32.Parse(burstTime);
 
             if (processName != "" && arrivalTime != "" && burstTime != "")
             {
@@ -63,166 +73,81 @@ namespace Version1
 
         private void drawButton_Click_1(object sender, EventArgs e)
         {
-            if (dt.Rows.Count > 0)
+            //consol.Text = "";
+            var ganttChartData = new List<KeyValuePair<string, int>>();
+            int firstArrival = 1000;
+            foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
             {
-                int totalTime = 0;
-                var mp = new SortedDictionary<int, KeyValuePair<string, int>>();
-                for (int i = 0; i < dt.Rows.Count; i++)
+                if (process.Value.Key < firstArrival)
+                    firstArrival = process.Value.Key;
+            }
+
+            for (int i = firstArrival; i < totalTime + firstArrival; i++){
+                var arrivedProcesses = new Dictionary<string, KeyValuePair<int, int>>() ;
+                foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
                 {
-                    int time = Convert.ToInt32(dt.Rows[i].Field<string>(2));
-                    string processName = dt.Rows[i].Field<string>(0);
-                    int arrivalTime = Convert.ToInt32(dt.Rows[i].Field<string>(1));
-                    var p = new KeyValuePair<string, int>(processName, arrivalTime);
-                    mp[time] = p;
-                    totalTime += time;
-                }
-                consol.Text = "";
+                    if (process.Value.Key <= i && process.Value.Value > 0)
+                    {
+                        // Process arrived and not completed
+                        arrivedProcesses[process.Key] = process.Value;
+                    }
+                }// Arrived Processes
                 
-                foreach (KeyValuePair<int, KeyValuePair<string, int>> element in mp)
+                if (arrivedProcesses.Count > 0)
                 {
-                    consol.Text += element.Value.Key + "   " + element.Value.Value + "   " + element.Key +'\n';
-                }
-
-                int numberOfProcess = mp.Count();
-                var map = new SortedDictionary<string, KeyValuePair<int, int>>();
-
-                for (int i = 0; i < totalTime; i++)
-                {
-                    // Check for arrical time
-                        int burst = mp.First().Key;
-                        foreach (KeyValuePair<int, KeyValuePair<string, int>> element in mp)
-                        {
-                            burst = element.Key;
-                            int arrTime = element.Value.Value;
-                            string processName = element.Value.Key;
-                            if(arrTime <= i)
-                            {
-                                var p = new KeyValuePair<int, int>(arrTime, burst);
-                                map[processName] = p;
-                                break;
-                            }
-                        }
-                        if (burst != mp.Last().Key)
-                            mp.Remove(burst);
-                    
-                }
-                label12.Text = "";
-                foreach (KeyValuePair<string, KeyValuePair<int, int>> element in map)
-                {
-                    label12.Text += element.Key + "   " + element.Value.Key + "   " + element.Value.Value + '\n';
-                }
-                label13.Text = "";
-                int counter = map.First().Value.Key + 1;
-                for (int i = 0; i < totalTime; i++)
-                {
-                    string processName = map.First().Key;
-                    foreach(KeyValuePair<string, KeyValuePair<int, int>> element in map)
+                    string minimumRemainingTimeProcess = arrivedProcesses.First().Key;
+                    foreach (KeyValuePair<string, KeyValuePair<int, int>> process in arrivedProcesses)
                     {
-                        int arrTime = map[processName].Key;
-                        int burstTime = map[processName].Value;
-                        if (arrTime <= i)
+                        if (process.Value.Value < arrivedProcesses[minimumRemainingTimeProcess].Value)
                         {
-                            if(element.Value.Value < map[processName].Value && element.Value.Value > 0)
-                                processName = element.Key;
+                            minimumRemainingTimeProcess = process.Key;
                         }
-                    }
-                    int arrivalTime = map[processName].Key;
-                    int remainTime = map[processName].Value;
-                    map[processName] = new KeyValuePair<int, int>(arrivalTime, remainTime - 1);
-                    label13.Text += processName + "   Remaining   " + map[processName].Value + "   " + counter + '\n' ;
-                    counter++;
-                    if (map[processName].Value == 0)
-                        map.Remove(processName);
-                }
-
-
-
-
-                ganttChart.Visible = true;
-                DataTable gc = new DataTable();
-                ganttChart.DataSource = gc;
-
-                int totalWidth = ganttChart.Width;
-                int unitWidth = totalWidth / dt.Rows.Count;
-
-
-                int minArrTime = Convert.ToInt32(dt.Rows[0].Field<string>(1));
-                int remainingTime = Convert.ToInt32(dt.Rows[0].Field<string>(2));
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-
-                }
-
-
-                /*int totalWidth = ganttChart.Width;
-                int unitWidth = totalWidth / dt.Rows.Count;
-
-
-                int totalTime = 0;
-                int minArrTime = Convert.ToInt32(dt.Rows[0].Field<string>(1));
-                string processName = dt.Rows[0].Field<string>(0);
-                int remainingTime = Convert.ToInt32(dt.Rows[0].Field<string>(2));
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    if (Convert.ToInt32(dt.Rows[i].Field<string>(1)) < minArrTime)
+                    } // Minimum time process
+                    processes[minimumRemainingTimeProcess] = new KeyValuePair<int, int>(processes[minimumRemainingTimeProcess].Key, processes[minimumRemainingTimeProcess].Value - 1);
+                    if (ganttChartData.Count() == 0)
                     {
-                        minArrTime = Convert.ToInt32(dt.Rows[i].Field<string>(1));
-                        processName = dt.Rows[i].Field<string>(0);
-                        remainingTime = Convert.ToInt32(dt.Rows[i].Field<string>(1));
+                        var v = new KeyValuePair<string, int>(minimumRemainingTimeProcess, 1);
+                        ganttChartData.Add(v);
                     }
-                    string title = "";
-                    gc.Columns.Add(title);
-                    ganttChart.Columns[i].Width = unitWidth;
-                    string burstTime = dt.Rows[i].Field<string>(2);
-                    totalTime += Convert.ToInt32(burstTime);
-                }
-                bool shouldCheck = false;
-                ganttChart.Columns[0].HeaderText = processName;
-                int currentTime = minArrTime;
-                for (int i = 0; i < totalTime; i++)
-                {
-                    if (remainingTime == 0)
-                    {
-                        int j;
-                        for (j = 0; j < dt.Rows.Count; j++)
-                        {
-                            int arrTime = Convert.ToInt32(dt.Rows[j].Field<string>(1));
-                            if (arrTime >= currentTime)
-                            {
-                                shouldCheck = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    int j;
-
-                    for (j = 0; j < dt.Rows.Count; j++)
-                    {
-                        if (dt.Rows[j].Field<string>(1) == i.ToString())
-                        {
-                            shouldCheck = true;
-                            break;
-                        }
-                    }
-                    if (!shouldCheck)
-                        continue;
                     else
                     {
-                        ganttChart.Columns[j].HeaderText = dt.Rows[j].Field<string>(0);
+                        var lastElement = ganttChartData.Last();
+                        if (lastElement.Key == minimumRemainingTimeProcess)
+                        {
+                            lastElement = new KeyValuePair<string, int>(lastElement.Key, lastElement.Value + 1);
+                            ganttChartData.RemoveAt(ganttChartData.Count - 1);
+                            ganttChartData.Add(lastElement);
+                        }
+                        else
+                        {
+                            var v = new KeyValuePair<string, int>(minimumRemainingTimeProcess, 1);
+                            ganttChartData.Add(v);
+                        }
                     }
-                    remainingTime--;
-                    currentTime++;
+         //           consol.Text += minimumRemainingTimeProcess + " ";
                 }
 
-                //   string processName = dt.Rows[i].Field<string>(0)
-                //ganttChart.Columns[0].Width = 2 * unitWidth;
-             //   ganttChart.Columns[1].Width = 3 * unitWidth;
-            //    ganttChart.Columns[2].Width = 1 * unitWidth;
-            //    ganttChart.Columns[3].Width = 4 * unitWidth;
-             //   ganttChart.Columns[4].Width = 1 * unitWidth;   */
+               
+            }
+            //consol.Text += '\n';
+            foreach (KeyValuePair<string, int> cell in ganttChartData)
+            {
+           //     consol.Text += cell.Key + " " + cell.Value + " ";
+            }
+            ganttChart.Visible = true;
+            DataTable gc = new DataTable();
+            ganttChart.DataSource = gc;
+            int totalWidth = ganttChart.Width;
+            int unitWidth = totalWidth / totalTime;
+            gc.Rows.Add();
+
+            int accumulator = firstArrival;
+            for (int i = 0; i < ganttChartData.Count; i++)
+            {
+                accumulator += ganttChartData[i].Value;
+                gc.Columns.Add((accumulator).ToString());
+                ganttChart.Columns[i].Width = unitWidth * ganttChartData[i].Value;
+                gc.Rows[0].SetField((accumulator).ToString(), ganttChartData[i].Key);
             }
 
         }
@@ -253,6 +178,11 @@ namespace Version1
         }
 
         private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void processGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
