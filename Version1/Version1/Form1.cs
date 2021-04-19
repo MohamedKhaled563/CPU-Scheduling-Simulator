@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace Version1
 {
     public partial class Form1 : Form
@@ -27,6 +29,14 @@ namespace Version1
             dt.Columns.Add("Arrival Time");
             dt.Columns.Add("Burst Time");
             processGrid.DataSource = dt;
+
+            //roundrobin  datagrid
+            RR_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+           // RR_dataGridView.RowHeadersVisible = false;
+            dt_RR.Columns.Add("Process");
+            dt_RR.Columns.Add("Arival Time");
+            dt_RR.Columns.Add("Burst Time");
+            RR_dataGridView.DataSource = dt_RR;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -277,7 +287,7 @@ namespace Version1
             flowLayoutPanel3_fcfs_nums.Controls.Add(num_fcfsLast);
         }
         //remove all processes
-        private void button5_Click(object sender, EventArgs e)
+        private void Remove_all_fcfs_Click_1(object sender, EventArgs e)
         {
             DialogResult dialog = MessageBox.Show("Do you really want to Remove all Process?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
@@ -296,15 +306,275 @@ namespace Version1
             public int last_active = 0;
             public int arrival_time;
         }
-        /* -------------------------- END FCFS ------------------------------ */
+
+
+
+
         #endregion
+        /************************** Roundrobin *************************/
+        DataTable dt_RR = new DataTable(); //roundrobin table 
+        int burstTime;
+        string processName;
+        /********   global variables *********/
+
+
+        int quantum = 0;
+        double total_waiting = 0;
+        bool first = true;
+        int arrivalTime = 0;
+        int running_time = 0;
+
+
+        List<process> list_process = new List<process>();
 
 
 
+        private void arrivaltime_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void setquantum_Click(object sender, EventArgs e)
+        { //set quantum
+            try
+            {
+                quantum = Int32.Parse(quantum_TextBox.Text);
+                if (quantum < 1 || quantum > 100)
+                {
+                    Error_label.Text = "Quantum time generally form 10 to 100 ms";
+                    quantum = 0;
+                }
+            }
+            catch(Exception)
+            {
+                Error_label.Text = "Invalid Quantum number";
+            }
+            
+        }
+
+        Label Add_label_process(int i)
+        {
+            Label l = new Label();
+            l.Name = "label" + i.ToString();
+            l.Text = list_process[i].Process_name;
+
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.WhiteSmoke;
+            l.Width = 76;
+            l.Height = 48;
+            l.TextAlign = ContentAlignment.MiddleCenter;
+            l.Margin = new Padding(5);
+            return l;
+        }
+
+        Label Add_label_time(int i)
+        {
+            Label l = new Label();
+
+            l.Name = "label" + i.ToString();
+            int x = i;
+            l.Text ="" + i.ToString();
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.White;
+            l.Width = 40;
+            l.Height = 28;
+            l.TextAlign = ContentAlignment.MiddleLeft;
+
+            if (first)
+            {
+              
+
+                l.Margin = new Padding(40 ,2, 0, 5);
+                first = false;
+            }
+            else
+            {
+               
+                l.Margin = new Padding(45, 2, 0, 5);
+            }
+            return l;
+        }
+        public void set_waiting(int q,int  k)
+        {
+
+            for (int i = 0; i < list_process.Count; i++)
+            {
+                if (list_process[i].get_burst() > 0 && i != k )
+                {
+                    int x = list_process[i].get_waiting();
+                    x += q;
+                    list_process[i].set_waiting(x);
+                }
+            }
+
+        }
+
+
+        private void RR_simulate_Click(object sender, EventArgs e)
+        {
+            List<process> SortedList = list_process.OrderBy(o => o.arrival_time).ToList();
+            label9.Text = "0";
+            if (quantum < 1 || quantum > 100)
+            {
+                Error_label.Text = "Quantum time generally form 1 to 100 ms";
+                quantum = 0;
+                return;
+            }
+            Error_label.Text = "";
+            //simulate 
+            while(SortedList.Count != 0  )
+            {
+                for(int i = 0; i < SortedList.Count; i++)
+                {
+                    if(SortedList[i].get_burst() > quantum)
+                    {
+                        //first time
+                        running_time += quantum;
+                        int x = SortedList[i].get_burst();
+                        x -= quantum;
+                        set_waiting(quantum, i);
+                        SortedList[i].set_burst(x);
+
+                        Label l = Add_label_process(i);
+                        flowLayoutPanel2.Controls.Add(l);
+
+                        Label l1 = Add_label_time(running_time);
+                        flowLayoutPanel3.Controls.Add(l1);
+                    }
+                    else
+                    {
+                        if(SortedList[i].get_burst() > 0)
+                        {
+                            Label l = Add_label_process(i);
+                            flowLayoutPanel2.Controls.Add(l);
+
+                            set_waiting(SortedList[i].get_burst(), i);
+
+                            running_time += SortedList[i].get_burst();
+
+                            Label l1 = Add_label_time(running_time);
+                            flowLayoutPanel3.Controls.Add(l1);
+                        }
+                        SortedList[i].set_burst(0);
+                    }
+                }
+
+                bool k = false;
+
+                for (int i = 0; i < SortedList.Count; i++)
+                {
+                    k = (k || !(SortedList[i].get_burst() == 0));
+                }
+
+                if(!k)
+                {
+                    break;
+                }
+                k = false;
+            }
+
+            for(int i = 0; i < SortedList.Count; i++ )
+            {
+                total_waiting += SortedList[i].waiting_time;
+            }
+            total_waiting = total_waiting / SortedList.Count;
+            Average_label.Text = "Average waiting time :" + total_waiting.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // insert button 
+                burstTime = Int32.Parse(bursttime_textBox.Text);
+                arrivalTime = Int32.Parse(arrivaltime_textbox.Text);
+
+                process p = new process(Process_textBox.Text, burstTime, arrivalTime);
+                list_process.Add(p);
 
 
 
+                if (processName != "" && burstTime != 0)
+                {
+                    dt_RR.Rows.Add(Process_textBox.Text, arrivalTime, burstTime);
+                }
+                else
+                {
+                    Error_label.Text = "Invalid P0 or Burst time ";
+                }
 
-        
+            }
+            catch(Exception)
+            {
+                Error_label.Text = "Invalid P0 or Burst time ";
+            }
+       
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
+
+
+    /********************************  Roundrobin classes  ***********************/
+    class process
+    {
+        public string Process_name;
+        int burst_Time;
+        public int waiting_time;
+        public int arrival_time;
+
+
+
+       public process(string s, int burst, int arrival)
+        {
+            Process_name = s;
+            burst_Time = burst;
+            arrival_time = arrival;
+            waiting_time = 0;
+        }
+        public void set_burst(int i)
+        {
+            burst_Time = i;
+        }
+        public int get_burst()
+        {
+            return burst_Time;
+        }
+        public string get_name()
+        {
+            return Process_name;
+        }
+
+        public int get_waiting()
+        {
+            return waiting_time;
+        }
+
+        public void set_waiting(int i)
+        {
+            waiting_time = i;
+        }
+    };
+
+
+
+
+
+    /*******************************************************************************/
 }

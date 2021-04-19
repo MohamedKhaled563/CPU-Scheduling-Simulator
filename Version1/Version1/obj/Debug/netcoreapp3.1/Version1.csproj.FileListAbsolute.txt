@@ -58,3 +58,18 @@ C:\Users\Nourhan Habib\OneDrive\Desktop\cpu_scheduler\CPU-Scheduling-Simulator\V
 C:\Users\Nourhan Habib\OneDrive\Desktop\cpu_scheduler\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
 C:\Users\Nourhan Habib\OneDrive\Desktop\cpu_scheduler\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
 C:\Users\Nourhan Habib\OneDrive\Desktop\cpu_scheduler\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.exe
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.deps.json
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.json
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.dev.json
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.dll
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.pdb
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csprojAssemblyReference.cache
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.Form1.resources
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.GenerateResource.cache
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfoInputs.cache
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfo.cs
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.CoreCompileInputs.cache
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
+F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
