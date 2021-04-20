@@ -73,3 +73,18 @@ F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Ver
 F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
 F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
 F:\CPU_OS\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csprojAssemblyReference.cache
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.Form1.resources
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.GenerateResource.cache
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfoInputs.cache
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfo.cs
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.CoreCompileInputs.cache
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.exe
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.deps.json
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.json
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.dev.json
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.dll
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.pdb
+C:\CPU Schedule\Projectttt\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache

@@ -37,6 +37,14 @@ namespace Version1
             dt_RR.Columns.Add("Arival Time");
             dt_RR.Columns.Add("Burst Time");
             RR_dataGridView.DataSource = dt_RR;
+
+            //SJF NP  datagrid
+            dataGridView_SJF.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            // RR_dataGridView.RowHeadersVisible = false;
+            DT_RR_SJF.Columns.Add("Process");
+            DT_RR_SJF.Columns.Add("Arival Time");
+            DT_RR_SJF.Columns.Add("Burst Time");
+            dataGridView_SJF.DataSource = DT_RR_SJF;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -318,6 +326,14 @@ namespace Version1
         /********   global variables *********/
 
 
+        /************************** SJF NON Premptive *************************/
+        DataTable DT_RR_SJF = new DataTable(); //roundrobin table 
+        int Burst_time_SJF;
+        int Arrival_Time_SJF;
+        string Process_Name_SJF;
+        /********   global variables *********/
+
+
         int quantum = 0;
         double total_waiting = 0;
         bool first = true;
@@ -377,6 +393,23 @@ namespace Version1
             return l;
         }
 
+        Label Add_label_process_SJF(string processName)
+        {
+            Label l = new Label();
+        
+            l.Text = processName;
+
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.WhiteSmoke;
+            l.Width = 76;
+            l.Height = 48;
+            l.TextAlign = ContentAlignment.MiddleCenter;
+            l.Margin = new Padding(5);
+            return l;
+        }
+
+
+
         Label Add_label_time(int i)
         {
             Label l = new Label();
@@ -394,7 +427,7 @@ namespace Version1
             {
               
 
-                l.Margin = new Padding(40 ,2, 0, 5);
+                l.Margin = new Padding(50 ,2, 0, 5);
                 first = false;
             }
             else
@@ -527,7 +560,129 @@ namespace Version1
 
         }
 
+        private void label19_Click(object sender, EventArgs e)
+        {
 
+        }
+
+
+
+        List<KeyValuePair<int, KeyValuePair<string, int>>>  my_process = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
+       
+        int Full_Time = 0;
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                Process_Name_SJF = Process_SJF_textbox.Text;
+                Burst_time_SJF = Int32.Parse(bursttime_SJF_textbox.Text);
+                Arrival_Time_SJF = Int32.Parse(arrIval_SJF_textbox.Text);
+                KeyValuePair<string, int> Pairrr = new KeyValuePair<string, int>(Process_Name_SJF, Arrival_Time_SJF);
+                KeyValuePair<int, KeyValuePair<string, int>> Process_Info_SJF = new KeyValuePair<int, KeyValuePair<string, int>>(Burst_time_SJF, Pairrr);
+                my_process.Add(Process_Info_SJF);
+              
+
+
+
+
+                if (Process_Name_SJF != "" && Burst_time_SJF != 0)
+                {
+                    DT_RR_SJF.Rows.Add(Process_Name_SJF, Arrival_Time_SJF, Burst_time_SJF);
+
+                    Full_Time += Burst_time_SJF;
+                }
+                else
+                {
+                    Error_label.Text = "Invalid P0 or Burst time ";
+                }
+
+            }
+            catch (Exception)
+            {
+                Error_label.Text = "Invalid P0 or Burst time ";
+            }
+
+
+
+
+
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)//simulate_SJF_NP
+        {
+            var RemovedProcess = new List<string>();
+
+            my_process = my_process.OrderBy(x => x.Key).ToList();
+
+            label20.Text = "0";
+            double waiting_time_SJF = 0;
+            for (int i = 0; i < Full_Time; ++i)
+            {
+
+
+                bool Idle_Flag = true;
+
+                foreach (KeyValuePair<int, KeyValuePair<string, int>> Process in my_process)
+                {
+                    int Burst_time = Process.Key;
+                    string Process_Name = Process.Value.Key;
+                    int Arrival_time = Process.Value.Value;
+                    bool is_removed = RemovedProcess.Contains(Process_Name);
+
+                    if ((Arrival_time <= i) && !(is_removed))
+                    {
+                        waiting_time_SJF += (i - Arrival_time);
+                        i += (Burst_time -1);
+                        Label L = Add_label_process_SJF(Process_Name);
+                        flowLayoutPanel5.Controls.Add(L);
+                        Label L2 = Add_label_time(i+1);
+                        flowLayoutPanel4.Controls.Add(L2);
+                        RemovedProcess.Add(Process_Name);
+                        Idle_Flag = false;
+                        break;
+                    }
+
+                }
+                if (Idle_Flag == true)
+                {
+                    Label L3 = Add_label_process_SJF("Idle");
+                    flowLayoutPanel5.Controls.Add(L3);
+                    Label L4 = Add_label_time(i+1);
+                    flowLayoutPanel4.Controls.Add(L4);
+                    Full_Time++;
+                }
+
+
+
+
+            }
+            waiting_time_SJF /= (my_process.Count );
+            label10.Text = "Waiting Time:  " + waiting_time_SJF.ToString();
+            
+        }
+
+        private void Process_SJF_textbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RR_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 

@@ -30,10 +30,10 @@ namespace Version1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Remove_all_fcfs = new System.Windows.Forms.Button();
@@ -87,6 +87,23 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.arrIval_SJF_textbox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridView_SJF = new System.Windows.Forms.DataGridView();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.bursttime_SJF_textbox = new System.Windows.Forms.TextBox();
+            this.Process_SJF_textbox = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -96,6 +113,9 @@ namespace Version1
             this.SJFTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,6 +124,7 @@ namespace Version1
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.SJFTabPage);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -425,6 +446,7 @@ namespace Version1
             this.RR_dataGridView.RowTemplate.Height = 29;
             this.RR_dataGridView.Size = new System.Drawing.Size(434, 188);
             this.RR_dataGridView.TabIndex = 48;
+            this.RR_dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RR_dataGridView_CellContentClick);
             // 
             // quantum_TextBox
             // 
@@ -542,27 +564,27 @@ namespace Version1
             this.ganttChart.AllowUserToDeleteRows = false;
             this.ganttChart.AllowUserToResizeColumns = false;
             this.ganttChart.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle5.NullValue = null;
-            this.ganttChart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.NullValue = null;
+            this.ganttChart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ganttChart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ganttChart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ganttChart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ganttChart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ganttChart.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ganttChart.DefaultCellStyle = dataGridViewCellStyle3;
             this.ganttChart.Location = new System.Drawing.Point(1, 427);
             this.ganttChart.Name = "ganttChart";
             this.ganttChart.RowHeadersVisible = false;
@@ -684,14 +706,14 @@ namespace Version1
             this.processGrid.AllowUserToResizeRows = false;
             this.processGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.processGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.processGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.processGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.processGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.processGrid.Location = new System.Drawing.Point(214, 189);
             this.processGrid.MultiSelect = false;
@@ -719,6 +741,182 @@ namespace Version1
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.arrIval_SJF_textbox);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.button6);
+            this.tabPage3.Controls.Add(this.flowLayoutPanel4);
+            this.tabPage3.Controls.Add(this.flowLayoutPanel5);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.dataGridView_SJF);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.label19);
+            this.tabPage3.Controls.Add(this.label21);
+            this.tabPage3.Controls.Add(this.bursttime_SJF_textbox);
+            this.tabPage3.Controls.Add(this.Process_SJF_textbox);
+            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Location = new System.Drawing.Point(4, 41);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(864, 550);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "SJF (NP)";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(51, 373);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(176, 28);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Total waiting time: ";
+            // 
+            // arrIval_SJF_textbox
+            // 
+            this.arrIval_SJF_textbox.Location = new System.Drawing.Point(188, 183);
+            this.arrIval_SJF_textbox.Name = "arrIval_SJF_textbox";
+            this.arrIval_SJF_textbox.Size = new System.Drawing.Size(100, 34);
+            this.arrIval_SJF_textbox.TabIndex = 74;
+            this.arrIval_SJF_textbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(47, 183);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(113, 28);
+            this.label11.TabIndex = 73;
+            this.label11.Text = "Arrival time";
+            // 
+            // button6
+            // 
+            this.button6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button6.Location = new System.Drawing.Point(481, 299);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(273, 43);
+            this.button6.TabIndex = 72;
+            this.button6.Text = "Simulate";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.label12);
+            this.flowLayoutPanel4.Controls.Add(this.label20);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(44, 484);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(777, 43);
+            this.flowLayoutPanel4.TabIndex = 69;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(0, 28);
+            this.label12.TabIndex = 0;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(44, 421);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(777, 57);
+            this.flowLayoutPanel5.TabIndex = 68;
+            this.flowLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel5_Paint);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(44, 371);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(0, 28);
+            this.label13.TabIndex = 66;
+            // 
+            // dataGridView_SJF
+            // 
+            this.dataGridView_SJF.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dataGridView_SJF.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dataGridView_SJF.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView_SJF.ColumnHeadersHeight = 40;
+            this.dataGridView_SJF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView_SJF.GridColor = System.Drawing.SystemColors.Desktop;
+            this.dataGridView_SJF.Location = new System.Drawing.Point(387, 88);
+            this.dataGridView_SJF.Name = "dataGridView_SJF";
+            this.dataGridView_SJF.RowHeadersWidth = 51;
+            this.dataGridView_SJF.RowTemplate.Height = 29;
+            this.dataGridView_SJF.Size = new System.Drawing.Size(434, 188);
+            this.dataGridView_SJF.TabIndex = 65;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(44, 98);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(77, 28);
+            this.label18.TabIndex = 63;
+            this.label18.Text = "Process";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label19.Location = new System.Drawing.Point(188, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(449, 62);
+            this.label19.TabIndex = 62;
+            this.label19.Text = "SJF Non-Preemptive";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(44, 138);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(100, 28);
+            this.label21.TabIndex = 60;
+            this.label21.Text = "Burst time";
+            // 
+            // bursttime_SJF_textbox
+            // 
+            this.bursttime_SJF_textbox.Location = new System.Drawing.Point(188, 135);
+            this.bursttime_SJF_textbox.Name = "bursttime_SJF_textbox";
+            this.bursttime_SJF_textbox.Size = new System.Drawing.Size(100, 34);
+            this.bursttime_SJF_textbox.TabIndex = 70;
+            // 
+            // Process_SJF_textbox
+            // 
+            this.Process_SJF_textbox.Location = new System.Drawing.Point(188, 95);
+            this.Process_SJF_textbox.Name = "Process_SJF_textbox";
+            this.Process_SJF_textbox.Size = new System.Drawing.Size(100, 34);
+            this.Process_SJF_textbox.TabIndex = 71;
+            this.Process_SJF_textbox.TextChanged += new System.EventHandler(this.Process_SJF_textbox_TextChanged);
+            // 
+            // button8
+            // 
+            this.button8.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button8.Location = new System.Drawing.Point(44, 227);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(284, 49);
+            this.button8.TabIndex = 59;
+            this.button8.Text = "Insert";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(9, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(0, 28);
+            this.label20.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -745,6 +943,11 @@ namespace Version1
             this.SJFTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -809,5 +1012,22 @@ namespace Version1
         private System.Windows.Forms.TextBox arrivaltime_textbox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label Average_label;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox arrIval_SJF_textbox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dataGridView_SJF;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox bursttime_SJF_textbox;
+        private System.Windows.Forms.TextBox Process_SJF_textbox;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label20;
     }
 }
