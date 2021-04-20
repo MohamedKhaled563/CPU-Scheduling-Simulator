@@ -188,6 +188,9 @@ namespace Version1
 
 
         #region FCFS Code mode
+        int flag = 0;
+        List<int> finish_list = new List<int>();
+        int item = 0;
         int n_fcfs;                           //number of processe
         List<int> service_list = new List<int>();
         List<Process> process_fcfs = new List<Process>();
@@ -231,21 +234,32 @@ namespace Version1
         private void calculateWaitingTime_fcfs()
         {
 
-            process_fcfs[0].waiting_time = 0;     // waiting time of first proceeses is zero by default
-            for (int i = 0; i <= n_fcfs; i++)
-            {
-                service_list.Add(i);
-            }
+            process_fcfs[0].waiting_time = 0;
+            int start = process_fcfs[0].arrival_time;
+            int finish = start + process_fcfs[0].burst_time;
+            service_list.Add(start);
+            service_list.Add(finish);
+            finish_list.Add(finish);
             for (int i = 1; i < n_fcfs; i++)
             {
-
-                service_list[i] = service_list[i - 1] + process_fcfs[i - 1].burst_time;
-                process_fcfs[i].waiting_time = service_list[i] - process_fcfs[i].arrival_time;
-
-
-                if (process_fcfs[i].waiting_time < 0)
+                if (process_fcfs[i].arrival_time > finish)
                 {
-                    process_fcfs[i].waiting_time = 0;
+                    start = process_fcfs[i].arrival_time;
+                    finish = process_fcfs[i].arrival_time + process_fcfs[i].burst_time;
+                    service_list.Add(start);
+                    service_list.Add(finish);
+                    finish_list.Add(finish);
+                    process_fcfs[i].waiting_time = start - process_fcfs[i].arrival_time;
+                    flag += 1;
+
+                }
+                else
+                {
+                    process_fcfs[i].waiting_time = finish - process_fcfs[i].arrival_time;
+
+                    finish = finish + process_fcfs[i].burst_time;
+                    service_list.Add(finish);
+                    finish_list.Add(finish);
                 }
                 time_fcfs += process_fcfs[i].waiting_time;
             }
@@ -257,42 +271,108 @@ namespace Version1
         private void gantt_chart_fcfs()
         {
 
-            int X = 16;
-            int time3 = 0;
-            for (int i = 0; i < n_fcfs; i++)
+            if (process_fcfs[0].arrival_time > 0)
             {
-                // time labels
-                Label num_fcfs = new Label();
-                num_fcfs.Text = time3.ToString();
-                num_fcfs.Size = new System.Drawing.Size(27, 25);
-                num_fcfs.Font = new Font("Arial", 8, FontStyle.Bold);
-                //if (process_fcfs[i].burst_time < 3) num_fcfs.Width = 27;
-                //else num_fcfs.Width = process_fcfs[i].burst_time * 10;
-                flowLayoutPanel3_fcfs_nums.Controls.Add(num_fcfs);
-                time3 += process_fcfs[i].burst_time;
-
-                // labels of processes
-                TextBox nn = new TextBox();
-                nn.Enabled = true;
-                nn.Size = new System.Drawing.Size(32, 25);
-                // nn.BorderStyle = BorderStyle.FixedSingle;
-                nn.Font = new Font("Arial", 10, FontStyle.Bold);
-                string s = "P" + process_fcfs[i].Pid.ToString();
-                nn.Location = new System.Drawing.Point(X, 34);
-                nn.Text = s;
-                nn.ReadOnly = true;
-                //if (process_fcfs[i].burst_time < 3) tempLabel_fcfs.Width = 27;
-                //else tempLabel_fcfs.Width = process_fcfs[i].burst_time * 10;
-                flowLayoutPanel2_fcfs.Controls.Add(nn);
-                X += nn.Width;
+                Label idle_time = new Label();
+                idle_time.Size = new System.Drawing.Size(25, 25);
+                TextBox idle_processing = new TextBox();
+                idle_processing.Size = new System.Drawing.Size(31, 25);
+                idle_processing.Enabled = true;
+                idle_processing.Font = new Font("Arial", 10, FontStyle.Bold);
+                idle_time.Font = new Font("Arial", 8, FontStyle.Bold);
+                idle_processing.Text = "idle";
+                idle_time.Text = "0";
+                flowLayoutPanel3_fcfs_nums.Controls.Add(idle_time);
+                flowLayoutPanel2_fcfs.Controls.Add(idle_processing);
             }
 
+            int first_time = 0;
+            first_time = service_list[0];
+            Label firstpro = new Label();
+            firstpro.Text = first_time.ToString();
+            firstpro.Size = new System.Drawing.Size(25, 25);
+            firstpro.Font = new Font("Arial", 8, FontStyle.Bold);
+            flowLayoutPanel3_fcfs_nums.Controls.Add(firstpro);
+
+            TextBox mm = new TextBox();
+            mm.Enabled = true;
+            mm.Size = new System.Drawing.Size(25, 25);
+            mm.Font = new Font("Arial", 10, FontStyle.Bold);
+            string ss = "P" + process_fcfs[0].Pid.ToString();
+            mm.Text = ss;
+            mm.ReadOnly = true;
+            flowLayoutPanel2_fcfs.Controls.Add(mm);
+            for (int i = 1; i < n_fcfs; i++)
+            {
+
+                if (flag > 0 && ((process_fcfs[i].arrival_time) - (finish_list[i - 1])) > 0)
+                {
+                    int idlee_time;
+                    idlee_time = finish_list[i - 1];
+                    Label idle_time = new Label();
+                    idle_time.Text = idlee_time.ToString();
+                    idle_time.Size = new System.Drawing.Size(25, 25);
+                    TextBox idle_processing = new TextBox();
+                    idle_processing.Size = new System.Drawing.Size(31, 25);
+                    idle_processing.Enabled = true;
+                    idle_processing.Font = new Font("Arial", 10, FontStyle.Bold);
+                    idle_time.Font = new Font("Arial", 8, FontStyle.Bold);
+                    idle_processing.Text = "idle";
+
+                    flowLayoutPanel3_fcfs_nums.Controls.Add(idle_time);
+                    flowLayoutPanel2_fcfs.Controls.Add(idle_processing);
+                    flag--;
+
+
+                    int next_time;
+                    next_time = process_fcfs[i].arrival_time;
+                    Label next_time1 = new Label();
+                    next_time1.Text = next_time.ToString();
+                    next_time1.Size = new System.Drawing.Size(25, 25);
+                    next_time1.Font = new Font("Arial", 8, FontStyle.Bold);
+                    flowLayoutPanel3_fcfs_nums.Controls.Add(next_time1);
+
+                    TextBox zz = new TextBox();
+                    zz.Enabled = true;
+                    zz.Size = new System.Drawing.Size(25, 25);
+                    string zzz = "P" + process_fcfs[i].Pid.ToString();
+                    zz.Text = zzz;
+                    zz.ReadOnly = true;
+                    flowLayoutPanel2_fcfs.Controls.Add(zz);
+
+                }
+                else
+                {
+                    int next_time;
+                    next_time = finish_list[i - 1];
+                    Label next_time1 = new Label();
+                    next_time1.Text = next_time.ToString();
+                    next_time1.Size = new System.Drawing.Size(25, 25);
+                    next_time1.Font = new Font("Arial", 8, FontStyle.Bold);
+                    flowLayoutPanel3_fcfs_nums.Controls.Add(next_time1);
+
+                    TextBox zz = new TextBox();
+                    zz.Enabled = true;
+                    zz.Size = new System.Drawing.Size(25, 25);
+                    string zzz = "P" + process_fcfs[i].Pid.ToString();
+                    zz.Text = zzz;
+                    zz.ReadOnly = true;
+                    flowLayoutPanel2_fcfs.Controls.Add(zz);
+
+                }
+
+            }
+
+            if (finish_list.Count > 0)
+            {
+                item = finish_list[finish_list.Count - 1];
+            }
             //last time label
-            Label num_fcfsLast = new Label();
-            num_fcfsLast.Size = new System.Drawing.Size(25, 25);
-            num_fcfsLast.Font = new Font("Arial", 8, FontStyle.Bold);
-            num_fcfsLast.Text = time3.ToString();
-            flowLayoutPanel3_fcfs_nums.Controls.Add(num_fcfsLast);
+            Label last_time21 = new Label();
+            last_time21.Size = new System.Drawing.Size(25, 25);
+            last_time21.Font = new Font("Arial", 8, FontStyle.Bold);
+            last_time21.Text = item.ToString();
+            flowLayoutPanel3_fcfs_nums.Controls.Add(last_time21);
         }
         //remove all processes
         private void Remove_all_fcfs_Click_1(object sender, EventArgs e)
@@ -303,6 +383,8 @@ namespace Version1
                 flowLayoutPanel2_fcfs.Controls.Clear();
                 flowLayoutPanel3_fcfs_nums.Controls.Clear();
                 process_fcfs.Clear();
+                service_list.Clear();
+                finish_list.Clear();                                                                                                                             // dh el satr el wa7eed eli gded f function deh
                 waitingText_fcfs.Text = nofprocesses.Text = burstText_fcfs.Text = arrivalText_fcfs.Text = " ";
             }
         }
