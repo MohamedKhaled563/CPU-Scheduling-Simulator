@@ -620,7 +620,7 @@ namespace Version1
         {
 
         }
-
+        //MM
         private void button6_Click(object sender, EventArgs e)//simulate_SJF_NP
         {
             var RemovedProcess = new List<string>();
