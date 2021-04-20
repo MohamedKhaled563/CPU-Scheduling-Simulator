@@ -104,6 +104,7 @@ namespace Version1
             this.bursttime_SJF_textbox = new System.Windows.Forms.TextBox();
             this.Process_SJF_textbox = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.averageTurnAroundTime = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -525,6 +526,7 @@ namespace Version1
             // 
             // SJFTabPage
             // 
+            this.SJFTabPage.Controls.Add(this.averageTurnAroundTime);
             this.SJFTabPage.Controls.Add(this.title);
             this.SJFTabPage.Controls.Add(this.ganttChart);
             this.SJFTabPage.Controls.Add(this.drawButton);
@@ -586,7 +588,7 @@ namespace Version1
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ganttChart.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ganttChart.Location = new System.Drawing.Point(1, 427);
+            this.ganttChart.Location = new System.Drawing.Point(1, 396);
             this.ganttChart.Name = "ganttChart";
             this.ganttChart.RowHeadersVisible = false;
             this.ganttChart.RowHeadersWidth = 51;
@@ -918,6 +920,18 @@ namespace Version1
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // averageTurnAroundTime
+            // 
+            this.averageTurnAroundTime.AutoSize = true;
+            this.averageTurnAroundTime.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.averageTurnAroundTime.Location = new System.Drawing.Point(8, 516);
+            this.averageTurnAroundTime.Name = "averageTurnAroundTime";
+            this.averageTurnAroundTime.Size = new System.Drawing.Size(190, 20);
+            this.averageTurnAroundTime.TabIndex = 28;
+            this.averageTurnAroundTime.Text = "Average Turn around time = ";
+            this.averageTurnAroundTime.Visible = false;
+            this.averageTurnAroundTime.Click += new System.EventHandler(this.averageTurnAroundTime_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1030,5 +1044,6 @@ namespace Version1
         private System.Windows.Forms.TextBox Process_SJF_textbox;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label averageTurnAroundTime;
     }
 }

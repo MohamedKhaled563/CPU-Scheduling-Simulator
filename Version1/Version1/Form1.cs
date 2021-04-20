@@ -153,6 +153,7 @@ namespace Version1
            //     consol.Text += cell.Key + " " + cell.Value + " ";
             }
             ganttChart.Visible = true;
+            averageTurnAroundTime.Visible = true;
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
             int totalWidth = ganttChart.Width;
@@ -168,6 +169,30 @@ namespace Version1
                 gc.Rows[0].SetField((accumulator).ToString(), ganttChartData[i].Key);
             }
 
+            // Calculating average turn around time
+            int acc = 0;
+            float averageTAT = 0;
+            foreach(KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            {
+                string processName = process.Key;
+                foreach(KeyValuePair<string, int> cell in ganttChartData)
+                {
+                    acc += cell.Value;
+                    if (cell.Key == processName) {
+                        averageTAT += acc;
+                        acc = 0;
+                    }
+                }
+                acc = 0;
+            }
+            int totalArrivalTime = 0;
+            foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            {
+                totalArrivalTime += process.Value.Key;
+            }
+            averageTAT -= totalArrivalTime;
+            averageTAT /= processes.Count;
+            averageTurnAroundTime.Text += averageTAT.ToString();
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -762,6 +787,11 @@ namespace Version1
         }
 
         private void RR_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void averageTurnAroundTime_Click(object sender, EventArgs e)
         {
 
         }
