@@ -154,6 +154,7 @@ namespace Version1
             }
             ganttChart.Visible = true;
             averageTurnAroundTime.Visible = true;
+            averageWaitingTime.Visible = true; 
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
             int totalWidth = ganttChart.Width;
@@ -171,7 +172,7 @@ namespace Version1
 
             // Calculating average turn around time
             int acc = 0;
-            float averageTAT = 0;
+            float averageTAT = 0, averageWT = 0;
             foreach(KeyValuePair<string, KeyValuePair<int, int>> process in processes)
             {
                 string processName = process.Key;
@@ -191,8 +192,11 @@ namespace Version1
                 totalArrivalTime += process.Value.Key;
             }
             averageTAT -= totalArrivalTime;
+            averageWT = averageTAT - totalTime;
             averageTAT /= processes.Count;
+            averageWT /= processes.Count;
             averageTurnAroundTime.Text += averageTAT.ToString();
+            averageWaitingTime.Text += averageWT.ToString();
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -792,6 +796,11 @@ namespace Version1
         }
 
         private void averageTurnAroundTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
         {
 
         }
