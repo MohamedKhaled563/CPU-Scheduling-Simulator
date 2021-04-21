@@ -15,7 +15,7 @@ namespace Version1
     public partial class Form1 : Form
     {
         DataTable dt = new DataTable();
-        Dictionary<string, KeyValuePair<int, int>> processes = new Dictionary<string, KeyValuePair<int, int>>();
+        Dictionary<string, KeyValuePair<float, float>> processes = new Dictionary<string, KeyValuePair<float, float>>();
         int totalTime = 0;
 
         public Form1()
@@ -76,9 +76,13 @@ namespace Version1
             processName = processTF.Text;
             arrivalTime = arrivalTimeTF.Text;
             burstTime = burstTimeTF.Text;
-            var process = new KeyValuePair<int, int>(Int32.Parse(arrivalTime), Int32.Parse(burstTime));
-            processes[processName] = process;
-            totalTime += Int32.Parse(burstTime);
+            if (processName != "" && arrivalTime != "" && burstTime != "")
+            {
+                var process = new KeyValuePair<float, float>(float.Parse(arrivalTime), float.Parse(burstTime));
+                processes[processName] = process;
+                totalTime += Int32.Parse(burstTime);
+            }
+       
 
             if (processName != "" && arrivalTime != "" && burstTime != "")
             {
@@ -92,17 +96,17 @@ namespace Version1
         private void drawButton_Click_1(object sender, EventArgs e)
         {
             //consol.Text = "";
-            var ganttChartData = new List<KeyValuePair<string, int>>();
-            int firstArrival = 1000;
-            foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            var ganttChartData = new List<KeyValuePair<string, float>>();
+            float firstArrival = 1000.0f;
+            foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
             {
                 if (process.Value.Key < firstArrival)
                     firstArrival = process.Value.Key;
             }
 
-            for (int i = firstArrival; i < totalTime + firstArrival; i++){
-                var arrivedProcesses = new Dictionary<string, KeyValuePair<int, int>>() ;
-                foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            for (float i = firstArrival; i < totalTime + firstArrival; i= (float)Math.Round(i + 0.1f, 2)){
+                var arrivedProcesses = new Dictionary<string, KeyValuePair<float, float>>() ;
+                foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
                 {
                     if (process.Value.Key <= i && process.Value.Value > 0)
                     {
@@ -114,17 +118,17 @@ namespace Version1
                 if (arrivedProcesses.Count > 0)
                 {
                     string minimumRemainingTimeProcess = arrivedProcesses.First().Key;
-                    foreach (KeyValuePair<string, KeyValuePair<int, int>> process in arrivedProcesses)
+                    foreach (KeyValuePair<string, KeyValuePair<float, float>> process in arrivedProcesses)
                     {
                         if (process.Value.Value < arrivedProcesses[minimumRemainingTimeProcess].Value)
                         {
                             minimumRemainingTimeProcess = process.Key;
                         }
                     } // Minimum time process
-                    processes[minimumRemainingTimeProcess] = new KeyValuePair<int, int>(processes[minimumRemainingTimeProcess].Key, processes[minimumRemainingTimeProcess].Value - 1);
+                    processes[minimumRemainingTimeProcess] = new KeyValuePair<float, float>(processes[minimumRemainingTimeProcess].Key, (float)Math.Round(processes[minimumRemainingTimeProcess].Value - 0.1f, 2));
                     if (ganttChartData.Count() == 0)
                     {
-                        var v = new KeyValuePair<string, int>(minimumRemainingTimeProcess, 1);
+                        var v = new KeyValuePair<string, float>(minimumRemainingTimeProcess, 0.1f);
                         ganttChartData.Add(v);
                     }
                     else
@@ -132,51 +136,56 @@ namespace Version1
                         var lastElement = ganttChartData.Last();
                         if (lastElement.Key == minimumRemainingTimeProcess)
                         {
-                            lastElement = new KeyValuePair<string, int>(lastElement.Key, lastElement.Value + 1);
+                            lastElement = new KeyValuePair<string, float>(lastElement.Key, (float)Math.Round(lastElement.Value + 0.1f, 2));
                             ganttChartData.RemoveAt(ganttChartData.Count - 1);
                             ganttChartData.Add(lastElement);
                         }
                         else
                         {
-                            var v = new KeyValuePair<string, int>(minimumRemainingTimeProcess, 1);
+                            var v = new KeyValuePair<string, float>(minimumRemainingTimeProcess, 0.1f);
                             ganttChartData.Add(v);
                         }
                     }
          //           consol.Text += minimumRemainingTimeProcess + " ";
+                } else
+                {
+                    //idel
                 }
 
                
             }
             //consol.Text += '\n';
-            foreach (KeyValuePair<string, int> cell in ganttChartData)
+            foreach (KeyValuePair<string, float> cell in ganttChartData)
             {
            //     consol.Text += cell.Key + " " + cell.Value + " ";
             }
+            if (ganttChartData.Count == 0)
+                return;
             ganttChart.Visible = true;
             averageTurnAroundTime.Visible = true;
             averageWaitingTime.Visible = true; 
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
-            int totalWidth = ganttChart.Width;
-            int unitWidth = totalWidth / totalTime;
+            float totalWidth = ganttChart.Width;
+            float unitWidth = (float)Math.Round(totalWidth / totalTime, 2);
             gc.Rows.Add();
 
-            int accumulator = firstArrival;
+            float accumulator = firstArrival;
             for (int i = 0; i < ganttChartData.Count; i++)
             {
                 accumulator += ganttChartData[i].Value;
                 gc.Columns.Add((accumulator).ToString());
-                ganttChart.Columns[i].Width = unitWidth * ganttChartData[i].Value;
+                ganttChart.Columns[i].Width = (int)(unitWidth * (float)Math.Round((ganttChartData[i].Value), 2));
                 gc.Rows[0].SetField((accumulator).ToString(), ganttChartData[i].Key);
             }
 
             // Calculating average turn around time
-            int acc = 0;
+            float acc = 0;
             float averageTAT = 0, averageWT = 0;
-            foreach(KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            foreach(KeyValuePair<string, KeyValuePair<float, float>> process in processes)
             {
                 string processName = process.Key;
-                foreach(KeyValuePair<string, int> cell in ganttChartData)
+                foreach(KeyValuePair<string, float> cell in ganttChartData)
                 {
                     acc += cell.Value;
                     if (cell.Key == processName) {
@@ -186,8 +195,8 @@ namespace Version1
                 }
                 acc = 0;
             }
-            int totalArrivalTime = 0;
-            foreach (KeyValuePair<string, KeyValuePair<int, int>> process in processes)
+            float totalArrivalTime = 0;
+            foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
             {
                 totalArrivalTime += process.Value.Key;
             }

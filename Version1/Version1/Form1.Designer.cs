@@ -30,10 +30,10 @@ namespace Version1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Remove_all_fcfs = new System.Windows.Forms.Button();
@@ -72,6 +72,7 @@ namespace Version1
             this.Process_textBox = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.SJFTabPage = new System.Windows.Forms.TabPage();
+            this.averageWaitingTime = new System.Windows.Forms.Label();
             this.averageTurnAroundTime = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.ganttChart = new System.Windows.Forms.DataGridView();
@@ -105,7 +106,6 @@ namespace Version1
             this.bursttime_SJF_textbox = new System.Windows.Forms.TextBox();
             this.Process_SJF_textbox = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.averageWaitingTime = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -552,6 +552,18 @@ namespace Version1
             this.SJFTabPage.Text = "SJF";
             this.SJFTabPage.UseVisualStyleBackColor = true;
             // 
+            // averageWaitingTime
+            // 
+            this.averageWaitingTime.AutoSize = true;
+            this.averageWaitingTime.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.averageWaitingTime.Location = new System.Drawing.Point(8, 479);
+            this.averageWaitingTime.Name = "averageWaitingTime";
+            this.averageWaitingTime.Size = new System.Drawing.Size(162, 20);
+            this.averageWaitingTime.TabIndex = 29;
+            this.averageWaitingTime.Text = "Average Waiting time = ";
+            this.averageWaitingTime.Visible = false;
+            this.averageWaitingTime.Click += new System.EventHandler(this.label22_Click);
+            // 
             // averageTurnAroundTime
             // 
             this.averageTurnAroundTime.AutoSize = true;
@@ -581,34 +593,34 @@ namespace Version1
             this.ganttChart.AllowUserToDeleteRows = false;
             this.ganttChart.AllowUserToResizeColumns = false;
             this.ganttChart.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle5.NullValue = null;
-            this.ganttChart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.NullValue = null;
+            this.ganttChart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ganttChart.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ganttChart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ganttChart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ganttChart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ganttChart.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ganttChart.Location = new System.Drawing.Point(1, 396);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ganttChart.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ganttChart.Location = new System.Drawing.Point(1, 389);
             this.ganttChart.Name = "ganttChart";
             this.ganttChart.RowHeadersVisible = false;
             this.ganttChart.RowHeadersWidth = 51;
             this.ganttChart.RowTemplate.Height = 25;
-            this.ganttChart.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ganttChart.Size = new System.Drawing.Size(860, 59);
+            this.ganttChart.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.ganttChart.Size = new System.Drawing.Size(860, 76);
             this.ganttChart.TabIndex = 25;
             this.ganttChart.Visible = false;
             // 
@@ -723,14 +735,14 @@ namespace Version1
             this.processGrid.AllowUserToResizeRows = false;
             this.processGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.processGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.processGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.processGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.processGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.processGrid.Location = new System.Drawing.Point(214, 189);
             this.processGrid.MultiSelect = false;
@@ -933,18 +945,6 @@ namespace Version1
             this.button8.Text = "Insert";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // averageWaitingTime
-            // 
-            this.averageWaitingTime.AutoSize = true;
-            this.averageWaitingTime.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.averageWaitingTime.Location = new System.Drawing.Point(8, 479);
-            this.averageWaitingTime.Name = "averageWaitingTime";
-            this.averageWaitingTime.Size = new System.Drawing.Size(162, 20);
-            this.averageWaitingTime.TabIndex = 29;
-            this.averageWaitingTime.Text = "Average Waiting time = ";
-            this.averageWaitingTime.Visible = false;
-            this.averageWaitingTime.Click += new System.EventHandler(this.label22_Click);
             // 
             // Form1
             // 
