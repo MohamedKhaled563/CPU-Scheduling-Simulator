@@ -89,6 +89,24 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.priority_pp = new System.Windows.Forms.Button();
+            this.priority_p = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.arrival_pp = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.dataGridView_pp = new System.Windows.Forms.DataGridView();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.burst_pp = new System.Windows.Forms.TextBox();
+            this.process_pp = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.arrIval_SJF_textbox = new System.Windows.Forms.TextBox();
@@ -115,6 +133,9 @@ namespace Version1
             this.SJFTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).BeginInit();
@@ -761,14 +782,195 @@ namespace Version1
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.priority_pp);
+            this.tabPage4.Controls.Add(this.priority_p);
+            this.tabPage4.Controls.Add(this.label30);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Controls.Add(this.arrival_pp);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.flowLayoutPanel6);
+            this.tabPage4.Controls.Add(this.flowLayoutPanel7);
+            this.tabPage4.Controls.Add(this.label26);
+            this.tabPage4.Controls.Add(this.dataGridView_pp);
+            this.tabPage4.Controls.Add(this.label27);
+            this.tabPage4.Controls.Add(this.label28);
+            this.tabPage4.Controls.Add(this.label29);
+            this.tabPage4.Controls.Add(this.burst_pp);
+            this.tabPage4.Controls.Add(this.process_pp);
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Size = new System.Drawing.Size(864, 557);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.Text = "Priority(p)";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // priority_pp
+            // 
+            this.priority_pp.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.priority_pp.Location = new System.Drawing.Point(64, 299);
+            this.priority_pp.Name = "priority_pp";
+            this.priority_pp.Size = new System.Drawing.Size(284, 46);
+            this.priority_pp.TabIndex = 108;
+            this.priority_pp.Text = "Insert";
+            this.priority_pp.UseVisualStyleBackColor = true;
+            this.priority_pp.Click += new System.EventHandler(this.priority_pp_Click);
+            // 
+            // priority_p
+            // 
+            this.priority_p.Location = new System.Drawing.Point(188, 228);
+            this.priority_p.Name = "priority_p";
+            this.priority_p.Size = new System.Drawing.Size(100, 29);
+            this.priority_p.TabIndex = 107;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(44, 236);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(61, 21);
+            this.label30.TabIndex = 106;
+            this.label30.Text = "Priority";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(51, 376);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(139, 21);
+            this.label22.TabIndex = 105;
+            this.label22.Text = "Total waiting time: ";
+            // 
+            // arrival_pp
+            // 
+            this.arrival_pp.Location = new System.Drawing.Point(188, 186);
+            this.arrival_pp.Name = "arrival_pp";
+            this.arrival_pp.Size = new System.Drawing.Size(100, 29);
+            this.arrival_pp.TabIndex = 104;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(44, 186);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(91, 21);
+            this.label23.TabIndex = 103;
+            this.label23.Text = "Arrival time";
+            // 
+            // button7
+            // 
+            this.button7.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.button7.Location = new System.Drawing.Point(481, 302);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(273, 43);
+            this.button7.TabIndex = 102;
+            this.button7.Text = "Simulate";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.simulate_pp);
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.label24);
+            this.flowLayoutPanel6.Controls.Add(this.label25);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(44, 487);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(777, 43);
+            this.flowLayoutPanel6.TabIndex = 99;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label24.Location = new System.Drawing.Point(3, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(0, 21);
+            this.label24.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(0, 21);
+            this.label25.TabIndex = 1;
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(44, 424);
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            this.flowLayoutPanel7.Size = new System.Drawing.Size(777, 57);
+            this.flowLayoutPanel7.TabIndex = 98;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(44, 374);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(0, 21);
+            this.label26.TabIndex = 97;
+            // 
+            // dataGridView_pp
+            // 
+            this.dataGridView_pp.BackgroundColor = System.Drawing.SystemColors.InactiveBorder;
+            this.dataGridView_pp.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dataGridView_pp.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView_pp.ColumnHeadersHeight = 40;
+            this.dataGridView_pp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView_pp.GridColor = System.Drawing.SystemColors.Desktop;
+            this.dataGridView_pp.Location = new System.Drawing.Point(387, 91);
+            this.dataGridView_pp.Name = "dataGridView_pp";
+            this.dataGridView_pp.RowHeadersWidth = 51;
+            this.dataGridView_pp.RowTemplate.Height = 29;
+            this.dataGridView_pp.Size = new System.Drawing.Size(434, 188);
+            this.dataGridView_pp.TabIndex = 96;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label27.Location = new System.Drawing.Point(44, 98);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(63, 21);
+            this.label27.TabIndex = 95;
+            this.label27.Text = "Process";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label28.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label28.Location = new System.Drawing.Point(188, 26);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(339, 51);
+            this.label28.TabIndex = 94;
+            this.label28.Text = "Priority Preemptive";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(44, 138);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(81, 21);
+            this.label29.TabIndex = 93;
+            this.label29.Text = "Burst time";
+            // 
+            // burst_pp
+            // 
+            this.burst_pp.Location = new System.Drawing.Point(188, 138);
+            this.burst_pp.Name = "burst_pp";
+            this.burst_pp.Size = new System.Drawing.Size(100, 29);
+            this.burst_pp.TabIndex = 100;
+            // 
+            // process_pp
+            // 
+            this.process_pp.Location = new System.Drawing.Point(188, 98);
+            this.process_pp.Name = "process_pp";
+            this.process_pp.Size = new System.Drawing.Size(100, 29);
+            this.process_pp.TabIndex = 101;
             // 
             // tabPage3
             // 
@@ -972,6 +1174,11 @@ namespace Version1
             this.SJFTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
@@ -981,7 +1188,8 @@ namespace Version1
 
         }
 
-       
+
+
 
         #endregion
 
@@ -1060,5 +1268,23 @@ namespace Version1
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label averageTurnAroundTime;
         private System.Windows.Forms.Label averageWaitingTime;
+        private System.Windows.Forms.TextBox priority_p;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox arrival_pp;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridView dataGridView_pp;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox burst_pp;
+        private System.Windows.Forms.TextBox process_pp;
+        private System.Windows.Forms.Button priority_pp;
     }
 }

@@ -45,6 +45,14 @@ namespace Version1
             DT_RR_SJF.Columns.Add("Arival Time");
             DT_RR_SJF.Columns.Add("Burst Time");
             dataGridView_SJF.DataSource = DT_RR_SJF;
+
+            //priority(P)  datagrid
+            dataGridView_pp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            DT_p.Columns.Add("Process");
+            DT_p.Columns.Add("Burst");
+            DT_p.Columns.Add("Arrive");
+            DT_p.Columns.Add("Priority");
+            dataGridView_pp.DataSource = DT_p;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -465,11 +473,6 @@ namespace Version1
 
 
 
-        private void arrivaltime_textBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void label16_Click(object sender, EventArgs e)
         {
 
@@ -813,6 +816,174 @@ namespace Version1
         {
 
         }
+
+
+
+
+
+
+        /********************************* Priority preemptive ****************************************/
+
+        #region Priority Preemptive
+        /************************** proirity Premptive *************************/
+        DataTable DT_p = new DataTable(); //roundrobin table 
+        int Burst_time_pp;
+        int Arrival_Time_pp;
+        int proirity_pp;
+        string Process_Name_pp;
+        Label Add_label_process_pp(string processName)
+        {
+            Label l = new Label();
+
+            l.Text = processName;
+
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.WhiteSmoke;
+            l.Width = 76;
+            l.Height = 48;
+            l.TextAlign = ContentAlignment.MiddleCenter;
+            l.Margin = new Padding(5);
+            return l;
+        }
+        Label Add_label_time_pp(int i)
+        {
+            Label l = new Label();
+
+            l.Name = "label" + i.ToString();
+            int x = i;
+            l.Text = "" + i.ToString();
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.White;
+            l.Width = 40;
+            l.Height = 28;
+            l.TextAlign = ContentAlignment.MiddleLeft;
+
+            if (first)
+            {
+
+
+                l.Margin = new Padding(0, 2, 0, 5);
+                first = false;
+            }
+            else
+            {
+
+                l.Margin = new Padding(35, 2, 0, 5);
+            }
+            return l;
+        }
+
+        List<KeyValuePair<KeyValuePair<string, int>, KeyValuePair<int, int>>> priority_p_process = new List<KeyValuePair<KeyValuePair<string, int>, KeyValuePair<int, int>>>();
+        int total_time_pp = 0;
+
+        private void priority_pp_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // <name, burst, arrival, priority> 
+                Process_Name_pp = process_pp.Text;
+                Burst_time_pp = Int32.Parse(burst_pp.Text);
+                Arrival_Time_pp = Int32.Parse(arrival_pp.Text);
+                proirity_pp = Int32.Parse(priority_p.Text);
+
+                KeyValuePair<string, int> P1 = new KeyValuePair<string, int>(Process_Name_pp, Burst_time_pp);
+                KeyValuePair<int, int> P2 = new KeyValuePair<int, int>(Arrival_Time_pp, proirity_pp);
+                KeyValuePair<KeyValuePair<string, int>, KeyValuePair<int, int>> Process_Info_pp = new KeyValuePair<KeyValuePair<string, int>, KeyValuePair<int, int>>(P1, P2);
+                priority_p_process.Add(Process_Info_pp);
+
+                if (Process_Name_pp != "" && Burst_time_pp != 0)
+                {
+                    DT_p.Rows.Add(Process_Name_pp, Burst_time_pp, Arrival_Time_pp, proirity_pp);
+
+                    total_time_pp += Burst_time_pp;
+                }
+                else
+                {
+                    Error_label.Text = "Invalid P0 or Burst time ";
+                }
+
+            }
+            catch (Exception)
+            {
+                Error_label.Text = "Invalid P0 or Burst time ";
+            }
+
+        }
+
+        // <name, burst, arrival, priority> 
+        private void simulate_pp(object sender, EventArgs e)
+        {
+            string lastprocess = "0";
+            int size = priority_p_process.Count();
+            double waiting = 0;
+            bool idle = false;
+            priority_p_process = priority_p_process.OrderBy(x => x.Value.Value).ToList();
+            for (int i = 0; i < total_time_pp; ++i)
+            {
+
+                for (int j = 0; j < size; j++)
+                {
+                    string name = priority_p_process[j].Key.Key;
+                    int burst = priority_p_process[j].Key.Value;
+
+                    int arrival = priority_p_process[j].Value.Key;
+                    int priority = priority_p_process[j].Value.Value;
+
+                    if ((arrival <= i) && (burst > 0))
+                    {
+                        idle = false;
+                        if (name != lastprocess)
+                        {
+                            Label L = Add_label_process_pp(name);
+                            flowLayoutPanel7.Controls.Add(L);
+                            Label L2 = Add_label_time_pp(i);
+                            flowLayoutPanel6.Controls.Add(L2);
+                        }
+                        lastprocess = name;
+                        burst--;
+                        // calculate waiting time
+                        for (int l = 0; l < size; l++)
+                        {
+                            int burst2 = priority_p_process[l].Key.Value;
+                            int arrival2 = priority_p_process[l].Value.Key;
+                            string name2 = priority_p_process[l].Key.Key;
+                            if ((burst2 > 0) && (arrival2 <= i) && (name2 != name))
+                            {
+                                waiting++;
+                            }
+                        }
+                        KeyValuePair<string, int> k = new KeyValuePair<string, int>(name, burst);
+                        KeyValuePair<int, int> v = new KeyValuePair<int, int>(arrival, priority);
+                        priority_p_process[j] = new KeyValuePair<KeyValuePair<string, int>, KeyValuePair<int, int>>(k, v);
+
+                        if ((j == priority_p_process.Count - 1) && (burst == 0))
+                        {
+                            Label L2 = Add_label_time_pp(i + 1);
+                            flowLayoutPanel6.Controls.Add(L2);
+                        }
+                        break;
+                    }
+
+                    // if there is no available process yet
+                    if (j == (size - 1) && (arrival > i) && (idle == false))
+                    {
+                        idle = true;
+                        Label L = Add_label_process_pp("Idle");
+                        flowLayoutPanel7.Controls.Add(L);
+                        Label L2 = Add_label_time_pp(i);
+                        flowLayoutPanel6.Controls.Add(L2);
+
+                    }
+                    if (idle) total_time_pp++;
+                }
+            }
+            waiting /= (size);
+            label22.Text = "Average Waiting Time:  " + waiting.ToString();
+        }
+        #endregion
+
+
     }
 
 
