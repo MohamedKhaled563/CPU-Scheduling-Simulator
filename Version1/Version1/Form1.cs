@@ -27,8 +27,7 @@ namespace Version1
             public int ProcessAverageWaitingTime;
 
         }
-        public nonPreemptivePriorityProcess nonPreemptiveProcess = new nonPreemptivePriorityProcess();
-        public List<nonPreemptivePriorityProcess> myListOfProcesses = new List<nonPreemptivePriorityProcess>();
+        
         bool comparison(PProcess a, PProcess b)
         {
             return (a.ProcessPriority > b.ProcessPriority);
@@ -38,6 +37,7 @@ namespace Version1
         DataTable DT_priorityNonPreemptive = new DataTable();
 
         /*end of pirority non-preemptive*/
+
         DataTable dt = new DataTable();
         Dictionary<string, KeyValuePair<float, float>> processes = new Dictionary<string, KeyValuePair<float, float>>();
         int totalTime = 0;
@@ -1060,12 +1060,7 @@ namespace Version1
             processarray[enter2_count].ProcessPriority = Convert.ToInt32(PPriorityTxt.Text);
             processarray[enter2_count].ProcessArrivalTime = Convert.ToInt32(PArrivalTxt.Text);
 
-            myListOfProcesses.Add( new nonPreemptivePriorityProcess()
-            { ProcessId= Convert.ToInt32(PProcessTxt.Text),
-            ArrivalTime = Convert.ToInt32(PArrivalTxt.Text),
-            BurstTime = Convert.ToInt32(PBurstTxt.Text),
-            Priority = Convert.ToInt32(PPriorityTxt.Text),
-        });
+           
             DT_priorityNonPreemptive.Rows.Add(Convert.ToInt32(PProcessTxt.Text),
              Convert.ToInt32(PArrivalTxt.Text),
             Convert.ToInt32(PBurstTxt.Text),
