@@ -20,5 +20,4 @@ namespace Version1
             Application.Run(new Form1());
         }
     }
-   
 }
