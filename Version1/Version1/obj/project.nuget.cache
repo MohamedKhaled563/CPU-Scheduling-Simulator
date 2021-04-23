@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PLZZYovsi6XPtBCyB15Hr3FrEX4fnjNAHgth6fMEhya7oujgpcXDB8q6DgFu48elK6tA4muhhqJC3Elbbs9MYQ==",
+  "dgSpecHash": "zhxH+61i2bKRjyR5zpJrlomGHIutAeaWNHjR4xs42bZZrZF96z6VCvvvy9DfP+ykTIRzlT43P4V5Zf/0ivIHVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\salma\\Desktop\\cpu_scheduling\\changes\\Version1\\Version1\\Version1.csproj",
+  "projectFilePath": "C:\\Users\\Elsahy\\Desktop\\Os project\\CPU-Scheduling-Simulator\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\salma\\Desktop\\cpu_scheduling\\changes\\Version1\\Version1\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
