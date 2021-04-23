@@ -1,8 +1,14 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Elsahy\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Elsahy\\.nuget\\packages"
+<<<<<<< HEAD
+      "C:\\Users\\salma\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\salma\\.nuget\\packages"
+=======
+      "C:\\Users\\pc\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\pc\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
     ]
   }
 }

@@ -118,6 +118,7 @@ C:\Users\pc\Desktop\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcore
 C:\Users\pc\Desktop\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
 C:\Users\pc\Desktop\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
 C:\Users\pc\Desktop\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+<<<<<<< HEAD
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.exe
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.deps.json
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.json
@@ -133,3 +134,20 @@ C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simul
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
 C:\Users\Elsahy\Desktop\Os project\CPU-Scheduling-Simulator\CPU-Scheduling-Simulator\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.exe
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.deps.json
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.json
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.runtimeconfig.dev.json
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.dll
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\bin\Debug\netcoreapp3.1\Version1.pdb
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csprojAssemblyReference.cache
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.Form1.resources
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.GenerateResource.cache
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfoInputs.cache
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.AssemblyInfo.cs
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.csproj.CoreCompileInputs.cache
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.dll
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.pdb
+C:\Users\salma\Desktop\cpu_scheduling\changes\Version1\Version1\obj\Debug\netcoreapp3.1\Version1.genruntimeconfig.cache
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)

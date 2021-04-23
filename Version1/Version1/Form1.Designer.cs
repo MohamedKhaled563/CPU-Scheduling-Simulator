@@ -89,24 +89,6 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.priority_pp = new System.Windows.Forms.Button();
-            this.priority_p = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.arrival_pp = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.dataGridView_pp = new System.Windows.Forms.DataGridView();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.burst_pp = new System.Windows.Forms.TextBox();
-            this.process_pp = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.arrIval_SJF_textbox = new System.Windows.Forms.TextBox();
@@ -124,6 +106,25 @@ namespace Version1
             this.bursttime_SJF_textbox = new System.Windows.Forms.TextBox();
             this.Process_SJF_textbox = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.PriorityNP = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2_nonpreemptivepriority = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3_nonpreemptivepriority = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.PGanttLabel = new System.Windows.Forms.Label();
+            this.PriorityAvgTxt = new System.Windows.Forms.TextBox();
+            this.PavgLabel = new System.Windows.Forms.Label();
+            this.PInsert = new System.Windows.Forms.Button();
+            this.PArrivalLabel = new System.Windows.Forms.Label();
+            this.PPriorityTxt = new System.Windows.Forms.TextBox();
+            this.PArrivalTxt = new System.Windows.Forms.TextBox();
+            this.PBurstTxt = new System.Windows.Forms.TextBox();
+            this.PPriorityLabel = new System.Windows.Forms.Label();
+            this.PBurstLabel = new System.Windows.Forms.Label();
+            this.PProcessTxt = new System.Windows.Forms.TextBox();
+            this.PProcessLabel = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.PlabelNoOfProcesses = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -133,12 +134,13 @@ namespace Version1
             this.SJFTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).BeginInit();
+            this.PriorityNP.SuspendLayout();
+            this.flowLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -148,6 +150,7 @@ namespace Version1
             this.tabControl1.Controls.Add(this.SJFTabPage);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.PriorityNP);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -177,11 +180,11 @@ namespace Version1
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 41);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.tabPage1.Size = new System.Drawing.Size(864, 557);
+            this.tabPage1.Size = new System.Drawing.Size(864, 550);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FCFS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -204,7 +207,7 @@ namespace Version1
             this.label7.Location = new System.Drawing.Point(199, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 15);
+            this.label7.Size = new System.Drawing.Size(133, 18);
             this.label7.TabIndex = 16;
             this.label7.Text = "Enter burst time:";
             // 
@@ -215,7 +218,7 @@ namespace Version1
             this.label5.Location = new System.Drawing.Point(199, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 15);
+            this.label5.Size = new System.Drawing.Size(141, 18);
             this.label5.TabIndex = 14;
             this.label5.Text = "Enter arrival time:";
             // 
@@ -224,7 +227,7 @@ namespace Version1
             this.arrivalText_fcfs.Location = new System.Drawing.Point(410, 238);
             this.arrivalText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.arrivalText_fcfs.Name = "arrivalText_fcfs";
-            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 29);
+            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 34);
             this.arrivalText_fcfs.TabIndex = 13;
             // 
             // label4
@@ -234,7 +237,7 @@ namespace Version1
             this.label4.Location = new System.Drawing.Point(199, 342);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 15);
+            this.label4.Size = new System.Drawing.Size(176, 18);
             this.label4.TabIndex = 12;
             this.label4.Text = "average waiting time =";
             // 
@@ -243,7 +246,7 @@ namespace Version1
             this.waitingText_fcfs.Location = new System.Drawing.Point(410, 331);
             this.waitingText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waitingText_fcfs.Name = "waitingText_fcfs";
-            this.waitingText_fcfs.Size = new System.Drawing.Size(140, 29);
+            this.waitingText_fcfs.Size = new System.Drawing.Size(140, 34);
             this.waitingText_fcfs.TabIndex = 11;
             // 
             // label3
@@ -253,7 +256,7 @@ namespace Version1
             this.label3.Location = new System.Drawing.Point(34, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(456, 15);
+            this.label3.Size = new System.Drawing.Size(538, 18);
             this.label3.TabIndex = 10;
             this.label3.Text = "Enter burst time and arrival time of the process and click insert button:";
             // 
@@ -262,7 +265,7 @@ namespace Version1
             this.burstText_fcfs.Location = new System.Drawing.Point(410, 191);
             this.burstText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.burstText_fcfs.Name = "burstText_fcfs";
-            this.burstText_fcfs.Size = new System.Drawing.Size(148, 29);
+            this.burstText_fcfs.Size = new System.Drawing.Size(148, 34);
             this.burstText_fcfs.TabIndex = 5;
             // 
             // label2
@@ -279,7 +282,7 @@ namespace Version1
             this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 15);
+            this.label1.Size = new System.Drawing.Size(324, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter number of processes ,then click ok:";
             // 
@@ -288,7 +291,7 @@ namespace Version1
             this.nofprocesses.Location = new System.Drawing.Point(410, 51);
             this.nofprocesses.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.nofprocesses.Name = "nofprocesses";
-            this.nofprocesses.Size = new System.Drawing.Size(148, 29);
+            this.nofprocesses.Size = new System.Drawing.Size(148, 34);
             this.nofprocesses.TabIndex = 0;
             // 
             // button2
@@ -326,6 +329,7 @@ namespace Version1
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(778, 111);
             this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // flowLayoutPanel2_fcfs
             // 
@@ -366,11 +370,11 @@ namespace Version1
             this.tabPage2.Controls.Add(this.bursttime_textBox);
             this.tabPage2.Controls.Add(this.Process_textBox);
             this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Location = new System.Drawing.Point(4, 41);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(864, 557);
+            this.tabPage2.Size = new System.Drawing.Size(864, 550);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Roundrobin";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -381,7 +385,7 @@ namespace Version1
             this.Average_label.AutoSize = true;
             this.Average_label.Location = new System.Drawing.Point(32, 361);
             this.Average_label.Name = "Average_label";
-            this.Average_label.Size = new System.Drawing.Size(139, 21);
+            this.Average_label.Size = new System.Drawing.Size(176, 28);
             this.Average_label.TabIndex = 58;
             this.Average_label.Text = "Total waiting time: ";
             // 
@@ -389,7 +393,7 @@ namespace Version1
             // 
             this.arrivaltime_textbox.Location = new System.Drawing.Point(169, 171);
             this.arrivaltime_textbox.Name = "arrivaltime_textbox";
-            this.arrivaltime_textbox.Size = new System.Drawing.Size(100, 29);
+            this.arrivaltime_textbox.Size = new System.Drawing.Size(100, 34);
             this.arrivaltime_textbox.TabIndex = 57;
             // 
             // label6
@@ -397,7 +401,7 @@ namespace Version1
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(28, 171);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 21);
+            this.label6.Size = new System.Drawing.Size(113, 28);
             this.label6.TabIndex = 56;
             this.label6.Text = "Arrival time";
             // 
@@ -426,7 +430,7 @@ namespace Version1
             this.label9.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 21);
+            this.label9.Size = new System.Drawing.Size(0, 28);
             this.label9.TabIndex = 0;
             // 
             // flowLayoutPanel2
@@ -453,7 +457,7 @@ namespace Version1
             this.Error_label.ForeColor = System.Drawing.Color.Red;
             this.Error_label.Location = new System.Drawing.Point(25, 359);
             this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(0, 21);
+            this.Error_label.Size = new System.Drawing.Size(0, 28);
             this.Error_label.TabIndex = 49;
             // 
             // RR_dataGridView
@@ -476,7 +480,7 @@ namespace Version1
             // 
             this.quantum_TextBox.Location = new System.Drawing.Point(169, 287);
             this.quantum_TextBox.Name = "quantum_TextBox";
-            this.quantum_TextBox.Size = new System.Drawing.Size(140, 29);
+            this.quantum_TextBox.Size = new System.Drawing.Size(140, 34);
             this.quantum_TextBox.TabIndex = 44;
             // 
             // label14
@@ -485,7 +489,7 @@ namespace Version1
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(25, 86);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 21);
+            this.label14.Size = new System.Drawing.Size(77, 28);
             this.label14.TabIndex = 42;
             this.label14.Text = "Process";
             // 
@@ -496,7 +500,7 @@ namespace Version1
             this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label15.Location = new System.Drawing.Point(266, 11);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(220, 51);
+            this.label15.Size = new System.Drawing.Size(274, 62);
             this.label15.TabIndex = 41;
             this.label15.Text = "Roundrobin";
             // 
@@ -506,7 +510,7 @@ namespace Version1
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label16.Location = new System.Drawing.Point(25, 287);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(111, 21);
+            this.label16.Size = new System.Drawing.Size(138, 28);
             this.label16.TabIndex = 37;
             this.label16.Text = "Quantum time";
             this.label16.Click += new System.EventHandler(this.label16_Click);
@@ -517,7 +521,7 @@ namespace Version1
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label17.Location = new System.Drawing.Point(25, 126);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 21);
+            this.label17.Size = new System.Drawing.Size(100, 28);
             this.label17.TabIndex = 36;
             this.label17.Text = "Burst time";
             // 
@@ -525,14 +529,14 @@ namespace Version1
             // 
             this.bursttime_textBox.Location = new System.Drawing.Point(169, 123);
             this.bursttime_textBox.Name = "bursttime_textBox";
-            this.bursttime_textBox.Size = new System.Drawing.Size(100, 29);
+            this.bursttime_textBox.Size = new System.Drawing.Size(100, 34);
             this.bursttime_textBox.TabIndex = 53;
             // 
             // Process_textBox
             // 
             this.Process_textBox.Location = new System.Drawing.Point(169, 83);
             this.Process_textBox.Name = "Process_textBox";
-            this.Process_textBox.Size = new System.Drawing.Size(100, 29);
+            this.Process_textBox.Size = new System.Drawing.Size(100, 34);
             this.Process_textBox.TabIndex = 54;
             // 
             // button4
@@ -564,11 +568,11 @@ namespace Version1
             this.SJFTabPage.Controls.Add(this.processTF);
             this.SJFTabPage.Controls.Add(this.insert);
             this.SJFTabPage.Controls.Add(this.processGrid);
-            this.SJFTabPage.Location = new System.Drawing.Point(4, 34);
+            this.SJFTabPage.Location = new System.Drawing.Point(4, 41);
             this.SJFTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SJFTabPage.Name = "SJFTabPage";
             this.SJFTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SJFTabPage.Size = new System.Drawing.Size(864, 557);
+            this.SJFTabPage.Size = new System.Drawing.Size(864, 550);
             this.SJFTabPage.TabIndex = 2;
             this.SJFTabPage.Text = "SJF";
             this.SJFTabPage.UseVisualStyleBackColor = true;
@@ -579,7 +583,7 @@ namespace Version1
             this.averageWaitingTime.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.averageWaitingTime.Location = new System.Drawing.Point(8, 479);
             this.averageWaitingTime.Name = "averageWaitingTime";
-            this.averageWaitingTime.Size = new System.Drawing.Size(162, 20);
+            this.averageWaitingTime.Size = new System.Drawing.Size(203, 25);
             this.averageWaitingTime.TabIndex = 29;
             this.averageWaitingTime.Text = "Average Waiting time = ";
             this.averageWaitingTime.Visible = false;
@@ -591,7 +595,7 @@ namespace Version1
             this.averageTurnAroundTime.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.averageTurnAroundTime.Location = new System.Drawing.Point(8, 516);
             this.averageTurnAroundTime.Name = "averageTurnAroundTime";
-            this.averageTurnAroundTime.Size = new System.Drawing.Size(190, 20);
+            this.averageTurnAroundTime.Size = new System.Drawing.Size(238, 25);
             this.averageTurnAroundTime.TabIndex = 28;
             this.averageTurnAroundTime.Text = "Average Turn around time = ";
             this.averageTurnAroundTime.Visible = false;
@@ -604,7 +608,7 @@ namespace Version1
             this.title.Font = new System.Drawing.Font("Impact", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.title.Location = new System.Drawing.Point(290, 32);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(299, 47);
+            this.title.Size = new System.Drawing.Size(375, 61);
             this.title.TabIndex = 27;
             this.title.Text = "Shortest Job First";
             // 
@@ -662,7 +666,7 @@ namespace Version1
             this.nonPremptiveRB.AutoSize = true;
             this.nonPremptiveRB.Location = new System.Drawing.Point(732, 84);
             this.nonPremptiveRB.Name = "nonPremptiveRB";
-            this.nonPremptiveRB.Size = new System.Drawing.Size(135, 25);
+            this.nonPremptiveRB.Size = new System.Drawing.Size(168, 32);
             this.nonPremptiveRB.TabIndex = 23;
             this.nonPremptiveRB.TabStop = true;
             this.nonPremptiveRB.Text = "Non-Premptive";
@@ -673,7 +677,7 @@ namespace Version1
             this.premptiveRB.AutoSize = true;
             this.premptiveRB.Location = new System.Drawing.Point(617, 84);
             this.premptiveRB.Name = "premptiveRB";
-            this.premptiveRB.Size = new System.Drawing.Size(100, 25);
+            this.premptiveRB.Size = new System.Drawing.Size(122, 32);
             this.premptiveRB.TabIndex = 22;
             this.premptiveRB.TabStop = true;
             this.premptiveRB.Text = "Premprive";
@@ -692,7 +696,7 @@ namespace Version1
             this.subtitle3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subtitle3.Location = new System.Drawing.Point(560, 136);
             this.subtitle3.Name = "subtitle3";
-            this.subtitle3.Size = new System.Drawing.Size(77, 20);
+            this.subtitle3.Size = new System.Drawing.Size(95, 25);
             this.subtitle3.TabIndex = 20;
             this.subtitle3.Text = "Burst time";
             // 
@@ -702,7 +706,7 @@ namespace Version1
             this.subtitle2.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subtitle2.Location = new System.Drawing.Point(399, 136);
             this.subtitle2.Name = "subtitle2";
-            this.subtitle2.Size = new System.Drawing.Size(84, 20);
+            this.subtitle2.Size = new System.Drawing.Size(105, 25);
             this.subtitle2.TabIndex = 19;
             this.subtitle2.Text = "Arrival time";
             // 
@@ -712,7 +716,7 @@ namespace Version1
             this.subtitle1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.subtitle1.Location = new System.Drawing.Point(251, 136);
             this.subtitle1.Name = "subtitle1";
-            this.subtitle1.Size = new System.Drawing.Size(63, 20);
+            this.subtitle1.Size = new System.Drawing.Size(77, 25);
             this.subtitle1.TabIndex = 18;
             this.subtitle1.Text = "Process";
             // 
@@ -720,21 +724,21 @@ namespace Version1
             // 
             this.burstTimeTF.Location = new System.Drawing.Point(527, 159);
             this.burstTimeTF.Name = "burstTimeTF";
-            this.burstTimeTF.Size = new System.Drawing.Size(140, 29);
+            this.burstTimeTF.Size = new System.Drawing.Size(140, 34);
             this.burstTimeTF.TabIndex = 17;
             // 
             // arrivalTimeTF
             // 
             this.arrivalTimeTF.Location = new System.Drawing.Point(371, 159);
             this.arrivalTimeTF.Name = "arrivalTimeTF";
-            this.arrivalTimeTF.Size = new System.Drawing.Size(140, 29);
+            this.arrivalTimeTF.Size = new System.Drawing.Size(140, 34);
             this.arrivalTimeTF.TabIndex = 16;
             // 
             // processTF
             // 
             this.processTF.Location = new System.Drawing.Point(214, 159);
             this.processTF.Name = "processTF";
-            this.processTF.Size = new System.Drawing.Size(140, 29);
+            this.processTF.Size = new System.Drawing.Size(140, 34);
             this.processTF.TabIndex = 15;
             // 
             // insert
@@ -782,6 +786,7 @@ namespace Version1
             // 
             // tabPage4
             // 
+<<<<<<< HEAD
             this.tabPage4.Controls.Add(this.priority_pp);
             this.tabPage4.Controls.Add(this.priority_p);
             this.tabPage4.Controls.Add(this.label30);
@@ -798,15 +803,19 @@ namespace Version1
             this.tabPage4.Controls.Add(this.label29);
             this.tabPage4.Controls.Add(this.burst_pp);
             this.tabPage4.Controls.Add(this.process_pp);
+            this.tabPage4.Location = new System.Drawing.Point(4, 41);
+=======
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(864, 557);
+            this.tabPage4.Size = new System.Drawing.Size(864, 550);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Priority(p)";
+            this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
             // priority_pp
             // 
             this.priority_pp.ForeColor = System.Drawing.SystemColors.Highlight;
@@ -822,7 +831,7 @@ namespace Version1
             // 
             this.priority_p.Location = new System.Drawing.Point(188, 228);
             this.priority_p.Name = "priority_p";
-            this.priority_p.Size = new System.Drawing.Size(100, 29);
+            this.priority_p.Size = new System.Drawing.Size(100, 34);
             this.priority_p.TabIndex = 107;
             // 
             // label30
@@ -830,7 +839,7 @@ namespace Version1
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(44, 236);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(61, 21);
+            this.label30.Size = new System.Drawing.Size(76, 28);
             this.label30.TabIndex = 106;
             this.label30.Text = "Priority";
             // 
@@ -839,7 +848,7 @@ namespace Version1
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(51, 376);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(139, 21);
+            this.label22.Size = new System.Drawing.Size(176, 28);
             this.label22.TabIndex = 105;
             this.label22.Text = "Total waiting time: ";
             // 
@@ -847,7 +856,7 @@ namespace Version1
             // 
             this.arrival_pp.Location = new System.Drawing.Point(188, 186);
             this.arrival_pp.Name = "arrival_pp";
-            this.arrival_pp.Size = new System.Drawing.Size(100, 29);
+            this.arrival_pp.Size = new System.Drawing.Size(100, 34);
             this.arrival_pp.TabIndex = 104;
             // 
             // label23
@@ -855,14 +864,14 @@ namespace Version1
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(44, 186);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(91, 21);
+            this.label23.Size = new System.Drawing.Size(113, 28);
             this.label23.TabIndex = 103;
             this.label23.Text = "Arrival time";
             // 
             // button7
             // 
             this.button7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button7.Location = new System.Drawing.Point(481, 302);
+            this.button7.Location = new System.Drawing.Point(481, 303);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(273, 43);
             this.button7.TabIndex = 102;
@@ -885,7 +894,7 @@ namespace Version1
             this.label24.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label24.Location = new System.Drawing.Point(3, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(0, 21);
+            this.label24.Size = new System.Drawing.Size(0, 28);
             this.label24.TabIndex = 0;
             // 
             // label25
@@ -893,7 +902,7 @@ namespace Version1
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(9, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(0, 21);
+            this.label25.Size = new System.Drawing.Size(0, 28);
             this.label25.TabIndex = 1;
             // 
             // flowLayoutPanel7
@@ -909,7 +918,7 @@ namespace Version1
             this.label26.ForeColor = System.Drawing.Color.Red;
             this.label26.Location = new System.Drawing.Point(44, 374);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 21);
+            this.label26.Size = new System.Drawing.Size(0, 28);
             this.label26.TabIndex = 97;
             // 
             // dataGridView_pp
@@ -926,6 +935,7 @@ namespace Version1
             this.dataGridView_pp.RowTemplate.Height = 29;
             this.dataGridView_pp.Size = new System.Drawing.Size(434, 188);
             this.dataGridView_pp.TabIndex = 96;
+            this.dataGridView_pp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_pp_CellContentClick);
             // 
             // label27
             // 
@@ -933,7 +943,7 @@ namespace Version1
             this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label27.Location = new System.Drawing.Point(44, 98);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(63, 21);
+            this.label27.Size = new System.Drawing.Size(77, 28);
             this.label27.TabIndex = 95;
             this.label27.Text = "Process";
             // 
@@ -944,7 +954,7 @@ namespace Version1
             this.label28.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label28.Location = new System.Drawing.Point(188, 26);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(339, 51);
+            this.label28.Size = new System.Drawing.Size(422, 62);
             this.label28.TabIndex = 94;
             this.label28.Text = "Priority Preemptive";
             // 
@@ -954,7 +964,7 @@ namespace Version1
             this.label29.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label29.Location = new System.Drawing.Point(44, 138);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(81, 21);
+            this.label29.Size = new System.Drawing.Size(100, 28);
             this.label29.TabIndex = 93;
             this.label29.Text = "Burst time";
             // 
@@ -962,16 +972,18 @@ namespace Version1
             // 
             this.burst_pp.Location = new System.Drawing.Point(188, 138);
             this.burst_pp.Name = "burst_pp";
-            this.burst_pp.Size = new System.Drawing.Size(100, 29);
+            this.burst_pp.Size = new System.Drawing.Size(100, 34);
             this.burst_pp.TabIndex = 100;
             // 
             // process_pp
             // 
             this.process_pp.Location = new System.Drawing.Point(188, 98);
             this.process_pp.Name = "process_pp";
-            this.process_pp.Size = new System.Drawing.Size(100, 29);
+            this.process_pp.Size = new System.Drawing.Size(100, 34);
             this.process_pp.TabIndex = 101;
             // 
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label10);
@@ -988,9 +1000,9 @@ namespace Version1
             this.tabPage3.Controls.Add(this.bursttime_SJF_textbox);
             this.tabPage3.Controls.Add(this.Process_SJF_textbox);
             this.tabPage3.Controls.Add(this.button8);
-            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Location = new System.Drawing.Point(4, 41);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(864, 557);
+            this.tabPage3.Size = new System.Drawing.Size(864, 550);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "SJF (NP)";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1000,7 +1012,7 @@ namespace Version1
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(51, 373);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 21);
+            this.label10.Size = new System.Drawing.Size(176, 28);
             this.label10.TabIndex = 75;
             this.label10.Text = "Total waiting time: ";
             // 
@@ -1008,7 +1020,7 @@ namespace Version1
             // 
             this.arrIval_SJF_textbox.Location = new System.Drawing.Point(188, 183);
             this.arrIval_SJF_textbox.Name = "arrIval_SJF_textbox";
-            this.arrIval_SJF_textbox.Size = new System.Drawing.Size(100, 29);
+            this.arrIval_SJF_textbox.Size = new System.Drawing.Size(100, 34);
             this.arrIval_SJF_textbox.TabIndex = 74;
             this.arrIval_SJF_textbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -1017,7 +1029,7 @@ namespace Version1
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(47, 183);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(91, 21);
+            this.label11.Size = new System.Drawing.Size(113, 28);
             this.label11.TabIndex = 73;
             this.label11.Text = "Arrival time";
             // 
@@ -1047,7 +1059,7 @@ namespace Version1
             this.label12.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label12.Location = new System.Drawing.Point(3, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(0, 21);
+            this.label12.Size = new System.Drawing.Size(0, 28);
             this.label12.TabIndex = 0;
             // 
             // label20
@@ -1055,7 +1067,7 @@ namespace Version1
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(9, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(0, 21);
+            this.label20.Size = new System.Drawing.Size(0, 28);
             this.label20.TabIndex = 1;
             // 
             // flowLayoutPanel5
@@ -1072,7 +1084,7 @@ namespace Version1
             this.label13.ForeColor = System.Drawing.Color.Red;
             this.label13.Location = new System.Drawing.Point(44, 371);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(0, 21);
+            this.label13.Size = new System.Drawing.Size(0, 28);
             this.label13.TabIndex = 66;
             // 
             // dataGridView_SJF
@@ -1089,6 +1101,7 @@ namespace Version1
             this.dataGridView_SJF.RowTemplate.Height = 29;
             this.dataGridView_SJF.Size = new System.Drawing.Size(434, 188);
             this.dataGridView_SJF.TabIndex = 65;
+            this.dataGridView_SJF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_SJF_CellContentClick);
             // 
             // label18
             // 
@@ -1096,7 +1109,7 @@ namespace Version1
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(44, 98);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(63, 21);
+            this.label18.Size = new System.Drawing.Size(77, 28);
             this.label18.TabIndex = 63;
             this.label18.Text = "Process";
             // 
@@ -1107,7 +1120,7 @@ namespace Version1
             this.label19.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label19.Location = new System.Drawing.Point(188, 23);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(361, 51);
+            this.label19.Size = new System.Drawing.Size(449, 62);
             this.label19.TabIndex = 62;
             this.label19.Text = "SJF Non-Preemptive";
             this.label19.Click += new System.EventHandler(this.label19_Click);
@@ -1118,7 +1131,7 @@ namespace Version1
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label21.Location = new System.Drawing.Point(44, 138);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 21);
+            this.label21.Size = new System.Drawing.Size(100, 28);
             this.label21.TabIndex = 60;
             this.label21.Text = "Burst time";
             // 
@@ -1126,14 +1139,14 @@ namespace Version1
             // 
             this.bursttime_SJF_textbox.Location = new System.Drawing.Point(188, 135);
             this.bursttime_SJF_textbox.Name = "bursttime_SJF_textbox";
-            this.bursttime_SJF_textbox.Size = new System.Drawing.Size(100, 29);
+            this.bursttime_SJF_textbox.Size = new System.Drawing.Size(100, 34);
             this.bursttime_SJF_textbox.TabIndex = 70;
             // 
             // Process_SJF_textbox
             // 
             this.Process_SJF_textbox.Location = new System.Drawing.Point(188, 95);
             this.Process_SJF_textbox.Name = "Process_SJF_textbox";
-            this.Process_SJF_textbox.Size = new System.Drawing.Size(100, 29);
+            this.Process_SJF_textbox.Size = new System.Drawing.Size(100, 34);
             this.Process_SJF_textbox.TabIndex = 71;
             this.Process_SJF_textbox.TextChanged += new System.EventHandler(this.Process_SJF_textbox_TextChanged);
             // 
@@ -1148,9 +1161,187 @@ namespace Version1
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // PriorityNP
+            // 
+            this.PriorityNP.Controls.Add(this.flowLayoutPanel8);
+            this.PriorityNP.Controls.Add(this.dataGridView1);
+            this.PriorityNP.Controls.Add(this.PGanttLabel);
+            this.PriorityNP.Controls.Add(this.PriorityAvgTxt);
+            this.PriorityNP.Controls.Add(this.PavgLabel);
+            this.PriorityNP.Controls.Add(this.PInsert);
+            this.PriorityNP.Controls.Add(this.PArrivalLabel);
+            this.PriorityNP.Controls.Add(this.PPriorityTxt);
+            this.PriorityNP.Controls.Add(this.PArrivalTxt);
+            this.PriorityNP.Controls.Add(this.PBurstTxt);
+            this.PriorityNP.Controls.Add(this.PPriorityLabel);
+            this.PriorityNP.Controls.Add(this.PBurstLabel);
+            this.PriorityNP.Controls.Add(this.PProcessTxt);
+            this.PriorityNP.Controls.Add(this.PProcessLabel);
+            this.PriorityNP.Controls.Add(this.numericUpDown1);
+            this.PriorityNP.Controls.Add(this.PlabelNoOfProcesses);
+            this.PriorityNP.Location = new System.Drawing.Point(4, 41);
+            this.PriorityNP.Name = "PriorityNP";
+            this.PriorityNP.Padding = new System.Windows.Forms.Padding(3);
+            this.PriorityNP.Size = new System.Drawing.Size(864, 550);
+            this.PriorityNP.TabIndex = 5;
+            this.PriorityNP.Text = "Priority(NP)";
+            this.PriorityNP.UseVisualStyleBackColor = true;
+            this.PriorityNP.Click += new System.EventHandler(this.PriorityNP_Click_1);
+            // 
+            // flowLayoutPanel8
+            // 
+            this.flowLayoutPanel8.Controls.Add(this.flowLayoutPanel2_nonpreemptivepriority);
+            this.flowLayoutPanel8.Controls.Add(this.flowLayoutPanel3_nonpreemptivepriority);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(22, 395);
+            this.flowLayoutPanel8.Name = "flowLayoutPanel8";
+            this.flowLayoutPanel8.Size = new System.Drawing.Size(808, 130);
+            this.flowLayoutPanel8.TabIndex = 24;
+            this.flowLayoutPanel8.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel8_Paint);
+            // 
+            // flowLayoutPanel2_nonpreemptivepriority
+            // 
+            this.flowLayoutPanel2_nonpreemptivepriority.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2_nonpreemptivepriority.Name = "flowLayoutPanel2_nonpreemptivepriority";
+            this.flowLayoutPanel2_nonpreemptivepriority.Size = new System.Drawing.Size(805, 63);
+            this.flowLayoutPanel2_nonpreemptivepriority.TabIndex = 0;
+            this.flowLayoutPanel2_nonpreemptivepriority.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel9_Paint);
+            // 
+            // flowLayoutPanel3_nonpreemptivepriority
+            // 
+            this.flowLayoutPanel3_nonpreemptivepriority.Location = new System.Drawing.Point(3, 72);
+            this.flowLayoutPanel3_nonpreemptivepriority.Name = "flowLayoutPanel3_nonpreemptivepriority";
+            this.flowLayoutPanel3_nonpreemptivepriority.Size = new System.Drawing.Size(805, 55);
+            this.flowLayoutPanel3_nonpreemptivepriority.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(420, 78);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(427, 188);
+            this.dataGridView1.TabIndex = 23;
+            // 
+            // PGanttLabel
+            // 
+            this.PGanttLabel.AutoSize = true;
+            this.PGanttLabel.Location = new System.Drawing.Point(22, 353);
+            this.PGanttLabel.Name = "PGanttLabel";
+            this.PGanttLabel.Size = new System.Drawing.Size(113, 28);
+            this.PGanttLabel.TabIndex = 22;
+            this.PGanttLabel.Text = "Gantt Chart";
+            // 
+            // PriorityAvgTxt
+            // 
+            this.PriorityAvgTxt.Location = new System.Drawing.Point(696, 293);
+            this.PriorityAvgTxt.Name = "PriorityAvgTxt";
+            this.PriorityAvgTxt.Size = new System.Drawing.Size(125, 34);
+            this.PriorityAvgTxt.TabIndex = 21;
+            // 
+            // PavgLabel
+            // 
+            this.PavgLabel.AutoSize = true;
+            this.PavgLabel.Location = new System.Drawing.Point(436, 293);
+            this.PavgLabel.Name = "PavgLabel";
+            this.PavgLabel.Size = new System.Drawing.Size(218, 28);
+            this.PavgLabel.TabIndex = 20;
+            this.PavgLabel.Text = "Average Waiting Time=";
+            // 
+            // PInsert
+            // 
+            this.PInsert.Location = new System.Drawing.Point(22, 299);
+            this.PInsert.Name = "PInsert";
+            this.PInsert.Size = new System.Drawing.Size(189, 40);
+            this.PInsert.TabIndex = 19;
+            this.PInsert.Text = "Insert Process";
+            this.PInsert.UseVisualStyleBackColor = true;
+            this.PInsert.Click += new System.EventHandler(this.PInsert_Click);
+            // 
+            // PArrivalLabel
+            // 
+            this.PArrivalLabel.AutoSize = true;
+            this.PArrivalLabel.Location = new System.Drawing.Point(22, 127);
+            this.PArrivalLabel.Name = "PArrivalLabel";
+            this.PArrivalLabel.Size = new System.Drawing.Size(116, 28);
+            this.PArrivalLabel.TabIndex = 18;
+            this.PArrivalLabel.Text = "Arrival Time";
+            // 
+            // PPriorityTxt
+            // 
+            this.PPriorityTxt.Location = new System.Drawing.Point(247, 232);
+            this.PPriorityTxt.Name = "PPriorityTxt";
+            this.PPriorityTxt.Size = new System.Drawing.Size(125, 34);
+            this.PPriorityTxt.TabIndex = 17;
+            // 
+            // PArrivalTxt
+            // 
+            this.PArrivalTxt.Location = new System.Drawing.Point(247, 127);
+            this.PArrivalTxt.Name = "PArrivalTxt";
+            this.PArrivalTxt.Size = new System.Drawing.Size(125, 34);
+            this.PArrivalTxt.TabIndex = 16;
+            // 
+            // PBurstTxt
+            // 
+            this.PBurstTxt.Location = new System.Drawing.Point(247, 179);
+            this.PBurstTxt.Name = "PBurstTxt";
+            this.PBurstTxt.Size = new System.Drawing.Size(125, 34);
+            this.PBurstTxt.TabIndex = 15;
+            // 
+            // PPriorityLabel
+            // 
+            this.PPriorityLabel.AutoSize = true;
+            this.PPriorityLabel.Location = new System.Drawing.Point(22, 232);
+            this.PPriorityLabel.Name = "PPriorityLabel";
+            this.PPriorityLabel.Size = new System.Drawing.Size(76, 28);
+            this.PPriorityLabel.TabIndex = 14;
+            this.PPriorityLabel.Text = "Priority";
+            this.PPriorityLabel.Click += new System.EventHandler(this.PPriorityLabel_Click);
+            // 
+            // PBurstLabel
+            // 
+            this.PBurstLabel.AutoSize = true;
+            this.PBurstLabel.Location = new System.Drawing.Point(22, 179);
+            this.PBurstLabel.Name = "PBurstLabel";
+            this.PBurstLabel.Size = new System.Drawing.Size(103, 28);
+            this.PBurstLabel.TabIndex = 13;
+            this.PBurstLabel.Text = "Burst Time";
+            // 
+            // PProcessTxt
+            // 
+            this.PProcessTxt.Location = new System.Drawing.Point(247, 75);
+            this.PProcessTxt.Name = "PProcessTxt";
+            this.PProcessTxt.Size = new System.Drawing.Size(125, 34);
+            this.PProcessTxt.TabIndex = 10;
+            // 
+            // PProcessLabel
+            // 
+            this.PProcessLabel.AutoSize = true;
+            this.PProcessLabel.Location = new System.Drawing.Point(22, 75);
+            this.PProcessLabel.Name = "PProcessLabel";
+            this.PProcessLabel.Size = new System.Drawing.Size(77, 28);
+            this.PProcessLabel.TabIndex = 9;
+            this.PProcessLabel.Text = "Process";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(247, 20);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(150, 34);
+            this.numericUpDown1.TabIndex = 3;
+            // 
+            // PlabelNoOfProcesses
+            // 
+            this.PlabelNoOfProcesses.AutoSize = true;
+            this.PlabelNoOfProcesses.Location = new System.Drawing.Point(22, 26);
+            this.PlabelNoOfProcesses.Name = "PlabelNoOfProcesses";
+            this.PlabelNoOfProcesses.Size = new System.Drawing.Size(149, 28);
+            this.PlabelNoOfProcesses.TabIndex = 4;
+            this.PlabelNoOfProcesses.Text = "No.of Processes";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 609);
             this.Controls.Add(this.tabControl1);
@@ -1174,22 +1365,21 @@ namespace Version1
             this.SJFTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).EndInit();
+            this.PriorityNP.ResumeLayout(false);
+            this.PriorityNP.PerformLayout();
+            this.flowLayoutPanel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
-
-
+       
 
         #endregion
 
@@ -1268,6 +1458,7 @@ namespace Version1
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label averageTurnAroundTime;
         private System.Windows.Forms.Label averageWaitingTime;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox priority_p;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label22;
@@ -1286,5 +1477,26 @@ namespace Version1
         private System.Windows.Forms.TextBox burst_pp;
         private System.Windows.Forms.TextBox process_pp;
         private System.Windows.Forms.Button priority_pp;
+        private System.Windows.Forms.TabPage PriorityNP;
+        private System.Windows.Forms.Label PArrivalLabel;
+        private System.Windows.Forms.TextBox PPriorityTxt;
+        private System.Windows.Forms.TextBox PArrivalTxt;
+        private System.Windows.Forms.TextBox PBurstTxt;
+        private System.Windows.Forms.Label PPriorityLabel;
+        private System.Windows.Forms.Label PBurstLabel;
+        private System.Windows.Forms.TextBox PProcessTxt;
+        private System.Windows.Forms.Label PProcessLabel;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label PlabelNoOfProcesses;
+        private System.Windows.Forms.TextBox PriorityAvgTxt;
+        private System.Windows.Forms.Label PavgLabel;
+        private System.Windows.Forms.Button PInsert;
+        private System.Windows.Forms.Label PGanttLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2_nonpreemptivepriority;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3_nonpreemptivepriority;
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
     }
 }
