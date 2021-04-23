@@ -74,6 +74,7 @@ namespace Version1
             DT_RR_SJF.Columns.Add("Arival Time");
             DT_RR_SJF.Columns.Add("Burst Time");
             dataGridView_SJF.DataSource = DT_RR_SJF;
+<<<<<<< HEAD
 
             //priority(P)  datagrid
             dataGridView_pp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -89,6 +90,8 @@ namespace Version1
             DT_priorityNonPreemptive.Columns.Add("Burst Time");
             DT_priorityNonPreemptive.Columns.Add("Priority");
             dataGridView1.DataSource = DT_priorityNonPreemptive;
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -512,6 +515,11 @@ namespace Version1
 
 
 
+        private void arrivaltime_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void label16_Click(object sender, EventArgs e)
         {
 
@@ -855,6 +863,7 @@ namespace Version1
         {
 
         }
+<<<<<<< HEAD
 
 
 
@@ -1210,6 +1219,8 @@ namespace Version1
         {
 
         }
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
     }
 
 

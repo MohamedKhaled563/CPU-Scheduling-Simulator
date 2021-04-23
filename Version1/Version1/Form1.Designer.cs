@@ -89,24 +89,6 @@ namespace Version1
             this.insert = new System.Windows.Forms.Button();
             this.processGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.priority_pp = new System.Windows.Forms.Button();
-            this.priority_p = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.arrival_pp = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.dataGridView_pp = new System.Windows.Forms.DataGridView();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.burst_pp = new System.Windows.Forms.TextBox();
-            this.process_pp = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.arrIval_SJF_textbox = new System.Windows.Forms.TextBox();
@@ -152,9 +134,6 @@ namespace Version1
             this.SJFTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_SJF)).BeginInit();
@@ -807,6 +786,7 @@ namespace Version1
             // 
             // tabPage4
             // 
+<<<<<<< HEAD
             this.tabPage4.Controls.Add(this.priority_pp);
             this.tabPage4.Controls.Add(this.priority_p);
             this.tabPage4.Controls.Add(this.label30);
@@ -824,14 +804,18 @@ namespace Version1
             this.tabPage4.Controls.Add(this.burst_pp);
             this.tabPage4.Controls.Add(this.process_pp);
             this.tabPage4.Location = new System.Drawing.Point(4, 41);
+=======
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Size = new System.Drawing.Size(864, 550);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Priority(p)";
+            this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
             // priority_pp
             // 
             this.priority_pp.ForeColor = System.Drawing.SystemColors.Highlight;
@@ -998,6 +982,8 @@ namespace Version1
             this.process_pp.Size = new System.Drawing.Size(100, 34);
             this.process_pp.TabIndex = 101;
             // 
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label10);
@@ -1379,11 +1365,6 @@ namespace Version1
             this.SJFTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ganttChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.processGrid)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_pp)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
@@ -1398,8 +1379,7 @@ namespace Version1
 
         }
 
-
-
+       
 
         #endregion
 
@@ -1478,6 +1458,7 @@ namespace Version1
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label averageTurnAroundTime;
         private System.Windows.Forms.Label averageWaitingTime;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox priority_p;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label22;
@@ -1515,5 +1496,7 @@ namespace Version1
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2_nonpreemptivepriority;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3_nonpreemptivepriority;
+=======
+>>>>>>> parent of ef0595c (Latest Version 22/4/2021)
     }
 }
