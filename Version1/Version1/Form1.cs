@@ -14,6 +14,30 @@ namespace Version1
 {
     public partial class Form1 : Form
     {
+        //priority non-preemptive
+        int enter2_count = 0;
+        public struct PProcess
+
+        {
+            public int ProcessNumber;
+            public int ProcessBurstTime;
+            public int ProcessPriority;
+            public int ProcessArrivalTime;
+            public int ProcessStartingTime;
+            public int ProcessAverageWaitingTime;
+
+        }
+        public nonPreemptivePriorityProcess nonPreemptiveProcess = new nonPreemptivePriorityProcess();
+        public List<nonPreemptivePriorityProcess> myListOfProcesses = new List<nonPreemptivePriorityProcess>();
+        bool comparison(PProcess a, PProcess b)
+        {
+            return (a.ProcessPriority > b.ProcessPriority);
+        }
+        PProcess[] processarray = new PProcess[20];
+        int TotalAverageWaiting = 0;
+        DataTable DT_priorityNonPreemptive = new DataTable();
+
+        /*end of pirority non-preemptive*/
         DataTable dt = new DataTable();
         Dictionary<string, KeyValuePair<float, float>> processes = new Dictionary<string, KeyValuePair<float, float>>();
         int totalTime = 0;
@@ -21,8 +45,13 @@ namespace Version1
         public Form1()
         {
             InitializeComponent();
+            //priority non-preemptive
+            PGanttLabel.Hide();
+            PavgLabel.Hide();
+            PriorityAvgTxt.Hide();
+            //end
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             dt.Columns.Add("Process");
@@ -32,7 +61,7 @@ namespace Version1
 
             //roundrobin  datagrid
             RR_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-           // RR_dataGridView.RowHeadersVisible = false;
+            // RR_dataGridView.RowHeadersVisible = false;
             dt_RR.Columns.Add("Process");
             dt_RR.Columns.Add("Arival Time");
             dt_RR.Columns.Add("Burst Time");
@@ -53,18 +82,25 @@ namespace Version1
             DT_p.Columns.Add("Arrive");
             DT_p.Columns.Add("Priority");
             dataGridView_pp.DataSource = DT_p;
+            /*priority(nonpreemptive) datagrid*/
+            dataGridView_pp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            DT_priorityNonPreemptive.Columns.Add("Process ID");
+            DT_priorityNonPreemptive.Columns.Add("Arrival Time");
+            DT_priorityNonPreemptive.Columns.Add("Burst Time");
+            DT_priorityNonPreemptive.Columns.Add("Priority");
+            dataGridView1.DataSource = DT_priorityNonPreemptive;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedIndex == 2)
             {
-      
+
                 SJFTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
                 drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
-                
+
                 processGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e4e3e3");
@@ -90,7 +126,7 @@ namespace Version1
                 processes[processName] = process;
                 totalTime += Int32.Parse(burstTime);
             }
-       
+
 
             if (processName != "" && arrivalTime != "" && burstTime != "")
             {
@@ -112,8 +148,9 @@ namespace Version1
                     firstArrival = process.Value.Key;
             }
 
-            for (float i = firstArrival; i < totalTime + firstArrival; i= (float)Math.Round(i + 0.1f, 2)){
-                var arrivedProcesses = new Dictionary<string, KeyValuePair<float, float>>() ;
+            for (float i = firstArrival; i < totalTime + firstArrival; i = (float)Math.Round(i + 0.1f, 2))
+            {
+                var arrivedProcesses = new Dictionary<string, KeyValuePair<float, float>>();
                 foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
                 {
                     if (process.Value.Key <= i && process.Value.Value > 0)
@@ -122,7 +159,7 @@ namespace Version1
                         arrivedProcesses[process.Key] = process.Value;
                     }
                 }// Arrived Processes
-                
+
                 if (arrivedProcesses.Count > 0)
                 {
                     string minimumRemainingTimeProcess = arrivedProcesses.First().Key;
@@ -154,24 +191,25 @@ namespace Version1
                             ganttChartData.Add(v);
                         }
                     }
-         //           consol.Text += minimumRemainingTimeProcess + " ";
-                } else
+                    //           consol.Text += minimumRemainingTimeProcess + " ";
+                }
+                else
                 {
                     //idel
                 }
 
-               
+
             }
             //consol.Text += '\n';
             foreach (KeyValuePair<string, float> cell in ganttChartData)
             {
-           //     consol.Text += cell.Key + " " + cell.Value + " ";
+                //     consol.Text += cell.Key + " " + cell.Value + " ";
             }
             if (ganttChartData.Count == 0)
                 return;
             ganttChart.Visible = true;
             averageTurnAroundTime.Visible = true;
-            averageWaitingTime.Visible = true; 
+            averageWaitingTime.Visible = true;
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
             float totalWidth = ganttChart.Width;
@@ -190,13 +228,14 @@ namespace Version1
             // Calculating average turn around time
             float acc = 0;
             float averageTAT = 0, averageWT = 0;
-            foreach(KeyValuePair<string, KeyValuePair<float, float>> process in processes)
+            foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
             {
                 string processName = process.Key;
-                foreach(KeyValuePair<string, float> cell in ganttChartData)
+                foreach (KeyValuePair<string, float> cell in ganttChartData)
                 {
                     acc += cell.Value;
-                    if (cell.Key == processName) {
+                    if (cell.Key == processName)
+                    {
                         averageTAT += acc;
                         acc = 0;
                     }
@@ -494,11 +533,11 @@ namespace Version1
                     quantum = 0;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Error_label.Text = "Invalid Quantum number";
             }
-            
+
         }
 
         Label Add_label_process(int i)
@@ -519,7 +558,7 @@ namespace Version1
         Label Add_label_process_SJF(string processName)
         {
             Label l = new Label();
-        
+
             l.Text = processName;
 
             l.ForeColor = Color.Black;
@@ -539,7 +578,7 @@ namespace Version1
 
             l.Name = "label" + i.ToString();
             int x = i;
-            l.Text ="" + i.ToString();
+            l.Text = "" + i.ToString();
             l.ForeColor = Color.Black;
             l.BackColor = Color.White;
             l.Width = 40;
@@ -548,24 +587,24 @@ namespace Version1
 
             if (first)
             {
-              
 
-                l.Margin = new Padding(50 ,2, 0, 5);
+
+                l.Margin = new Padding(50, 2, 0, 5);
                 first = false;
             }
             else
             {
-               
+
                 l.Margin = new Padding(45, 2, 0, 5);
             }
             return l;
         }
-        public void set_waiting(int q,int  k)
+        public void set_waiting(int q, int k)
         {
 
             for (int i = 0; i < list_process.Count; i++)
             {
-                if (list_process[i].get_burst() > 0 && i != k )
+                if (list_process[i].get_burst() > 0 && i != k)
                 {
                     int x = list_process[i].get_waiting();
                     x += q;
@@ -588,11 +627,11 @@ namespace Version1
             }
             Error_label.Text = "";
             //simulate 
-            while(SortedList.Count != 0  )
+            while (SortedList.Count != 0)
             {
-                for(int i = 0; i < SortedList.Count; i++)
+                for (int i = 0; i < SortedList.Count; i++)
                 {
-                    if(SortedList[i].get_burst() > quantum)
+                    if (SortedList[i].get_burst() > quantum)
                     {
                         //first time
                         running_time += quantum;
@@ -609,7 +648,7 @@ namespace Version1
                     }
                     else
                     {
-                        if(SortedList[i].get_burst() > 0)
+                        if (SortedList[i].get_burst() > 0)
                         {
                             Label l = Add_label_process(i);
                             flowLayoutPanel2.Controls.Add(l);
@@ -632,14 +671,14 @@ namespace Version1
                     k = (k || !(SortedList[i].get_burst() == 0));
                 }
 
-                if(!k)
+                if (!k)
                 {
                     break;
                 }
                 k = false;
             }
 
-            for(int i = 0; i < SortedList.Count; i++ )
+            for (int i = 0; i < SortedList.Count; i++)
             {
                 total_waiting += SortedList[i].waiting_time;
             }
@@ -670,11 +709,11 @@ namespace Version1
                 }
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Error_label.Text = "Invalid P0 or Burst time ";
             }
-       
+
 
         }
 
@@ -690,8 +729,8 @@ namespace Version1
 
 
 
-        List<KeyValuePair<int, KeyValuePair<string, int>>>  my_process = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
-       
+        List<KeyValuePair<int, KeyValuePair<string, int>>> my_process = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
+
         int Full_Time = 0;
         private void button8_Click(object sender, EventArgs e)
         {
@@ -705,7 +744,7 @@ namespace Version1
                 KeyValuePair<string, int> Pairrr = new KeyValuePair<string, int>(Process_Name_SJF, Arrival_Time_SJF);
                 KeyValuePair<int, KeyValuePair<string, int>> Process_Info_SJF = new KeyValuePair<int, KeyValuePair<string, int>>(Burst_time_SJF, Pairrr);
                 my_process.Add(Process_Info_SJF);
-              
+
 
 
 
@@ -768,10 +807,10 @@ namespace Version1
                     if ((Arrival_time <= i) && !(is_removed))
                     {
                         waiting_time_SJF += (i - Arrival_time);
-                        i += (Burst_time -1);
+                        i += (Burst_time - 1);
                         Label L = Add_label_process_SJF(Process_Name);
                         flowLayoutPanel5.Controls.Add(L);
-                        Label L2 = Add_label_time(i+1);
+                        Label L2 = Add_label_time(i + 1);
                         flowLayoutPanel4.Controls.Add(L2);
                         RemovedProcess.Add(Process_Name);
                         Idle_Flag = false;
@@ -783,7 +822,7 @@ namespace Version1
                 {
                     Label L3 = Add_label_process_SJF("Idle");
                     flowLayoutPanel5.Controls.Add(L3);
-                    Label L4 = Add_label_time(i+1);
+                    Label L4 = Add_label_time(i + 1);
                     flowLayoutPanel4.Controls.Add(L4);
                     Full_Time++;
                 }
@@ -792,9 +831,9 @@ namespace Version1
 
 
             }
-            waiting_time_SJF /= (my_process.Count );
+            waiting_time_SJF /= (my_process.Count);
             label10.Text = "Waiting Time:  " + waiting_time_SJF.ToString();
-            
+
         }
 
         private void Process_SJF_textbox_TextChanged(object sender, EventArgs e)
@@ -981,9 +1020,201 @@ namespace Version1
             waiting /= (size);
             label22.Text = "Average Waiting Time:  " + waiting.ToString();
         }
+
         #endregion
 
+        private void dataGridView_pp_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void PriorityNP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PPriorityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView_SJF_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+       
+        private void PInsert_Click(object sender, EventArgs e)
+        {
+
+            if (enter2_count == numericUpDown1.Value - 1)
+            {
+                PInsert.Text = "Draw Gantt Chart";
+            }
+            processarray[enter2_count].ProcessNumber = Convert.ToInt32(PProcessTxt.Text);
+            processarray[enter2_count].ProcessBurstTime = Convert.ToInt32(PBurstTxt.Text);
+            processarray[enter2_count].ProcessPriority = Convert.ToInt32(PPriorityTxt.Text);
+            processarray[enter2_count].ProcessArrivalTime = Convert.ToInt32(PArrivalTxt.Text);
+
+            myListOfProcesses.Add( new nonPreemptivePriorityProcess()
+            { ProcessId= Convert.ToInt32(PProcessTxt.Text),
+            ArrivalTime = Convert.ToInt32(PArrivalTxt.Text),
+            BurstTime = Convert.ToInt32(PBurstTxt.Text),
+            Priority = Convert.ToInt32(PPriorityTxt.Text),
+        });
+            DT_priorityNonPreemptive.Rows.Add(Convert.ToInt32(PProcessTxt.Text),
+             Convert.ToInt32(PArrivalTxt.Text),
+            Convert.ToInt32(PBurstTxt.Text),
+            Convert.ToInt32(PPriorityTxt.Text));
+
+            enter2_count++;
+
+            PProcessTxt.Text = "";
+
+            PBurstTxt.Text = "";
+            PPriorityTxt.Text = "";
+
+
+            PArrivalTxt.Text = "";
+
+
+            if (enter2_count == numericUpDown1.Value)
+            {
+
+
+                int i; /* pass counter */
+                int j; /* comparison counter */
+                PProcess temp;
+                /* loop to control passes */
+
+                for (i = 0; i < numericUpDown1.Value - 1; i++)
+                {
+                    /* loop to control comparisons during each pass */
+                    for (j = 0; j < numericUpDown1.Value - 1; j++)
+                    {
+                        /* swap adjacent elements if they are out of order */
+                        if (processarray[j].ProcessPriority > processarray[j + 1].ProcessPriority)
+                        {
+                            temp = processarray[j];
+                            processarray[j] = processarray[j + 1];
+                            processarray[j + 1] = temp;
+                        } /* end if */
+                    } /* end inner for */
+                } /* end outer for */
+                for (int k = 1; k < numericUpDown1.Value; k++)
+                {
+                    processarray[k].ProcessStartingTime = processarray[k - 1].ProcessBurstTime + processarray[k - 1].ProcessStartingTime;
+                    processarray[k].ProcessAverageWaitingTime = processarray[k].ProcessStartingTime - processarray[k].ProcessArrivalTime;
+                }
+                for (int y = 0; y < numericUpDown1.Value; y++)
+                {
+                    TotalAverageWaiting += processarray[y].ProcessAverageWaitingTime;
+                }
+
+                PavgLabel.Show();
+                PriorityAvgTxt.Show();
+                PriorityAvgTxt.Text = (TotalAverageWaiting / numericUpDown1.Value).ToString("N");
+                PGanttLabel.Show();
+                gantt_chart_priority();
+
+
+
+            }
+
+        }
+        // function to draw gantt chart of priority
+        int next_time;
+        int first_time;
+        private void gantt_chart_priority()
+        {
+            // function to draw gantt chart of priority non preemptive
+
+
+            if (processarray[0].ProcessArrivalTime > 0)
+            {
+                Label idle_time = new Label();
+                idle_time.Size = new System.Drawing.Size(25, 25);
+                TextBox idle_processing = new TextBox();
+                idle_processing.Size = new System.Drawing.Size(31, 25);
+                idle_processing.Enabled = true;
+                idle_processing.Font = new Font("Arial", 10, FontStyle.Bold);
+                idle_time.Font = new Font("Arial", 8, FontStyle.Bold);
+                idle_processing.Text = "idle";
+                idle_time.Text = "0";
+                flowLayoutPanel3_nonpreemptivepriority.Controls.Add(idle_time);
+                flowLayoutPanel2_nonpreemptivepriority.Controls.Add(idle_processing);
+            }
+
+           
+            first_time = processarray[0].ProcessStartingTime;
+            Label firstpro = new Label();
+            firstpro.Text = first_time.ToString();
+            firstpro.Size = new System.Drawing.Size(25, 25);
+            firstpro.Font = new Font("Arial", 8, FontStyle.Bold);
+            flowLayoutPanel3_nonpreemptivepriority.Controls.Add(firstpro);
+
+            TextBox mm = new TextBox();
+            mm.Enabled = true;
+            mm.Size = new System.Drawing.Size(25, 25);
+            mm.Font = new Font("Arial", 8, FontStyle.Bold);
+            string ss = "P" + processarray[0].ProcessNumber.ToString();
+            mm.Text = ss;
+            mm.ReadOnly = true;
+            flowLayoutPanel2_nonpreemptivepriority.Controls.Add(mm);
+            for (int i = 1; i < numericUpDown1.Value; i++)
+            {
+
+
+                next_time = processarray[i].ProcessStartingTime;
+                Label next_time1 = new Label();
+                next_time1.Text = next_time.ToString();
+                next_time1.Size = new System.Drawing.Size(25, 25);
+                next_time1.Font = new Font("Arial", 8, FontStyle.Bold);
+                flowLayoutPanel3_nonpreemptivepriority.Controls.Add(next_time1);
+
+                TextBox zz = new TextBox();
+                zz.Enabled = true;
+                zz.Size = new System.Drawing.Size(25, 25);
+                string zzz = "P" + processarray[i].ProcessNumber.ToString();
+                zz.Text = zzz;
+                zz.ReadOnly = true;
+                flowLayoutPanel2_nonpreemptivepriority.Controls.Add(zz);
+
+
+            }
+            //last time label
+            Label last_time21 = new Label();
+            last_time21.Size = new System.Drawing.Size(25, 25);
+            last_time21.Font = new Font("Arial", 8, FontStyle.Bold);
+            last_time21.Text =( processarray[Convert.ToInt32(numericUpDown1.Value) - 1].ProcessBurstTime+ processarray[Convert.ToInt32(numericUpDown1.Value) - 1].ProcessStartingTime).ToString();
+            flowLayoutPanel3_nonpreemptivepriority.Controls.Add(last_time21);
+
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PriorityNP_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
