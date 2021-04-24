@@ -111,9 +111,10 @@ namespace Version1
                 if (process.Value.Key < firstArrival)
                     firstArrival = process.Value.Key;
             }
-
-            for (float i = firstArrival; i < totalTime + firstArrival; i= (float)Math.Round(i + 0.1f, 2)){
-                var arrivedProcesses = new Dictionary<string, KeyValuePair<float, float>>() ;
+            float totalTimeWithIdelTime = totalTime;
+            for (float i = firstArrival; i < totalTimeWithIdelTime + firstArrival; i = (float)Math.Round(i + 0.1f, 2))
+            {
+                var arrivedProcesses = new Dictionary<string, KeyValuePair<float, float>>();
                 foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
                 {
                     if (process.Value.Key <= i && process.Value.Value > 0)
@@ -122,7 +123,7 @@ namespace Version1
                         arrivedProcesses[process.Key] = process.Value;
                     }
                 }// Arrived Processes
-                
+
                 if (arrivedProcesses.Count > 0)
                 {
                     string minimumRemainingTimeProcess = arrivedProcesses.First().Key;
@@ -154,28 +155,41 @@ namespace Version1
                             ganttChartData.Add(v);
                         }
                     }
-         //           consol.Text += minimumRemainingTimeProcess + " ";
-                } else
+                    //           consol.Text += minimumRemainingTimeProcess + " ";
+                }
+                else
                 {
-                    //idel
+                    var lastElement = ganttChartData.Last();
+                    if (lastElement.Key == "Idle")
+                    {
+                        lastElement = new KeyValuePair<string, float>(lastElement.Key, (float)Math.Round(lastElement.Value + 0.1f, 2));
+                        ganttChartData.RemoveAt(ganttChartData.Count - 1);
+                        ganttChartData.Add(lastElement);
+                    }
+                    else
+                    {
+                        var v = new KeyValuePair<string, float>("Idle", 0.1f);
+                        ganttChartData.Add(v);
+                    }
+                    totalTimeWithIdelTime = (float)Math.Round(totalTimeWithIdelTime + 0.1f, 2);
                 }
 
-               
+
             }
             //consol.Text += '\n';
             foreach (KeyValuePair<string, float> cell in ganttChartData)
             {
-           //     consol.Text += cell.Key + " " + cell.Value + " ";
+                //     consol.Text += cell.Key + " " + cell.Value + " ";
             }
             if (ganttChartData.Count == 0)
                 return;
             ganttChart.Visible = true;
             averageTurnAroundTime.Visible = true;
-            averageWaitingTime.Visible = true; 
+            averageWaitingTime.Visible = true;
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
             float totalWidth = ganttChart.Width;
-            float unitWidth = (float)Math.Round(totalWidth / totalTime, 2);
+            float unitWidth = (float)Math.Round(totalWidth / totalTimeWithIdelTime, 2);
             gc.Rows.Add();
 
             float accumulator = firstArrival;
@@ -190,13 +204,15 @@ namespace Version1
             // Calculating average turn around time
             float acc = 0;
             float averageTAT = 0, averageWT = 0;
-            foreach(KeyValuePair<string, KeyValuePair<float, float>> process in processes)
+            foreach (KeyValuePair<string, KeyValuePair<float, float>> process in processes)
             {
                 string processName = process.Key;
-                foreach(KeyValuePair<string, float> cell in ganttChartData)
+                foreach (KeyValuePair<string, float> cell in ganttChartData)
                 {
+
                     acc += cell.Value;
-                    if (cell.Key == processName) {
+                    if (cell.Key == processName)
+                    {
                         averageTAT += acc;
                         acc = 0;
                     }
