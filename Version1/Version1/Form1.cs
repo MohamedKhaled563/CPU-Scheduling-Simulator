@@ -472,8 +472,8 @@ namespace Version1
 
         /************************** SJF NON Premptive *************************/
         DataTable DT_RR_SJF = new DataTable(); //roundrobin table 
-        int Burst_time_SJF;
-        int Arrival_Time_SJF;
+        double Burst_time_SJF;
+        double Arrival_Time_SJF;
         string Process_Name_SJF;
         /********   global variables *********/
 
@@ -574,6 +574,25 @@ namespace Version1
                
                 l.Margin = new Padding(45, 2, 0, 5);
             }
+            return l;
+        }
+
+
+        Label Add_label_time_in_double(double i)
+        {
+            Label l = new Label();
+
+            double x = i;
+            l.Name = "label" + i.ToString();
+            l.Text = "" + x.ToString();
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.White;
+            l.Width = 50;
+            l.Height = 28;
+            l.TextAlign = ContentAlignment.MiddleLeft;
+            l.Margin = new Padding(35, 2, 0, 5);
+
+
             return l;
         }
         public void set_waiting(int q,int  k)
@@ -706,9 +725,10 @@ namespace Version1
 
 
 
-        List<KeyValuePair<int, KeyValuePair<string, int>>>  my_process = new List<KeyValuePair<int, KeyValuePair<string, int>>>();
-       
-        int Full_Time = 0;
+
+        List<KeyValuePair<double, KeyValuePair<string, double>>> my_process = new List<KeyValuePair<double, KeyValuePair<string, double>>>();
+
+        double Full_Time = 0;
         private void button8_Click(object sender, EventArgs e)
         {
 
@@ -716,12 +736,12 @@ namespace Version1
             {
 
                 Process_Name_SJF = Process_SJF_textbox.Text;
-                Burst_time_SJF = Int32.Parse(bursttime_SJF_textbox.Text);
-                Arrival_Time_SJF = Int32.Parse(arrIval_SJF_textbox.Text);
-                KeyValuePair<string, int> Pairrr = new KeyValuePair<string, int>(Process_Name_SJF, Arrival_Time_SJF);
-                KeyValuePair<int, KeyValuePair<string, int>> Process_Info_SJF = new KeyValuePair<int, KeyValuePair<string, int>>(Burst_time_SJF, Pairrr);
+                Burst_time_SJF = Convert.ToDouble(bursttime_SJF_textbox.Text);
+                Arrival_Time_SJF = Convert.ToDouble(arrIval_SJF_textbox.Text);
+                KeyValuePair<string, double> Pairrr = new KeyValuePair<string, double>(Process_Name_SJF, Arrival_Time_SJF);
+                KeyValuePair<double, KeyValuePair<string, double>> Process_Info_SJF = new KeyValuePair<double, KeyValuePair<string, double>>(Burst_time_SJF, Pairrr);
                 my_process.Add(Process_Info_SJF);
-              
+
 
 
 
@@ -768,49 +788,67 @@ namespace Version1
 
             label20.Text = "0";
             double waiting_time_SJF = 0;
-            for (int i = 0; i < Full_Time; ++i)
+
+            bool Idle_Flag = true;
+            bool Idle_Flag_One_Time = true;
+            bool Idle_is_done = true;
+            double Idle_Process_start_time = 0;
+
+            for (double i = 0; (RemovedProcess.Count != my_process.Count); i += 0.1)
             {
 
+                Idle_Flag = true;
 
-                bool Idle_Flag = true;
-
-                foreach (KeyValuePair<int, KeyValuePair<string, int>> Process in my_process)
+                foreach (KeyValuePair<double, KeyValuePair<string, double>> Process in my_process)
                 {
-                    int Burst_time = Process.Key;
+                    double Burst_time = Process.Key;
                     string Process_Name = Process.Value.Key;
-                    int Arrival_time = Process.Value.Value;
+                    double Arrival_time = Process.Value.Value;
                     bool is_removed = RemovedProcess.Contains(Process_Name);
 
-                    if ((Arrival_time <= i) && !(is_removed))
+                    if ((Math.Round(Arrival_time, 1) <= Math.Round(i, 1)) && !(is_removed))
                     {
-                        waiting_time_SJF += (i - Arrival_time);
-                        i += (Burst_time -1);
+                        waiting_time_SJF += i - Arrival_time;
+
+                        if (Idle_Flag == true && Idle_is_done == false)
+                        {
+
+                            Label LA = Add_label_time_in_double(Math.Round(i, 1)); //End time of Idle process
+                            flowLayoutPanel4.Controls.Add(LA);
+                            Idle_is_done = true;
+
+                        }
+                        i += Burst_time - 0.1;
                         Label L = Add_label_process_SJF(Process_Name);
                         flowLayoutPanel5.Controls.Add(L);
-                        Label L2 = Add_label_time(i+1);
+
+                        Label L2 = Add_label_time_in_double(Math.Round((i + 0.1), 1)); //End time of Active process
                         flowLayoutPanel4.Controls.Add(L2);
                         RemovedProcess.Add(Process_Name);
                         Idle_Flag = false;
+                        Idle_Flag_One_Time = true;
                         break;
                     }
 
                 }
-                if (Idle_Flag == true)
+                if (Idle_Flag == true && Idle_Flag_One_Time == true)
                 {
                     Label L3 = Add_label_process_SJF("Idle");
                     flowLayoutPanel5.Controls.Add(L3);
-                    Label L4 = Add_label_time(i+1);
-                    flowLayoutPanel4.Controls.Add(L4);
-                    Full_Time++;
+
+                    Idle_Flag_One_Time = false;
+                    Idle_is_done = false;
+
+                    Idle_Process_start_time = i;
+
+
                 }
 
 
-
-
             }
-            waiting_time_SJF /= (my_process.Count );
-            label10.Text = "Waiting Time:  " + waiting_time_SJF.ToString();
-            
+            waiting_time_SJF = Math.Abs(waiting_time_SJF / (my_process.Count));
+            label10.Text = "Waiting Time:  " + Math.Round(waiting_time_SJF, 2).ToString();
+
         }
 
         private void Process_SJF_textbox_TextChanged(object sender, EventArgs e)

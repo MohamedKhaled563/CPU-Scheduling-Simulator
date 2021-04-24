@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pc\\Desktop\\newrepo\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {}
+    "C:\\CPU Schedule\\Projectttt\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pc\\Desktop\\newrepo\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {
+    "C:\\CPU Schedule\\Projectttt\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pc\\Desktop\\newrepo\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+        "projectUniqueName": "C:\\CPU Schedule\\Projectttt\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
         "projectName": "Version1",
-        "projectPath": "C:\\Users\\pc\\Desktop\\newrepo\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
-        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pc\\Desktop\\newrepo\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
+        "projectPath": "C:\\CPU Schedule\\Projectttt\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+        "packagesPath": "C:\\Users\\g.version\\.nuget\\packages\\",
+        "outputPath": "C:\\CPU Schedule\\Projectttt\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\g.version\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
