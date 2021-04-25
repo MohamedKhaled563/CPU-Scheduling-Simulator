@@ -251,10 +251,10 @@ namespace Version1
 
         #region FCFS Code mode
         int flag = 0;
-        List<int> finish_list = new List<int>();
-        int item = 0;
+        List<float> finish_list = new List<float>();
+        float item = 0;
         int n_fcfs;                           //number of processe
-        List<int> service_list = new List<int>();
+        List<float> service_list = new List<float>();
         List<Process> process_fcfs = new List<Process>();
         int counter_fcfs = 0;
         float time_fcfs = 0;
@@ -279,8 +279,8 @@ namespace Version1
         {
             Process p_fcfs = new Process();
             p_fcfs.Pid = counter_fcfs + 1;
-            p_fcfs.burst_time = int.Parse(burstText_fcfs.Text);          //convert text string to integar
-            p_fcfs.arrival_time = int.Parse(arrivalText_fcfs.Text);     //convert text string to integar
+            p_fcfs.burst_time = float.Parse(burstText_fcfs.Text);          //convert text string to integar
+            p_fcfs.arrival_time = float.Parse(arrivalText_fcfs.Text);     //convert text string to integar
             process_fcfs.Add(p_fcfs);                                  // store process in queue
             counter_fcfs++;
             string ss_fcfs = "Inserted " + (counter_fcfs.ToString()) + " from " + (n_fcfs.ToString());
@@ -297,8 +297,8 @@ namespace Version1
         {
 
             process_fcfs[0].waiting_time = 0;
-            int start = process_fcfs[0].arrival_time;
-            int finish = start + process_fcfs[0].burst_time;
+            float start = process_fcfs[0].arrival_time;
+            float finish = start + process_fcfs[0].burst_time;
             service_list.Add(start);
             service_list.Add(finish);
             finish_list.Add(finish);
@@ -336,30 +336,30 @@ namespace Version1
             if (process_fcfs[0].arrival_time > 0)
             {
                 Label idle_time = new Label();
-                idle_time.Size = new System.Drawing.Size(25, 25);
+                idle_time.Size = new System.Drawing.Size(30, 26);  // if arrival time is larger than 0
                 TextBox idle_processing = new TextBox();
-                idle_processing.Size = new System.Drawing.Size(31, 25);
+                idle_processing.Size = new System.Drawing.Size(37, 29);
                 idle_processing.Enabled = true;
-                idle_processing.Font = new Font("Arial", 10, FontStyle.Bold);
-                idle_time.Font = new Font("Arial", 8, FontStyle.Bold);
+                //idle_processing.Font = new Font("Arial", 12, FontStyle.Regular);
+                idle_time.Font = new Font("Arial", 8, FontStyle.Regular);
                 idle_processing.Text = "idle";
                 idle_time.Text = "0";
                 flowLayoutPanel3_fcfs_nums.Controls.Add(idle_time);
                 flowLayoutPanel2_fcfs.Controls.Add(idle_processing);
             }
 
-            int first_time = 0;
+            float first_time = 0;
             first_time = service_list[0];
             Label firstpro = new Label();
             firstpro.Text = first_time.ToString();
-            firstpro.Size = new System.Drawing.Size(25, 25);
-            firstpro.Font = new Font("Arial", 8, FontStyle.Bold);
+            firstpro.Size = new System.Drawing.Size(35, 26);
+            firstpro.Font = new Font("Arial", 8, FontStyle.Regular);
             flowLayoutPanel3_fcfs_nums.Controls.Add(firstpro);
 
             TextBox mm = new TextBox();
             mm.Enabled = true;
-            mm.Size = new System.Drawing.Size(25, 25);
-            mm.Font = new Font("Arial", 10, FontStyle.Bold);
+            mm.Size = new System.Drawing.Size(35, 29);
+           // mm.Font = new Font("Arial", 10, FontStyle.Bold);
             string ss = "P" + process_fcfs[0].Pid.ToString();
             mm.Text = ss;
             mm.ReadOnly = true;
@@ -369,16 +369,16 @@ namespace Version1
 
                 if (flag > 0 && ((process_fcfs[i].arrival_time) - (finish_list[i - 1])) > 0)
                 {
-                    int idlee_time;
+                    float idlee_time;
                     idlee_time = finish_list[i - 1];
                     Label idle_time = new Label();
                     idle_time.Text = idlee_time.ToString();
-                    idle_time.Size = new System.Drawing.Size(25, 25);
+                    idle_time.Size = new System.Drawing.Size(35, 26);
                     TextBox idle_processing = new TextBox();
-                    idle_processing.Size = new System.Drawing.Size(31, 25);
+                    idle_processing.Size = new System.Drawing.Size(37, 29);
                     idle_processing.Enabled = true;
-                    idle_processing.Font = new Font("Arial", 10, FontStyle.Bold);
-                    idle_time.Font = new Font("Arial", 8, FontStyle.Bold);
+                   // idle_processing.Font = new Font("Arial", 12, FontStyle.Regular);
+                    idle_time.Font = new Font("Arial", 8, FontStyle.Regular);
                     idle_processing.Text = "idle";
 
                     flowLayoutPanel3_fcfs_nums.Controls.Add(idle_time);
@@ -386,17 +386,18 @@ namespace Version1
                     flag--;
 
 
-                    int next_time;
+                    float next_time;
                     next_time = process_fcfs[i].arrival_time;
                     Label next_time1 = new Label();
                     next_time1.Text = next_time.ToString();
-                    next_time1.Size = new System.Drawing.Size(25, 25);
-                    next_time1.Font = new Font("Arial", 8, FontStyle.Bold);
+                    next_time1.Size = new System.Drawing.Size(35, 26);
+                    next_time1.Font = new Font("Arial", 8, FontStyle.Regular);
                     flowLayoutPanel3_fcfs_nums.Controls.Add(next_time1);
 
                     TextBox zz = new TextBox();
                     zz.Enabled = true;
-                    zz.Size = new System.Drawing.Size(25, 25);
+                    zz.Size = new System.Drawing.Size(35, 29);
+                    //zz.Font = new Font("Arial", 10, FontStyle.Regular);
                     string zzz = "P" + process_fcfs[i].Pid.ToString();
                     zz.Text = zzz;
                     zz.ReadOnly = true;
@@ -405,17 +406,18 @@ namespace Version1
                 }
                 else
                 {
-                    int next_time;
+                   float next_time;
                     next_time = finish_list[i - 1];
                     Label next_time1 = new Label();
                     next_time1.Text = next_time.ToString();
-                    next_time1.Size = new System.Drawing.Size(25, 25);
-                    next_time1.Font = new Font("Arial", 8, FontStyle.Bold);
+                    next_time1.Size = new System.Drawing.Size(35, 26);
+                    next_time1.Font = new Font("Arial", 8, FontStyle.Regular);
                     flowLayoutPanel3_fcfs_nums.Controls.Add(next_time1);
 
                     TextBox zz = new TextBox();
                     zz.Enabled = true;
-                    zz.Size = new System.Drawing.Size(25, 25);
+                    zz.Size = new System.Drawing.Size(35, 29);
+                    //zz.Font = new Font("Arial", 10, FontStyle.Bold);
                     string zzz = "P" + process_fcfs[i].Pid.ToString();
                     zz.Text = zzz;
                     zz.ReadOnly = true;
@@ -431,8 +433,8 @@ namespace Version1
             }
             //last time label
             Label last_time21 = new Label();
-            last_time21.Size = new System.Drawing.Size(25, 25);
-            last_time21.Font = new Font("Arial", 8, FontStyle.Bold);
+            last_time21.Size = new System.Drawing.Size(35, 29);
+            last_time21.Font = new Font("Arial", 8, FontStyle.Regular);
             last_time21.Text = item.ToString();
             flowLayoutPanel3_fcfs_nums.Controls.Add(last_time21);
         }
@@ -453,10 +455,10 @@ namespace Version1
         class Process
         {
             public int Pid;  //process id
-            public int burst_time;
-            public int waiting_time = 0;
-            public int last_active = 0;
-            public int arrival_time;
+            public float burst_time;
+            public float waiting_time = 0;
+            public float last_active = 0;
+            public float arrival_time;
         }
 
 

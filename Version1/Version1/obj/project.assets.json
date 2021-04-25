@@ -8,24 +8,30 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Elsahy\\.nuget\\packages\\": {}
+    "C:\\Users\\Nourhan Habib\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Elsahy\\Desktop\\Os project\\CPU-Scheduling-Simulator\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+      "projectUniqueName": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
       "projectName": "Version1",
-      "projectPath": "C:\\Users\\Elsahy\\Desktop\\Os project\\CPU-Scheduling-Simulator\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
-      "packagesPath": "C:\\Users\\Elsahy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Elsahy\\Desktop\\Os project\\CPU-Scheduling-Simulator\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
+      "projectPath": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+      "packagesPath": "C:\\Users\\Nourhan Habib\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Elsahy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Nourhan Habib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

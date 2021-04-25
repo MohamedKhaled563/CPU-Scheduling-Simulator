@@ -177,11 +177,11 @@ namespace Version1
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.flowLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.tabPage1.Size = new System.Drawing.Size(864, 557);
+            this.tabPage1.Size = new System.Drawing.Size(864, 553);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "FCFS";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -189,9 +189,9 @@ namespace Version1
             // Remove_all_fcfs
             // 
             this.Remove_all_fcfs.ForeColor = System.Drawing.Color.Red;
-            this.Remove_all_fcfs.Location = new System.Drawing.Point(34, 84);
+            this.Remove_all_fcfs.Location = new System.Drawing.Point(37, 92);
             this.Remove_all_fcfs.Name = "Remove_all_fcfs";
-            this.Remove_all_fcfs.Size = new System.Drawing.Size(298, 41);
+            this.Remove_all_fcfs.Size = new System.Drawing.Size(253, 32);
             this.Remove_all_fcfs.TabIndex = 18;
             this.Remove_all_fcfs.Text = "Remove all processes";
             this.Remove_all_fcfs.UseVisualStyleBackColor = true;
@@ -204,7 +204,7 @@ namespace Version1
             this.label7.Location = new System.Drawing.Point(199, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 15);
+            this.label7.Size = new System.Drawing.Size(113, 18);
             this.label7.TabIndex = 16;
             this.label7.Text = "Enter burst time:";
             // 
@@ -215,32 +215,33 @@ namespace Version1
             this.label5.Location = new System.Drawing.Point(199, 249);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(121, 15);
+            this.label5.Size = new System.Drawing.Size(141, 18);
             this.label5.TabIndex = 14;
             this.label5.Text = "Enter arrival time:";
             // 
             // arrivalText_fcfs
             // 
-            this.arrivalText_fcfs.Location = new System.Drawing.Point(410, 238);
+            this.arrivalText_fcfs.Location = new System.Drawing.Point(388, 249);
             this.arrivalText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.arrivalText_fcfs.Name = "arrivalText_fcfs";
-            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 29);
+            this.arrivalText_fcfs.Size = new System.Drawing.Size(148, 30);
             this.arrivalText_fcfs.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(199, 342);
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(62, 339);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(152, 15);
+            this.label4.Size = new System.Drawing.Size(199, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "average waiting time =";
             // 
             // waitingText_fcfs
             // 
-            this.waitingText_fcfs.Location = new System.Drawing.Point(410, 331);
+            this.waitingText_fcfs.Location = new System.Drawing.Point(388, 329);
             this.waitingText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.waitingText_fcfs.Name = "waitingText_fcfs";
             this.waitingText_fcfs.Size = new System.Drawing.Size(140, 29);
@@ -253,16 +254,16 @@ namespace Version1
             this.label3.Location = new System.Drawing.Point(34, 140);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(456, 15);
+            this.label3.Size = new System.Drawing.Size(538, 18);
             this.label3.TabIndex = 10;
             this.label3.Text = "Enter burst time and arrival time of the process and click insert button:";
             // 
             // burstText_fcfs
             // 
-            this.burstText_fcfs.Location = new System.Drawing.Point(410, 191);
+            this.burstText_fcfs.Location = new System.Drawing.Point(388, 200);
             this.burstText_fcfs.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.burstText_fcfs.Name = "burstText_fcfs";
-            this.burstText_fcfs.Size = new System.Drawing.Size(148, 29);
+            this.burstText_fcfs.Size = new System.Drawing.Size(148, 30);
             this.burstText_fcfs.TabIndex = 5;
             // 
             // label2
@@ -279,16 +280,16 @@ namespace Version1
             this.label1.Location = new System.Drawing.Point(34, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 15);
+            this.label1.Size = new System.Drawing.Size(324, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter number of processes ,then click ok:";
             // 
             // nofprocesses
             // 
-            this.nofprocesses.Location = new System.Drawing.Point(410, 51);
+            this.nofprocesses.Location = new System.Drawing.Point(388, 51);
             this.nofprocesses.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.nofprocesses.Name = "nofprocesses";
-            this.nofprocesses.Size = new System.Drawing.Size(148, 29);
+            this.nofprocesses.Size = new System.Drawing.Size(148, 30);
             this.nofprocesses.TabIndex = 0;
             // 
             // button2
@@ -341,8 +342,8 @@ namespace Version1
             // flowLayoutPanel3_fcfs_nums
             // 
             this.flowLayoutPanel3_fcfs_nums.AutoSize = true;
-            this.flowLayoutPanel3_fcfs_nums.Location = new System.Drawing.Point(4, 6);
-            this.flowLayoutPanel3_fcfs_nums.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.flowLayoutPanel3_fcfs_nums.Location = new System.Drawing.Point(4, 2);
+            this.flowLayoutPanel3_fcfs_nums.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.flowLayoutPanel3_fcfs_nums.Name = "flowLayoutPanel3_fcfs_nums";
             this.flowLayoutPanel3_fcfs_nums.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel3_fcfs_nums.TabIndex = 1;
