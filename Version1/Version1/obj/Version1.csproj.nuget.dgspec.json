@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {}
+    "C:\\Users\\salma\\Desktop\\OS_cpuscheduling\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {
+    "C:\\Users\\salma\\Desktop\\OS_cpuscheduling\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+        "projectUniqueName": "C:\\Users\\salma\\Desktop\\OS_cpuscheduling\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
         "projectName": "Version1",
-        "projectPath": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
-        "packagesPath": "C:\\Users\\Nourhan Habib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nourhan Habib\\OneDrive\\Desktop\\cpu_scheduler\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
+        "projectPath": "C:\\Users\\salma\\Desktop\\OS_cpuscheduling\\CPU-Scheduling-Simulator\\Version1\\Version1\\Version1.csproj",
+        "packagesPath": "C:\\Users\\salma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\salma\\Desktop\\OS_cpuscheduling\\CPU-Scheduling-Simulator\\Version1\\Version1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nourhan Habib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\salma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

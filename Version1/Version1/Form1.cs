@@ -14,6 +14,29 @@ namespace Version1
 {
     public partial class Form1 : Form
     {
+        /*nonpreemptive priority global variables*/
+
+        public struct PProcess
+
+        {
+            public int ProcessID;
+            public int ProcessPriority;
+            public double ProcessBurstTime;
+            public double ProcessArrivalTime;
+            public double ProcessStartingTime;
+            public double ProcessTotalWaitingTime;
+
+        }
+
+        int enter2_count = 0; /* global variable to count no. of times insert button is pressed*/
+        public int noOfProcesses = 0;/* global variable to set no. of processes after ok button is pressed*/
+        PProcess[] processarray = new PProcess[20]; /*global array to hold all the processes being inserted by the user */
+        int processarray2_count = 0;/*global variable to hold actual length of processarray2 (no. of processes+ idle processes)*/
+        double TotalWaitingTime = 0; /*global variable to hold total waiting time for all the processes*/
+        PProcess[] processarray2 = new PProcess[30]; /*global array to hold all the processes(including idle processes)*/
+        DataTable DT_priorityNonPreemptive = new DataTable();
+
+        /*end of  nonpreemptive pirority global variables*/
         DataTable dt = new DataTable();
         Dictionary<string, KeyValuePair<float, float>> processes = new Dictionary<string, KeyValuePair<float, float>>();
         int totalTime = 0;
@@ -21,6 +44,8 @@ namespace Version1
         public Form1()
         {
             InitializeComponent();
+            
+
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -53,6 +78,24 @@ namespace Version1
             DT_p.Columns.Add("Arrive");
             DT_p.Columns.Add("Priority");
             dataGridView_pp.DataSource = DT_p;
+            /*priority(nonpreemptive) datagrid*/
+            dataGridView_nppriority.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            DT_priorityNonPreemptive.Columns.Add("Process ID");
+            DT_priorityNonPreemptive.Columns.Add("Arrival Time");
+            DT_priorityNonPreemptive.Columns.Add("Burst Time");
+            DT_priorityNonPreemptive.Columns.Add("Priority");
+            dataGridView_nppriority.DataSource = DT_priorityNonPreemptive;
+            /*end of priority(nonpreemptive) datagrid*/
+            /* nonpreemptive priority initilization**/
+            gantChartLabel_nppriority.Hide();
+            avgLabel_nppriority.Hide();
+            avgTxt_nppriority.Hide();
+            insertButton_nppriority.Enabled = false;
+            drawGantChartButton_nppriority.Enabled = false;
+            resetButton_nppriority.Enabled = false;
+            dataGridView_nppriority.AllowUserToAddRows = false;
+            /*end of nonpreemptive priority initilization*/
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1044,9 +1087,349 @@ namespace Version1
             waiting /= (size);
             label22.Text = "Average Waiting Time:  " + waiting.ToString();
         }
+
         #endregion
 
+        /********************************* Priority Nonpreemptive ****************************************/
+        #region Priority Nonpreemptive
 
+        private void insertButton_nppriority_Click(object sender, EventArgs e)
+        {
+            add_process_nppriority();
+
+            if (enter2_count == noOfProcesses)
+            {
+                Init();
+
+            }
+        }
+        private void add_process_nppriority()
+        {
+            processarray[enter2_count].ProcessID = Convert.ToInt32(processIDTxt_nppriority.Text);
+            processarray[enter2_count].ProcessBurstTime = Convert.ToDouble(burstTxt_nppriority.Text);
+            processarray[enter2_count].ProcessPriority = Convert.ToInt32(PriorityTxt_nppriority.Text);
+            processarray[enter2_count].ProcessArrivalTime = Convert.ToDouble(arrivalTxt_nppriority.Text);
+
+            enter2_count++;
+            if (enter2_count == 1)
+            {
+                resetButton_nppriority.Enabled = true;
+            }
+
+
+            DT_priorityNonPreemptive.Rows.Add(Convert.ToInt32(processIDTxt_nppriority.Text),
+                     Convert.ToDouble(arrivalTxt_nppriority.Text),
+                       Convert.ToDouble(burstTxt_nppriority.Text),
+                      Convert.ToInt32(PriorityTxt_nppriority.Text));
+
+            processIDTxt_nppriority.Text = "";
+            burstTxt_nppriority.Text = "";
+            PriorityTxt_nppriority.Text = "";
+            arrivalTxt_nppriority.Text = "";
+
+        }
+        private void Init()
+        {
+            insertButton_nppriority.Enabled = false;
+            /* sorting all processes with bubble sort algorthim based on their priority*/
+            Bubble_sort_nppriority();
+            /*calculate starting time for each process & handling any idle process if exist*/
+            int p;
+            int count = 0;
+            List<int> finished_processes_index = new List<int>();
+
+            int idle_flag_nppriority = 1;
+            int firstTime_flag = 1;
+            int finished_process_flag = 0;
+            int priority_flag = 0;
+
+            /*outer for loop is time loop*/
+            for (double l = 0; l < 90; l += 0.1)
+            {
+
+                if (finished_processes_index.Count == noOfProcesses)
+                {
+                    break;
+                }
+
+                /*check if any process has arrived before or at this time "l"*/
+                for (p = 0; p < noOfProcesses; p++)
+                {
+
+                    /*check if processarray[p] has already set on processarray2 or not to handle if a process with higher 
+                    arrival time is bigger than a lower priority process */
+                    for (int w = 0; w < finished_processes_index.Count; w++)
+                    {
+                        finished_process_flag = 0;
+                        if (p == finished_processes_index[w])
+                        {
+                            finished_process_flag = 1;
+                            break;
+                        }
+                    }
+                    if (finished_process_flag == 0)
+                    {
+                        if (processarray[p].ProcessArrivalTime <= l)
+                        {
+                            idle_flag_nppriority = 0;
+
+                            if (firstTime_flag == 0)
+                            {
+                                firstTime_flag = 1;
+                                processarray2[processarray2_count].ProcessBurstTime = l -
+                                    processarray2[processarray2_count].ProcessStartingTime;
+                                processarray2_count++;
+
+                            }
+
+                            for (int h = 0; h < noOfProcesses; h++)
+                            {
+                                if (h != p)
+                                {
+                                    if ((processarray[p].ProcessPriority == processarray[h].ProcessPriority) &&
+                                        (processarray[p].ProcessArrivalTime == processarray[h].ProcessArrivalTime))
+                                    {
+                                        priority_flag = 1;
+                                        break;
+
+                                    }
+                                }
+                            }
+                            break;
+                        }
+
+                    }
+
+
+                }
+                if (idle_flag_nppriority == 1 && firstTime_flag == 1)
+                {
+                    firstTime_flag = 0;
+                    processarray2[processarray2_count].ProcessStartingTime = l;
+                    processarray2[processarray2_count].ProcessID = 90;
+
+                }
+                else if (idle_flag_nppriority == 0)
+                {
+                    idle_flag_nppriority = 1;
+
+                    if (priority_flag == 1)
+                    {
+                        priority_flag = 0;
+                        List<int> same_priority_processes_index = new List<int>();
+                        double temp_l = l;
+                        same_priority_processes_index.Add(p);
+                        processarray[p].ProcessStartingTime = temp_l;
+                        temp_l += 2;
+                        for (int n = 0; n < noOfProcesses; n++)
+                        {
+                            if (n != p)
+                            {
+                                if ((processarray[p].ProcessPriority == processarray[n].ProcessPriority) &&
+                                    (processarray[p].ProcessArrivalTime == processarray[n].ProcessArrivalTime))
+                                {
+                                    same_priority_processes_index.Add(n);
+                                    processarray[n].ProcessStartingTime = temp_l;
+                                    temp_l += 2;
+                                }
+                            }
+                        }
+                        PProcess temp2;
+
+                        while (same_priority_processes_index.Count != 0)
+                        {
+                            for (int d = 0; d < same_priority_processes_index.Count; d++)
+                            {
+                                temp2 = processarray[same_priority_processes_index[d]];
+                                temp2.ProcessStartingTime = l;
+                                if (processarray[same_priority_processes_index[d]].ProcessBurstTime <= 2)
+                                {
+                                    temp2.ProcessBurstTime = processarray[same_priority_processes_index[d]].ProcessBurstTime;
+                                    finished_processes_index.Add(same_priority_processes_index[d]);
+                                    same_priority_processes_index.RemoveAt(d);
+                                    count++;
+
+                                }
+                                else
+                                {
+                                    temp2.ProcessBurstTime = 2;
+                                    processarray[same_priority_processes_index[d]].ProcessBurstTime -= 2;
+                                }
+                                processarray2[processarray2_count] = temp2;
+                                l += processarray2[processarray2_count].ProcessBurstTime;
+                                processarray2_count++;
+
+                            }
+                        }
+
+                        l -= 0.1;
+
+
+                    }
+                    else
+                    {
+
+                        processarray[p].ProcessStartingTime = l;
+                        processarray2[processarray2_count] = processarray[p];
+                        l = l + processarray[p].ProcessBurstTime - 0.1;
+                        count++;
+                        processarray2_count++;
+                        finished_processes_index.Add(p);
+
+
+                    }
+
+
+
+                }
+
+
+            }
+            drawGantChartButton_nppriority.Enabled = true;
+
+        }
+
+        private void Bubble_sort_nppriority()
+        {
+            int i;
+            int j;
+            PProcess temp;
+            for (i = 0; i < noOfProcesses; i++)
+            {
+
+                for (j = 0; j < (noOfProcesses - 1); j++)
+                {
+                    /* swap adjacent elements if they are out of order */
+                    if (processarray[j].ProcessPriority > processarray[j + 1].ProcessPriority)
+                    {
+                        temp = processarray[j];
+                        processarray[j] = processarray[j + 1];
+                        processarray[j + 1] = temp;
+                    }
+
+                }
+            }
+        }
+        private void TotalWaitingTime_nppriority()
+        {
+            /* calculate waiting time for each process & totatl waiting time for all processes*/
+            for (int y = 0; y < noOfProcesses; y++)
+            {
+                processarray[y].ProcessTotalWaitingTime = processarray[y].ProcessStartingTime - processarray[y].ProcessArrivalTime;
+                TotalWaitingTime += processarray[y].ProcessTotalWaitingTime;
+            }
+        }
+
+        /* function to draw gantt chart of priority non preemptive*/
+        private void gantt_chart_priority()
+        {
+            double next_time = 0;
+            /*int x_txt = 47;*/
+            int q = 0;
+
+            for (int i = 0; i < processarray2_count; i++)
+            {
+                TextBox zz = new TextBox();
+                zz.Enabled = true;
+                q = 30 * Convert.ToInt32(processarray2[i].ProcessBurstTime);
+                zz.Size = new Size(q, 40);
+                zz.Font = new Font("Arial", 16, FontStyle.Regular);
+                string zzz;
+                if (processarray2[i].ProcessID == 90)
+                {
+                    zzz = "Idle";
+                }
+                else
+                {
+                    zzz = "P" + processarray2[i].ProcessID.ToString();
+                }
+                zz.Text = zzz;
+                zz.ReadOnly = true;
+
+                flowLayoutPanel2_nppriority.Controls.Add(zz);
+
+                next_time = processarray2[i].ProcessStartingTime;
+                Label next_time1 = new Label();
+                next_time1.Text = Math.Round(next_time, 1).ToString();
+                next_time1.Font = new Font("Arial", 12, FontStyle.Regular);
+                next_time1.Size = new Size(q, 34);
+
+                flowLayoutPanel3_nppriority.Controls.Add(next_time1);
+
+
+            }
+            /* last time label */
+            Label last_time21 = new Label();
+            last_time21.Font = new Font("Arial", 12, FontStyle.Regular);
+            last_time21.Text = Math.Round((processarray2[processarray2_count - 1].ProcessBurstTime +
+                processarray2[processarray2_count - 1].ProcessStartingTime), 1).ToString();
+            flowLayoutPanel3_nppriority.Controls.Add(last_time21);
+
+
+
+        }
+
+
+       
+
+        private void resetButton_nppriority_Click(object sender, EventArgs e)
+        {
+            /*intiallize all global variables and arrays*/
+
+            for (int i = 0; i < noOfProcesses; i++)
+            {
+                processarray = processarray.Where((source, index) => index != i).ToArray();
+
+            }
+            dataGridView_nppriority.AllowUserToAddRows = false;
+            for (int i = 0; i < dataGridView_nppriority.RowCount; i++)
+            {
+
+                dataGridView_nppriority.Rows.RemoveAt(dataGridView_nppriority.Rows[i].Index);
+                i--;
+
+
+            }
+            for (int k = 0; k < processarray2_count; k++)
+            {
+                processarray2 = processarray2.Where((source, index) => index != k).ToArray();
+
+
+            }
+            enter2_count = 0;
+            noOfProcesses = 0;
+            processarray2_count = 0;
+            TotalWaitingTime = 0;
+            flowLayoutPanel2_nppriority.Controls.Clear();
+            flowLayoutPanel3_nppriority.Controls.Clear();
+            gantChartLabel_nppriority.Hide();
+            avgLabel_nppriority.Hide();
+            avgTxt_nppriority.Hide();
+            okButton_nppriority.Enabled = true;
+            numericUpDown1_nppriority.Enabled = true;
+            insertButton_nppriority.Enabled = false;
+
+        }
+
+        private void drawGantChartButton_nppriority_Click(object sender, EventArgs e)
+        {
+            avgLabel_nppriority.Show();
+            avgTxt_nppriority.Show();
+            TotalWaitingTime_nppriority();
+            avgTxt_nppriority.Text = Math.Round((TotalWaitingTime / Convert.ToDouble(noOfProcesses)), 1).ToString("N");
+            gantChartLabel_nppriority.Show();
+            gantt_chart_priority();
+            drawGantChartButton_nppriority.Enabled = false;
+        }
+
+        private void okButton_nppriority_Click(object sender, EventArgs e)
+        {
+            numericUpDown1_nppriority.Enabled = false;
+            okButton_nppriority.Enabled = false;
+            insertButton_nppriority.Enabled = true;
+            noOfProcesses = Convert.ToInt32(numericUpDown1_nppriority.Value);
+        }
+        #endregion
     }
 
 
