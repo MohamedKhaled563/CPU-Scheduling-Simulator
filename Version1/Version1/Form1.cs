@@ -679,24 +679,24 @@ namespace Version1
             return l;
         }
         double waitingTime = 0;
+
+        double totalBurstrr = 0;
+        double totalArrivalrr = 0;
         public void set_waiting()
         {
-            double totalBurst = 0;
-            double totalArrival = 0;
-            for (int i = 0; i < list_process.Count; i++)
-            {
-                totalBurst += list_process[i].get_burst();
-                totalArrival += list_process[i].arrival_time;
-            }
-            waitingTime -= (totalBurst + totalArrival);
+            waitingTime -= (totalBurstrr + totalArrivalrr);
             waitingTime /= list_process.Count;
-            Average_label.Text = "Average waiting time :" + total_waiting.ToString();
+            waitingTime /= 10.0;
+            Average_label.Text = "Average waiting time :" + waitingTime.ToString();
         }
-
-
         private void RR_simulate_Click(object sender, EventArgs e)
         {
             List<process> SortedList = list_process.OrderBy(o => o.arrival_time).ToList();
+            for (int i = 0; i < SortedList.Count; i++)
+            {
+                totalBurstrr += SortedList[i].get_burst();
+                totalArrivalrr += SortedList[i].arrival_time;
+            }
             bool[] served = new bool[10];
             for (int i = 0; i < 10; ++i) served[i] = false;
             bool remain = false;
@@ -769,6 +769,7 @@ namespace Version1
 
                                     Label l1 = Add_label_time_rr(running_time/10.0);
                                     flowLayoutPanel3.Controls.Add(l1);
+                                    waitingTime += running_time;
                                 }
                                 SortedList[i].set_burst(0);
                                 served[i] = true;
@@ -796,8 +797,7 @@ namespace Version1
                     }
                 }
             }
-
-
+            set_waiting();
         }
 
         private void button4_Click(object sender, EventArgs e)
