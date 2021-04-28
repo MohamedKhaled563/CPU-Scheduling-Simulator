@@ -39,25 +39,26 @@ namespace Version1
         /*end of  nonpreemptive pirority global variables*/
         DataTable dt = new DataTable();
         Dictionary<string, KeyValuePair<float, float>> processes = new Dictionary<string, KeyValuePair<float, float>>();
-        int totalTime = 0;
+        float totalTime = 0;
 
         public Form1()
         {
             InitializeComponent();
-            
+
 
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             dt.Columns.Add("Process");
             dt.Columns.Add("Arrival Time");
             dt.Columns.Add("Burst Time");
             processGrid.DataSource = dt;
-
+            premptiveRB.Visible = false;
+            nonPremptiveRB.Visible = false;
             //roundrobin  datagrid
             RR_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-           // RR_dataGridView.RowHeadersVisible = false;
+            // RR_dataGridView.RowHeadersVisible = false;
             dt_RR.Columns.Add("Process");
             dt_RR.Columns.Add("Arival Time");
             dt_RR.Columns.Add("Burst Time");
@@ -102,12 +103,12 @@ namespace Version1
         {
             if (tabControl1.SelectedIndex == 2)
             {
-      
+
                 SJFTabPage.BackColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 ganttChart.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 insert.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
                 drawButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#3b6978");
-                
+
                 processGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 processGrid.BackgroundColor = System.Drawing.ColorTranslator.FromHtml("#84a9ac");
                 processTF.BackColor = System.Drawing.ColorTranslator.FromHtml("#e4e3e3");
@@ -131,9 +132,9 @@ namespace Version1
             {
                 var process = new KeyValuePair<float, float>(float.Parse(arrivalTime), float.Parse(burstTime));
                 processes[processName] = process;
-                totalTime += Int32.Parse(burstTime);
+                totalTime += float.Parse(burstTime);
             }
-       
+
 
             if (processName != "" && arrivalTime != "" && burstTime != "")
             {
@@ -267,10 +268,10 @@ namespace Version1
             {
                 totalArrivalTime += process.Value.Key;
             }
-            averageTAT -= totalArrivalTime;
-            averageWT = averageTAT - totalTime;
-            averageTAT /= processes.Count;
-            averageWT /= processes.Count;
+            averageTAT = (float)Math.Round(averageTAT - totalArrivalTime + firstArrival * (processes.Count), 2);
+            averageWT = (float)Math.Round(averageTAT - totalTime, 2);
+            averageTAT = averageTAT / processes.Count;
+            averageWT = (averageWT / processes.Count);
             averageTurnAroundTime.Text += averageTAT.ToString();
             averageWaitingTime.Text += averageWT.ToString();
         }
@@ -402,7 +403,7 @@ namespace Version1
             TextBox mm = new TextBox();
             mm.Enabled = true;
             mm.Size = new System.Drawing.Size(35, 29);
-           // mm.Font = new Font("Arial", 10, FontStyle.Bold);
+            // mm.Font = new Font("Arial", 10, FontStyle.Bold);
             string ss = "P" + process_fcfs[0].Pid.ToString();
             mm.Text = ss;
             mm.ReadOnly = true;
@@ -420,7 +421,7 @@ namespace Version1
                     TextBox idle_processing = new TextBox();
                     idle_processing.Size = new System.Drawing.Size(37, 29);
                     idle_processing.Enabled = true;
-                   // idle_processing.Font = new Font("Arial", 12, FontStyle.Regular);
+                    // idle_processing.Font = new Font("Arial", 12, FontStyle.Regular);
                     idle_time.Font = new Font("Arial", 8, FontStyle.Regular);
                     idle_processing.Text = "idle";
 
@@ -449,7 +450,7 @@ namespace Version1
                 }
                 else
                 {
-                   float next_time;
+                    float next_time;
                     next_time = finish_list[i - 1];
                     Label next_time1 = new Label();
                     next_time1.Text = next_time.ToString();
@@ -548,18 +549,18 @@ namespace Version1
         { //set quantum
             try
             {
-                quantum = Int32.Parse(quantum_TextBox.Text);
+                quantum = Convert.ToInt32(Convert.ToDouble(quantum_TextBox.Text) * 10);
                 if (quantum < 1 || quantum > 100)
                 {
                     Error_label.Text = "Quantum time generally form 10 to 100 ms";
                     quantum = 0;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Error_label.Text = "Invalid Quantum number";
             }
-            
+
         }
 
         Label Add_label_process(int i)
@@ -580,7 +581,7 @@ namespace Version1
         Label Add_label_process_SJF(string processName)
         {
             Label l = new Label();
-        
+
             l.Text = processName;
 
             l.ForeColor = Color.Black;
@@ -600,7 +601,7 @@ namespace Version1
 
             l.Name = "label" + i.ToString();
             int x = i;
-            l.Text ="" + i.ToString();
+            l.Text = "" + i.ToString();
             l.ForeColor = Color.Black;
             l.BackColor = Color.White;
             l.Width = 40;
@@ -609,14 +610,41 @@ namespace Version1
 
             if (first)
             {
-              
 
-                l.Margin = new Padding(50 ,2, 0, 5);
+
+                l.Margin = new Padding(50, 2, 0, 5);
                 first = false;
             }
             else
             {
-               
+
+                l.Margin = new Padding(45, 2, 0, 5);
+            }
+            return l;
+        }
+        Label Add_label_time_rr(double i)
+        {
+            Label l = new Label();
+
+            l.Name = "label" + i.ToString();
+            double x = i;
+            l.Text = "" + i.ToString();
+            l.ForeColor = Color.Black;
+            l.BackColor = Color.White;
+            l.Width = 40;
+            l.Height = 28;
+            l.TextAlign = ContentAlignment.MiddleLeft;
+
+            if (first)
+            {
+
+
+                l.Margin = new Padding(50, 2, 0, 5);
+                first = false;
+            }
+            else
+            {
+
                 l.Margin = new Padding(45, 2, 0, 5);
             }
             return l;
@@ -640,25 +668,28 @@ namespace Version1
 
             return l;
         }
-        public void set_waiting(int q,int  k)
+        double waitingTime = 0;
+        public void set_waiting()
         {
-
+            double totalBurst = 0;
+            double totalArrival = 0;
             for (int i = 0; i < list_process.Count; i++)
             {
-                if (list_process[i].get_burst() > 0 && i != k )
-                {
-                    int x = list_process[i].get_waiting();
-                    x += q;
-                    list_process[i].set_waiting(x);
-                }
+                totalBurst += list_process[i].get_burst();
+                totalArrival += list_process[i].arrival_time;
             }
-
+            waitingTime -= (totalBurst + totalArrival);
+            waitingTime /= list_process.Count;
+            Average_label.Text = "Average waiting time :" + total_waiting.ToString();
         }
 
 
         private void RR_simulate_Click(object sender, EventArgs e)
         {
             List<process> SortedList = list_process.OrderBy(o => o.arrival_time).ToList();
+            bool[] served = new bool[10];
+            for (int i = 0; i < 10; ++i) served[i] = false;
+            bool remain = false;
             label9.Text = "0";
             if (quantum < 1 || quantum > 100)
             {
@@ -668,63 +699,95 @@ namespace Version1
             }
             Error_label.Text = "";
             //simulate 
-            while(SortedList.Count != 0  )
-            {
-                for(int i = 0; i < SortedList.Count; i++)
-                {
-                    if(SortedList[i].get_burst() > quantum)
-                    {
-                        //first time
-                        running_time += quantum;
-                        int x = SortedList[i].get_burst();
-                        x -= quantum;
-                        set_waiting(quantum, i);
-                        SortedList[i].set_burst(x);
 
-                        Label l = Add_label_process(i);
+            bool k = true;
+            while (k)
+            {
+                for (int i = 0; i < SortedList.Count; i++)
+                {  
+                    if (SortedList[i].arrival_time > running_time)
+                    {
+                        //idle process
+                        //adjust running time 
+                        running_time = SortedList[i].arrival_time;
+
+                        //print idle
+                        Label l = Add_label_process_SJF("Idle");
                         flowLayoutPanel2.Controls.Add(l);
 
-                        Label l1 = Add_label_time(running_time);
+                        Label l1 = Add_label_time_rr(running_time/10.0);
                         flowLayoutPanel3.Controls.Add(l1);
+                        i--;
+                        continue;
                     }
                     else
                     {
-                        if(SortedList[i].get_burst() > 0)
+                        while ((SortedList[i].get_burst() != 0))
                         {
-                            Label l = Add_label_process(i);
-                            flowLayoutPanel2.Controls.Add(l);
+                            if ((i == SortedList.Count - 1) && ((SortedList[i].get_burst() == 0)||(remain))&&(served[i]==true))
+                            {
+                                served[i] = false;
+                                break;
+                            }
+                            if ((i != SortedList.Count - 1) && (SortedList[i + 1].arrival_time <= running_time) && (SortedList[i + 1].get_burst() > 0) && (served[i] == true))
+                            {
+                                served[i] = false;
+                                break;
+                            }
+                            if (SortedList[i].get_burst() > quantum)
+                            {
+                                //first time
+                                running_time += quantum;
+                                int x = SortedList[i].get_burst();
+                                x -= quantum;
+                                SortedList[i].set_burst(x);
 
-                            set_waiting(SortedList[i].get_burst(), i);
+                                Label l = Add_label_process_SJF(SortedList[i].Process_name);
+                                flowLayoutPanel2.Controls.Add(l);
 
-                            running_time += SortedList[i].get_burst();
+                                Label l1 = Add_label_time_rr(running_time/10.0);
+                                flowLayoutPanel3.Controls.Add(l1);
+                                served[i] = true;
+                            }
+                            else
+                            {
+                                if (SortedList[i].get_burst() > 0)
+                                {
+                                    Label l = Add_label_process_SJF(SortedList[i].Process_name);
+                                    flowLayoutPanel2.Controls.Add(l);
+                                    running_time += SortedList[i].get_burst();
 
-                            Label l1 = Add_label_time(running_time);
-                            flowLayoutPanel3.Controls.Add(l1);
+                                    Label l1 = Add_label_time_rr(running_time/10.0);
+                                    flowLayoutPanel3.Controls.Add(l1);
+                                }
+                                SortedList[i].set_burst(0);
+                                served[i] = true;
+                            }
+                            if (i == SortedList.Count - 1){ 
+                            for (int rem = 0; rem < SortedList.Count; rem++)
+                            {
+                                if ((SortedList[rem].get_burst() != 0))
+                                {
+                                    remain = true;
+                                }
+                            }
+                            }
                         }
-                        SortedList[i].set_burst(0);
                     }
+
                 }
-
-                bool k = false;
-
+                // check finish or not
+                k = false;
                 for (int i = 0; i < SortedList.Count; i++)
                 {
-                    k = (k || !(SortedList[i].get_burst() == 0));
+                    if ((SortedList[i].get_burst() != 0))
+                    {
+                        k = true;
+                    }
                 }
-
-                if(!k)
-                {
-                    break;
-                }
-                k = false;
             }
 
-            for(int i = 0; i < SortedList.Count; i++ )
-            {
-                total_waiting += SortedList[i].waiting_time;
-            }
-            total_waiting = total_waiting / SortedList.Count;
-            Average_label.Text = "Average waiting time :" + total_waiting.ToString();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -732,8 +795,9 @@ namespace Version1
             try
             {
                 // insert button 
-                burstTime = Int32.Parse(bursttime_textBox.Text);
-                arrivalTime = Int32.Parse(arrivaltime_textbox.Text);
+
+                burstTime = Convert.ToInt32(Convert.ToDouble(bursttime_textBox.Text)*10);
+                arrivalTime = Convert.ToInt32(Convert.ToDouble(arrivaltime_textbox.Text) * 10);
 
                 process p = new process(Process_textBox.Text, burstTime, arrivalTime);
                 list_process.Add(p);
@@ -742,7 +806,7 @@ namespace Version1
 
                 if (processName != "" && burstTime != 0)
                 {
-                    dt_RR.Rows.Add(Process_textBox.Text, arrivalTime, burstTime);
+                    dt_RR.Rows.Add(Process_textBox.Text, arrivalTime/10.0, burstTime/10.0);
                 }
                 else
                 {
@@ -750,11 +814,11 @@ namespace Version1
                 }
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 Error_label.Text = "Invalid P0 or Burst time ";
             }
-       
+
 
         }
 
@@ -1018,7 +1082,7 @@ namespace Version1
             double waiting = 0;
             bool idle = false;
             priority_p_process = priority_p_process.OrderBy(x => x.Value.Value).ToList();
-            for (double i = 0; i < total_time_pp; i+=0.1)
+            for (double i = 0; i < total_time_pp; i += 0.1)
             {
 
                 for (int j = 0; j < size; j++)
@@ -1029,7 +1093,7 @@ namespace Version1
                     double arrival = priority_p_process[j].Value.Key;
                     double priority = priority_p_process[j].Value.Value;
 
-                    if ((Math.Round(arrival, 1) <= Math.Round(i,1)) && (burst > 0.05))
+                    if ((Math.Round(arrival, 1) <= Math.Round(i, 1)) && (burst > 0.05))
                     {
                         idle = false;
                         //to not repeate the proces name each time
@@ -1037,7 +1101,7 @@ namespace Version1
                         {
                             Label L = Add_label_process_pp(name);
                             flowLayoutPanel7.Controls.Add(L);
-                            Label L2 = Add_label_time_pp(Math.Round(i,1));
+                            Label L2 = Add_label_time_pp(Math.Round(i, 1));
                             flowLayoutPanel6.Controls.Add(L2);
                         }
                         lastprocess = name;
@@ -1050,7 +1114,7 @@ namespace Version1
                             string name2 = priority_p_process[l].Key.Key;
                             if ((burst2 > 0.05) && (Math.Round(arrival2, 1) <= Math.Round(i, 1)) && (name2 != name))
                             {
-                                waiting+=0.1;
+                                waiting += 0.1;
                             }
                         }
                         //re assgin burst to new one
@@ -1058,10 +1122,10 @@ namespace Version1
                         KeyValuePair<double, double> v = new KeyValuePair<double, double>(arrival, priority);
                         priority_p_process[j] = new KeyValuePair<KeyValuePair<string, double>, KeyValuePair<double, double>>(k, v);
 
-                    
+
                         if ((i > total_time_pp - 0.15) && (burst < 0.01))
                         {
-                            Label L2 = Add_label_time_pp(Math.Round((i + 0.1),1));
+                            Label L2 = Add_label_time_pp(Math.Round((i + 0.1), 1));
                             flowLayoutPanel6.Controls.Add(L2);
                         }
                         break;
@@ -1073,7 +1137,7 @@ namespace Version1
                         idle = true;
                         Label L = Add_label_process_pp("Idle");
                         flowLayoutPanel7.Controls.Add(L);
-                        Label L2 = Add_label_time_pp(Math.Round(i,1));
+                        Label L2 = Add_label_time_pp(Math.Round(i, 1));
                         flowLayoutPanel6.Controls.Add(L2);
 
                     }
@@ -1370,7 +1434,7 @@ namespace Version1
         }
 
 
-       
+
 
         private void resetButton_nppriority_Click(object sender, EventArgs e)
         {
@@ -1438,17 +1502,18 @@ namespace Version1
     {
         public string Process_name;
         int burst_Time;
-        public int waiting_time;
+        public double waiting_time;
         public int arrival_time;
+        public bool printed;
 
 
-
-       public process(string s, int burst, int arrival)
+        public process(string s, int burst, int arrival)
         {
             Process_name = s;
             burst_Time = burst;
             arrival_time = arrival;
             waiting_time = 0;
+            printed = false;
         }
         public void set_burst(int i)
         {
@@ -1463,7 +1528,7 @@ namespace Version1
             return Process_name;
         }
 
-        public int get_waiting()
+        public double get_waiting()
         {
             return waiting_time;
         }
