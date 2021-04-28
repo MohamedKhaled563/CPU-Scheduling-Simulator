@@ -50,12 +50,17 @@ namespace Version1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dt.Columns.Add("Process");
-            dt.Columns.Add("Arrival Time");
-            dt.Columns.Add("Burst Time");
+            dt.Columns.Add(" Process ");
+            dt.Columns.Add(" Arrival Time ");
+            dt.Columns.Add(" Burst Time ");
             processGrid.DataSource = dt;
             premptiveRB.Visible = false;
             nonPremptiveRB.Visible = false;
+            foreach (DataGridViewColumn column in processGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             //roundrobin  datagrid
             RR_dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             // RR_dataGridView.RowHeadersVisible = false;
@@ -243,6 +248,10 @@ namespace Version1
                 gc.Columns.Add((accumulator).ToString());
                 ganttChart.Columns[i].Width = (int)(unitWidth * (float)Math.Round((ganttChartData[i].Value), 2));
                 gc.Rows[0].SetField((accumulator).ToString(), ganttChartData[i].Key);
+            }
+            foreach (DataGridViewColumn column in ganttChart.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
             // Calculating average turn around time
