@@ -72,13 +72,12 @@ namespace Version1
             this.Process_textBox = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.SJFTabPage = new System.Windows.Forms.TabPage();
+            this.firstArrivalLabel = new System.Windows.Forms.Label();
             this.averageWaitingTime = new System.Windows.Forms.Label();
             this.averageTurnAroundTime = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.ganttChart = new System.Windows.Forms.DataGridView();
             this.drawButton = new System.Windows.Forms.Button();
-            this.nonPremptiveRB = new System.Windows.Forms.RadioButton();
-            this.premptiveRB = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.subtitle3 = new System.Windows.Forms.Label();
             this.subtitle2 = new System.Windows.Forms.Label();
@@ -399,7 +398,7 @@ namespace Version1
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(873, 557);
+            this.tabPage2.Size = new System.Drawing.Size(864, 557);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Roundrobin";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -577,13 +576,12 @@ namespace Version1
             // 
             // SJFTabPage
             // 
+            this.SJFTabPage.Controls.Add(this.firstArrivalLabel);
             this.SJFTabPage.Controls.Add(this.averageWaitingTime);
             this.SJFTabPage.Controls.Add(this.averageTurnAroundTime);
             this.SJFTabPage.Controls.Add(this.title);
             this.SJFTabPage.Controls.Add(this.ganttChart);
             this.SJFTabPage.Controls.Add(this.drawButton);
-            this.SJFTabPage.Controls.Add(this.nonPremptiveRB);
-            this.SJFTabPage.Controls.Add(this.premptiveRB);
             this.SJFTabPage.Controls.Add(this.label8);
             this.SJFTabPage.Controls.Add(this.subtitle3);
             this.SJFTabPage.Controls.Add(this.subtitle2);
@@ -601,6 +599,17 @@ namespace Version1
             this.SJFTabPage.TabIndex = 2;
             this.SJFTabPage.Text = "SJF";
             this.SJFTabPage.UseVisualStyleBackColor = true;
+            // 
+            // firstArrivalLabel
+            // 
+            this.firstArrivalLabel.AutoSize = true;
+            this.firstArrivalLabel.BackColor = System.Drawing.Color.White;
+            this.firstArrivalLabel.Location = new System.Drawing.Point(2, 392);
+            this.firstArrivalLabel.Name = "firstArrivalLabel";
+            this.firstArrivalLabel.Size = new System.Drawing.Size(19, 21);
+            this.firstArrivalLabel.TabIndex = 30;
+            this.firstArrivalLabel.Text = "0";
+            this.firstArrivalLabel.Click += new System.EventHandler(this.label31_Click);
             // 
             // averageWaitingTime
             // 
@@ -664,7 +673,7 @@ namespace Version1
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ganttChart.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ganttChart.Location = new System.Drawing.Point(1, 389);
+            this.ganttChart.Location = new System.Drawing.Point(1, 387);
             this.ganttChart.Name = "ganttChart";
             this.ganttChart.RowHeadersVisible = false;
             this.ganttChart.RowHeadersWidth = 51;
@@ -686,28 +695,6 @@ namespace Version1
             this.drawButton.UseVisualStyleBackColor = true;
             this.drawButton.Click += new System.EventHandler(this.drawButton_Click_1);
             // 
-            // nonPremptiveRB
-            // 
-            this.nonPremptiveRB.AutoSize = true;
-            this.nonPremptiveRB.Location = new System.Drawing.Point(732, 84);
-            this.nonPremptiveRB.Name = "nonPremptiveRB";
-            this.nonPremptiveRB.Size = new System.Drawing.Size(135, 25);
-            this.nonPremptiveRB.TabIndex = 23;
-            this.nonPremptiveRB.TabStop = true;
-            this.nonPremptiveRB.Text = "Non-Premptive";
-            this.nonPremptiveRB.UseVisualStyleBackColor = true;
-            // 
-            // premptiveRB
-            // 
-            this.premptiveRB.AutoSize = true;
-            this.premptiveRB.Location = new System.Drawing.Point(617, 84);
-            this.premptiveRB.Name = "premptiveRB";
-            this.premptiveRB.Size = new System.Drawing.Size(100, 25);
-            this.premptiveRB.TabIndex = 22;
-            this.premptiveRB.TabStop = true;
-            this.premptiveRB.Text = "Premprive";
-            this.premptiveRB.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             this.label8.Location = new System.Drawing.Point(0, 0);
@@ -719,7 +706,7 @@ namespace Version1
             // 
             this.subtitle3.AutoSize = true;
             this.subtitle3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.subtitle3.Location = new System.Drawing.Point(560, 136);
+            this.subtitle3.Location = new System.Drawing.Point(559, 136);
             this.subtitle3.Name = "subtitle3";
             this.subtitle3.Size = new System.Drawing.Size(77, 20);
             this.subtitle3.TabIndex = 20;
@@ -739,7 +726,7 @@ namespace Version1
             // 
             this.subtitle1.AutoSize = true;
             this.subtitle1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.subtitle1.Location = new System.Drawing.Point(251, 136);
+            this.subtitle1.Location = new System.Drawing.Point(250, 136);
             this.subtitle1.Name = "subtitle1";
             this.subtitle1.Size = new System.Drawing.Size(63, 20);
             this.subtitle1.TabIndex = 18;
@@ -747,21 +734,21 @@ namespace Version1
             // 
             // burstTimeTF
             // 
-            this.burstTimeTF.Location = new System.Drawing.Point(527, 159);
+            this.burstTimeTF.Location = new System.Drawing.Point(524, 159);
             this.burstTimeTF.Name = "burstTimeTF";
             this.burstTimeTF.Size = new System.Drawing.Size(140, 29);
             this.burstTimeTF.TabIndex = 17;
             // 
             // arrivalTimeTF
             // 
-            this.arrivalTimeTF.Location = new System.Drawing.Point(371, 159);
+            this.arrivalTimeTF.Location = new System.Drawing.Point(368, 159);
             this.arrivalTimeTF.Name = "arrivalTimeTF";
             this.arrivalTimeTF.Size = new System.Drawing.Size(140, 29);
             this.arrivalTimeTF.TabIndex = 16;
             // 
             // processTF
             // 
-            this.processTF.Location = new System.Drawing.Point(214, 159);
+            this.processTF.Location = new System.Drawing.Point(210, 159);
             this.processTF.Name = "processTF";
             this.processTF.Size = new System.Drawing.Size(140, 29);
             this.processTF.TabIndex = 15;
@@ -831,7 +818,7 @@ namespace Version1
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(873, 557);
+            this.tabPage4.Size = new System.Drawing.Size(864, 557);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Priority(p)";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1019,7 +1006,7 @@ namespace Version1
             this.tabPage3.Controls.Add(this.button8);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(873, 557);
+            this.tabPage3.Size = new System.Drawing.Size(864, 557);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "SJF (NP)";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1201,7 +1188,7 @@ namespace Version1
             this.NPPriorityTab.Controls.Add(this.noOfProcessesLabel_nppriority);
             this.NPPriorityTab.Location = new System.Drawing.Point(4, 34);
             this.NPPriorityTab.Name = "NPPriorityTab";
-            this.NPPriorityTab.Size = new System.Drawing.Size(873, 557);
+            this.NPPriorityTab.Size = new System.Drawing.Size(864, 557);
             this.NPPriorityTab.TabIndex = 5;
             this.NPPriorityTab.Text = "Priority(NP)";
             this.NPPriorityTab.UseVisualStyleBackColor = true;
@@ -1471,8 +1458,6 @@ namespace Version1
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView ganttChart;
         private System.Windows.Forms.Button drawButton;
-        private System.Windows.Forms.RadioButton nonPremptiveRB;
-        private System.Windows.Forms.RadioButton premptiveRB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label subtitle3;
         private System.Windows.Forms.Label subtitle2;
@@ -1565,5 +1550,6 @@ namespace Version1
         private System.Windows.Forms.Button okButton_nppriority;
         private System.Windows.Forms.NumericUpDown numericUpDown1_nppriority;
         private System.Windows.Forms.Label noOfProcessesLabel_nppriority;
+        private System.Windows.Forms.Label firstArrivalLabel;
     }
 }

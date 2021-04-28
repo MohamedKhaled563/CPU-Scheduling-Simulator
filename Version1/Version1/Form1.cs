@@ -56,6 +56,7 @@ namespace Version1
             processGrid.DataSource = dt;
             premptiveRB.Visible = false;
             nonPremptiveRB.Visible = false;
+            firstArrivalLabel.Visible = false;
             foreach (DataGridViewColumn column in processGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -235,6 +236,8 @@ namespace Version1
             ganttChart.Visible = true;
             averageTurnAroundTime.Visible = true;
             averageWaitingTime.Visible = true;
+            firstArrivalLabel.Visible = true;
+            firstArrivalLabel.Text = firstArrival.ToString();
             DataTable gc = new DataTable();
             ganttChart.DataSource = gc;
             float totalWidth = ganttChart.Width;
@@ -1503,6 +1506,11 @@ namespace Version1
             noOfProcesses = Convert.ToInt32(numericUpDown1_nppriority.Value);
         }
         #endregion
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
