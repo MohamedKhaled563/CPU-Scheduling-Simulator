@@ -54,8 +54,6 @@ namespace Version1
             dt.Columns.Add(" Arrival Time ");
             dt.Columns.Add(" Burst Time ");
             processGrid.DataSource = dt;
-            premptiveRB.Visible = false;
-            nonPremptiveRB.Visible = false;
             firstArrivalLabel.Visible = false;
             foreach (DataGridViewColumn column in processGrid.Columns)
             {
